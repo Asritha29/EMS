@@ -13,7 +13,8 @@ function Login() {
     const [password , setPassword] = useState('')
 
 
-   async  function loginUser() {
+   async  function loginUser(event) {
+    event.preventDefault();
     const response = await fetch('http://localhost:5000/api/login', {
       method: 'POST',
       headers: {
