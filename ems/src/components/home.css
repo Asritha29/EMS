@@ -1,0 +1,9 @@
+.required::after {
+    content: "*";
+    color: red;
+  }
+  .leave-container{
+
+    position: fixed;
+ 
+}

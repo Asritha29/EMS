@@ -3,7 +3,10 @@ const mongoose = require('mongoose');
 
 const User = new mongoose.Schema({
 
-    email :{type: String , require:true},
+    email :{type: String , require:true, unique:true},
+    empId: {type: String, required: true, unique: true },
+    role: { type: String,  required: true},
+    fullname: { type: String,  required: true},
     password:{type:String , require:true},
     quote:{type: String},
 },
@@ -11,4 +14,4 @@ const User = new mongoose.Schema({
 
 const modle = mongoose.model('UserData',User);
 
-module.exports = modle;
+module.exports = modle; 

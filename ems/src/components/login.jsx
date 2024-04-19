@@ -53,7 +53,7 @@ function Login() {
               </Col>
             </Form.Group>
             <Form.Group as={Row} className="mb-3">
-              <Col sm={{ span: 10, offset: 2 }}>
+              <Col sm={{ span: 10, offset: 5 }}>
                 <Button variant="primary" type="submit">Login</Button>
               </Col>
             </Form.Group>
