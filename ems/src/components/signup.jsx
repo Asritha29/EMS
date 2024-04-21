@@ -39,10 +39,11 @@ function Signup() {
         if (!response.ok) {
             throw new Error('Failed to sign up. Please try again later.');
           }
-        const data = await response.json();
-        
-        console.log(data);
-        navigate('/dashboard');
+          const data = await response.json()
+
+          if (data.status === 'ok') {
+            history.push('/login')
+          }
     }
     catch (error) {
         console.error('Error:', error.message);
