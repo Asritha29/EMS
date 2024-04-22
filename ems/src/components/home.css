@@ -7,3 +7,31 @@
     position: fixed;
  
 }
+.dashboard{
+  margin-left: 18%;
+  margin-top: 1%;
+}
+.account{
+  background-color: #F1EAFF;
+}
+.admin{
+  background-color: #E5D4FF;
+}
+.electrical{
+  background-color: #DCBFFF;
+}
+.hr{
+  background-color: #D0A2F7;
+}
+.it{
+  background-color: #BEADFA;
+}
+.infra{
+  background-color: #D0BFFF;
+}
+.telecom{
+  background-color: #DFCCFB;
+}
+.scanning{
+  background-color: #DBC4F0;
+}

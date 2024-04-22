@@ -2,7 +2,7 @@
 /* Option 2: Import via CSS */
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
 .bg-blue{
-    background-color:#0a1d2f;
+    background-color:#90caf9;
     position:sticky;
 }
 
@@ -22,10 +22,10 @@ a:focus {
   align-items: stretch;
 }
 .sidebar{
-    background-color:#0a1d2f;
+    background-color:#EED3D9;
     min-width: 250px;
     max-width: 250px;
-    background: #7386D5;
+    background: #90caf9;
     color: #fff;
     transition: all 0.3s;
 
@@ -165,3 +165,24 @@ a:focus {
           display: none;
       }
   }
+  .sidebar-visible {
+    width: 100%;
+    transition: width 0.3s ease;
+  }
+  
+  .sidebar-hidden {
+    width: 10%;
+    transition: width 0.3s ease;
+  }
+  .toggle-button {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 999;
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #000;
+    cursor: pointer;
+  }
+  
+  

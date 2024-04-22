@@ -1,47 +1,52 @@
-import React from 'react';
-import './header.css'; // Make sure you have this CSS file imported
-import Container from 'react-bootstrap/Container';
-import Navbar from 'react-bootstrap/Navbar';
-import { Nav, NavDropdown } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-
+import React, { useState } from 'react';
+import { Dropdown } from 'react-bootstrap';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 const Sidebar = () => {
+    const [sidebarOpen, setSidebarOpen] = useState(true);
+
+    const toggleSidebar = () => {
+        setSidebarOpen(!sidebarOpen);
+    };
+
+    const dropdownElementList = [].slice.call(document.querySelectorAll('.dropdown-toggle'));
+    const dropdownList = dropdownElementList.map(function (dropdownToggleEl) {
+      return new bootstrap.Dropdown(dropdownToggleEl);
+    });
+
     return (
-
-        <nav id="sidebarMenu" className="col-md-3 col-lg-2 d-md-block sidebar collapse">
-            <div className="position-sticky pt-4 sidebar-sticky">
-                <div className="flex flex-column flex-shrink-0 p-3 bs-info-text-emphasis" style={{ width: '280px' }} id="element1">
-                    <div className="container" id="element2">
-                        <a className="navbar-brand" href="/home">
-            
-                        </a>
-                        <div id="my-nav">
-                            <ul className="navbar-nav ms-auto">
+        <nav id="sidebarMenu" className={`col-md-3 col-lg-2 d-md-block sidebar ${sidebarOpen ? '' : 'collapse'}`}>
+        <button className="btn btn-primary toggle-button d-md-none" onClick={toggleSidebar}>
+            {sidebarOpen ? 'Hide Sidebar' : 'Show Sidebar'}
+        </button>
+        <div className="position-sticky pt-4 sidebar-sticky">
+            <div className="flex flex-column flex-shrink-0 p-3 bs-info-text-emphasis" style={{ width: '280px' }} id="element1">
+                <div className="container" id="element2">
+                    <a className="navbar-brand" href="/"><h3 style={{ color:'black' }}>EMS</h3></a>
+                    <div id="my-nav">
+                        <ul className="navbar-nav ms-auto">
                                 <li className="nav-item active">
-                                    <a className="nav-link" href="/EMS" style={{ color: 'azure' }}><i className="bi bi-house"></i>&nbsp; Home</a>
+                                    <a className="nav-link" href="/" style={{ color:'black' }}><i className="bi bi-bar-chart"></i>&nbsp; Dashboard</a>
                                 </li>
                                 <li className="nav-item active navbar-text">
-                                    <a className="nav-link" href="/EMS/add" style={{ color: 'azure' }}><i className="bi bi-person-plus-fill"></i>&nbsp; Add Employee</a>
+                                    <a className="nav-link" href="/add" style={{ color: 'black' }}><i className="bi bi-person-plus-fill"></i>&nbsp; Add Employee</a>
                                 </li>
                                 <li className="nav-item active navbar-text">
-                                    <a className="nav-link" href="/EMS/attendance" style={{ color: 'azure' }}><i className="bi bi-calendar2-event"></i>&nbsp; Attendance Tracker</a>
+                                    <a className="nav-link" href="/EMS/attendance" style={{ color: 'black' }}><i className="bi bi-calendar2-event"></i>&nbsp; Attendance Tracker</a>
 
                                 </li>
                                 <li className="nav-item active navbar-text">
-                                    <a className="nav-link" href="/EMS/payslip" style={{ color: 'azure' }}><i className="bi bi-file-earmark-arrow-down"></i>&nbsp; PaySlip</a>
+                                    <a className="nav-link" href="/EMS/payslip" style={{ color: 'black' }}><i className="bi bi-file-earmark-arrow-down"></i>&nbsp; PaySlip</a>
                                 </li>
-                                <li className="nav-item dropdown list-unstyled components"> 
-  <a className="nav-link dropdown-toggle" href="#" role="button" id="leaveDropdown" data-bs-toggle="dropdown" aria-expanded="false" style={{ color: 'azure' }}>
-  <i className="bi bi-node-plus-fill"></i>&nbsp; Leave Tracking
-  </a>
-  <ul className="dropdown-menu collapse list-unstyled" aria-labelledby="leaveDropdown">
-    <li><a className="dropdown-item" href="/EMS/leave">Leave Requests</a></li>
-    <li><a className="dropdown-item" href="/EMS/leavetracking">Leave Trackinng</a></li>
-    {/* Add other dropdown items */}
-  </ul>
-</li>
+                                 <li className="nav-item dropdown list-unstyled components">
+                                   <a className="nav-link dropdown-toggle" href="#" role="button" id="leaveDropdown" data-bs-toggle="dropdown" aria-expanded="false" style={{ color: 'black' }}>
+                                         <i className="bi bi-node-plus-fill"></i>&nbsp; Leave Tracking</a>
+                                       <ul className="dropdown-menu collapse list-unstyled" aria-labelledby="leaveDropdown">
+                                        <li><a className="dropdown-item" href="/EMS/leave">Leave Requests</a></li>
+                                        <li><a className="dropdown-item" href="/EMS/leavetracking">Leave Tracking</a></li>
+                                </ul>
+                               </li>
                                  <li className="nav-item active navbar-text">
-                                    <a href="#" className="nav-link" data-bs-toggle="modal" data-bs-target="#logoutModal" style={{ color: 'azure' }}><i className="bi bi-box-arrow-right"></i>&nbsp; Logout</a>
+                                    <a href="#" className="nav-link" data-bs-toggle="modal" data-bs-target="#logoutModal" style={{ color: 'black' }}><i className="bi bi-box-arrow-right"></i>&nbsp; Logout</a>
                                 </li>
                             </ul>
                         </div>

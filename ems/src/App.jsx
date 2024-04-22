@@ -5,7 +5,7 @@ import Login from "./components/login";
 import Signup from "./components/signup";
 import Dashboard from "./components/dashboard";
 import Layout from './components/layout';
-
+import Add from "./components/add";
 function App() {
   const [count, setCount] = useState(0);
 
@@ -16,7 +16,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/" element={<Layout />}>
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route index element={<Dashboard />} />
+          <Route path="/add" element={<Add />} />
           </Route>
         </Routes>
       </BrowserRouter>
