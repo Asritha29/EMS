@@ -12,26 +12,48 @@
   margin-top: 1%;
 }
 .account{
-  background-color: #F1EAFF;
+  background-color: #dee7f8;
+  text-align: center;
 }
 .admin{
-  background-color: #E5D4FF;
+  background-color: #faecdb;
+  text-align: center;
 }
 .electrical{
-  background-color: #DCBFFF;
+  background-color: #fdf0fa;
+  text-align: center;
 }
 .hr{
-  background-color: #D0A2F7;
+  background-color: #ddf2f8;
+  text-align: center;
 }
 .it{
-  background-color: #BEADFA;
+  background-color: #eae7f8;
+  text-align: center;
 }
 .infra{
-  background-color: #D0BFFF;
+  background-color: #e0f6ee;
+  text-align: center;
 }
 .telecom{
-  background-color: #DFCCFB;
+  background-color: #f9e2e2;
+  text-align: center;
 }
 .scanning{
-  background-color: #DBC4F0;
+  background-color: #e4f0ff;
+  text-align: center;
+}
+.inhouse{
+  background-color: #b4a9e0;
+}
+.inbody{
+  background-color: #e0dbf8;
+  text-align: center;
+}
+.outsource{
+  background-color: #87c9a1;
+}
+.outbody{
+  background-color: #def4e4;
+  text-align: center;
 }

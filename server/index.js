@@ -7,7 +7,7 @@ const connectDB = require('./models/config/db');
 const User = require('./models/user.model');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-
+const country = require('./models/country');
 
 const app = express();
 app.use(cors());
@@ -95,6 +95,16 @@ app.post('/api/quote', async (req, res) => {
 		console.log(error)
 		res.json({ status: 'error', error: 'invalid token' })
 	}
+})
+
+
+app.get('/api/add', async(req,res) => {
+	const countries = await country.find();
+
+	res.json({
+		countries,
+	});
+
 })
 
 

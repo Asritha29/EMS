@@ -55,14 +55,14 @@ function Dashboard() {
           <Row xs={1} md={2} lg={4} className="g-4 justify-content-center">
           <Col>
               <Card>
-                <Card.Header className='text-center'>In House</Card.Header>
-                <Card.Body>1111</Card.Body>
+                <Card.Header className='text-center inhouse'>In House</Card.Header>
+                <Card.Body className='inbody'>1111</Card.Body>
               </Card>
             </Col>
           <Col>
               <Card>
-                <Card.Header className='text-center'>Outsource</Card.Header>
-                <Card.Body>1111</Card.Body>
+                <Card.Header className='text-center outsource '>Outsource</Card.Header>
+                <Card.Body className='outbody'>1111</Card.Body>
               </Card>
             </Col>
           </Row>

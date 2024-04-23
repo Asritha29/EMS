@@ -22,7 +22,7 @@ const Header = () => {
           <Navbar.Brand href="#home"></Navbar.Brand>
           <Navbar.Collapse className="justify-content-end">
             <Navbar.Text className='text-white'>
-              <a className="nav-link" href="#login" style={{ color: 'azure' }}> <i className="bi-person-square"></i>&nbsp; User info</a>
+              <a className="nav-link" href="#login" style={{ color: 'black' }}> <i className="bi-person-square"></i>&nbsp; User info</a>
             </Navbar.Text>
           </Navbar.Collapse>
         </Container>
