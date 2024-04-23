@@ -4,9 +4,18 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 const Sidebar = () => {
     const [sidebarOpen, setSidebarOpen] = useState(true);
 
+   
+    const [sidebarVisible, setSidebarVisible] = useState(true);
+
     const toggleSidebar = () => {
-        setSidebarOpen(!sidebarOpen);
+      setSidebarVisible(!sidebarVisible);
     };
+  
+    const sidebarStyle = {
+      width: sidebarVisible ? '100%' : '10%',
+      transition: 'width 0.3s ease',
+    };
+  
 
     const dropdownElementList = [].slice.call(document.querySelectorAll('.dropdown-toggle'));
     const dropdownList = dropdownElementList.map(function (dropdownToggleEl) {
@@ -14,10 +23,8 @@ const Sidebar = () => {
     });
 
     return (
-        <nav id="sidebarMenu" className={`col-md-3 col-lg-2 d-md-block sidebar ${sidebarOpen ? '' : 'collapse'}`}>
-        <button className="btn btn-primary toggle-button d-md-none" onClick={toggleSidebar}>
-            {sidebarOpen ? 'Hide Sidebar' : 'Show Sidebar'}
-        </button>
+        <nav id="sidebarMenu" className={"col-md-3 col-lg-2 d-md-block sidebar"} style={sidebarStyle}>
+        <button className="toggle-button" onClick={toggleSidebar}></button>
         <div className="position-sticky pt-4 sidebar-sticky">
             <div className="flex flex-column flex-shrink-0 p-3 bs-info-text-emphasis" style={{ width: '280px' }} id="element1">
                 <div className="container" id="element2">
