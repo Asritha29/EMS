@@ -7,14 +7,41 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Modal, Table,Tab,Tabs} from 'react-bootstrap';
 import InputGroup from 'react-bootstrap/InputGroup';
+import { getCountries, getStates, getDistricts } from 'country_state_district';
 
 import './add.css'
 function Add() {
     const [activeTab, setActiveTab] = useState(0);
     const [formData, setFormData] = useState({
       name: '',
-      salary: ''
+      salary: '',
+      deployement:'',
+      isManager: false,
     });
+    const [selectedCountry, setSelectedCountry] = useState('');
+    const [selectedState, setSelectedState] = useState('');
+    const [selectedDistrict, setSelectedDistrict] = useState('');
+   ;
+
+    const handleCountryChange = (event) => {
+      const country = event.target.value;
+      setSelectedCountry(country);
+      // Reset state and district selections
+      setSelectedState('');
+      setSelectedDistrict('');
+  };
+
+  const handleStateChange = (event) => {
+      const state = event.target.value;
+      setSelectedState(state);
+      // Reset district selection
+      setSelectedDistrict('');
+  };
+
+  const handleDistrictChange = (event) => {
+      const district = event.target.value;
+      setSelectedDistrict(district);
+  };
 
     const handleChange = (e) => {
       const { name, value } = e.target;
@@ -90,6 +117,11 @@ function Add() {
               <Form.Label htmlFor='empImg' className='required'>Employee Image</Form.Label>
               <Form.Control type="file" id='empImg'  placeholder="png"  name="empImg" value={formData.empImg} onChange={handleChange}/>
               </div>
+              
+              <div className="col-6">
+                <Form.Label htmlFor='address' className='required'>Address</Form.Label>
+                <Form.Control as="textarea" rows={3}  id="address"  placeholder="Enter Address " required/>
+              </div>
               </Row>
             </Form.Group>
 
@@ -112,39 +144,94 @@ function Add() {
               </div>
               </Row>
               </Form.Group>
-
-              <Form.Group>
-                <Row>
-                <legend>Address</legend> 
-
-                <div className="col-6">
-                <Form.Label htmlFor='hoNo' className='required'>Ho:no/flat no</Form.Label>
-                <Form.Control type="text" id='hoNo'  placeholder="ho:no"  name="hoNo" value={formData.hoNo} onChange={handleChange}/>
-                </div>
-
-                <div className="col-6">
-                <Form.Label htmlFor='street' className='required'>Street</Form.Label>
-                <Form.Control type="text" id='street'  placeholder="Street"  name="street" value={formData.street} onChange={handleChange}/>
-                </div>
-
-                
-              
-                </Row>
-              </Form.Group>
               <br />
             <Button variant="primary" className='next' onClick={handleNext}>Next</Button>
           </Tab>
           <Tab eventKey={1} title="Employee details">
-            <Form.Group className="mb-3" controlId="formBasicSalary">
-              <Form.Label>Salary</Form.Label>
-              <Form.Control 
-                type="text" 
-                placeholder="Enter salary" 
-                name="salary"
-                value={formData.salary}
-                onChange={handleChange}
-              />
+            <Row>
+
+            <Form.Group className="mb-3">
+
+              <div className="col-6">
+              <Form.Label htmlFor='empId' className='required'>Employee-Id</Form.Label>
+              <Form.Control type="text" placeholder="Enter Employee-Id" name="empId" value={formData.empId} onChange={handleChange} />
+              </div>
+
+              <div className="col-6">
+              <Form.Label htmlFor='doj' className='required'>Date of joining</Form.Label>
+              <Form.Control type="date" placeholder="mm/dd/yyyy" name="doj" value={formData.doj} onChange={handleChange} />
+              </div>
+
+              <div className="col-6">
+              <Form.Label htmlFor='deployement' className='required'>Deployeement</Form.Label>
+              <Form.Select name="deployement"  onChange={handleChange} value={formData.deployement}> 
+                <option selected>Select Deployment</option>
+                <option value="Internal">Internal</option>  
+                <option value="External">External</option>
+                <option value="OutSource">Out Source</option>
+                </Form.Select>
+              </div>
+
+              <div>
+              {formData.deployement === 'Internal' && (
+             <div className="row">
+          <div className="col-6">
+          <Form.Label className="required" htmlFor="team">Team</Form.Label>
+          <Col mb-3="true">
+          <Form.Select id="team"  value={formData.team} name="team" onChange={handleChange} >
+             <option value="">Select Team Nmae</option>
+             <option value="accountant">Accountant</option>
+             <option value="admin">Admin</option>
+             <option value="electrial">Electrical Commissioning</option>
+             <option value="hr">Human Resources</option>
+             <option value="It">IT</option>
+             <option value="ItInfra">IT Infra</option>
+             <option value="telecom">Telecom Services</option>
+             <option value="scanning">Scanning</option>
+          </Form.Select>
+          </Col>
+         </div>
+         <div className="col-6">
+        <Form.Label htmlFor="managername">Manager Name</Form.Label>
+          <InputGroup className="mb-3">
+        <InputGroup.Text id="basic-addon1" onClick={handleShow}><i className="bi bi-search"></i></InputGroup.Text>
+        <Col mb-3="true">
+        <Form.Control  placeholder="Manager Name"  id="managername" value={selectedRow ? selectedRow.name : ''} name="managerName" onChange={handleInputChange}  aria-label="Manager name" aria-describedby="basic-addon1" />
+      </Col>
+      </InputGroup>
+      </div>
+      <div className="col-6">
+          <Form.Label htmlFor="designation">Designation</Form.Label>
+          <Col mb-3="true">
+          <Form.Select id="designation" name="designation"  required >
+             <option value="">Select Designation</option>
+          </Form.Select>
+          </Col>
+          </div>
+          <div className="col-6">
+      {['checkbox'].map((type) => (
+        <div key={`inline-${type}`} className="mb-3">
+          <br />
+          <Col mb-3="true">
+          <Form.Check
+            inline label="-is Manager" checked={isManager} type={type} id={`inline-${type}-1`} name="isManager" onChange={handleManagerChange} />
+            </Col>
+          </div>))}
+          
+        </div>
+        </div>
+        )}
+        </div>
+
+             
+
+              <div className="col-6">
+              <Form.Label htmlFor='empId' className='required'>Employee-Id</Form.Label>
+              <Form.Control type="text" placeholder="Enter Employee-Id" name="empId" value={formData.empId} onChange={handleChange} />
+              </div>
+
             </Form.Group>
+            </Row>
             <Button variant="primary" onClick={handleBack}>Back</Button>
             <Button variant="primary" className='next' onClick={handleNext}>Next</Button>
           </Tab>
