@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './header.css';
 import Container from 'react-bootstrap/Container';
-
+import { FaUserCircle } from "react-icons/fa";
 import { Navbar, Nav } from "react-bootstrap";
 
 const Header = () => {
@@ -9,11 +9,12 @@ const Header = () => {
 
   return (
        <div className="topnav">
-        <Navbar
-          expand="lg"
-          className="topnav"
-     >
-          <Navbar.Brand href=""><h6 style={{textAlign:'center',color:'black'}}>Userinfo</h6></Navbar.Brand>
+        <Navbar expand="lg" className="topnav flex flex-column  top-0 start-0 end-0" >
+        <Navbar.Collapse className="justify-content-end">
+          <Navbar.Text>
+          <a className="nav-link" href="#login" style={{ color: 'black' }}> <FaUserCircle /> User info</a>
+          </Navbar.Text>
+        </Navbar.Collapse>
         </Navbar>
       </div>
      

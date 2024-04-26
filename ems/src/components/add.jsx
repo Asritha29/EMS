@@ -11,13 +11,49 @@ import { getCountries, getStates, getDistricts } from 'country_state_district';
 
 import './add.css'
 function Add() {
+
+  const [selectedTeam, setSelectedTeam] = useState('');
+  const [designations, setDesignations] = useState([]);
+
     const [activeTab, setActiveTab] = useState(0);
     const [formData, setFormData] = useState({
-      name: '',
+      fullName: '',
+      fatherName:'',
+      motherName:'',
+      dob:'',
+      gender:'',
+      maritalStatus:'',
+      phoneNumber:'',
+      email:'',
+      empImg:'',
+      address:'',
+      emgContact:'',
+      empRelation:'',
+      emgNumber:'',
       salary: '',
       deployement:'',
       isManager: false,
+      designation:'',
+      team:'',
     });
+    
+
+    const [show, setShow] = useState(false);
+    const [selectedRow, setSelectedRow] = useState(null);
+  
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+  
+    const handleRowClick = (rowData) => {
+      setSelectedRow(rowData);
+      handleClose(); // close the modal after selecting a row
+    };
+  
+    const handleInputChange = (e) => {
+      // handle input change here
+      setManagerName(e.target.value);
+      console.log(e.target.value);
+    };
     const [selectedCountry, setSelectedCountry] = useState('');
     const [selectedState, setSelectedState] = useState('');
     const [selectedDistrict, setSelectedDistrict] = useState('');
@@ -44,8 +80,13 @@ function Add() {
   };
 
     const handleChange = (e) => {
-      const { name, value } = e.target;
-      setFormData({ ...formData, [name]: value });
+      const { name, value, type, checked } = e.target;
+    const newValue = type === 'checkbox' ? checked : value;
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: newValue
+    }));
+
     };
   
     const handleNext = () => {
@@ -60,16 +101,24 @@ function Add() {
       // Logic to handle form submission
       console.log('Form submitted:', formData);
     };
+
+
+
+    const teamOptions = [
+      { value: "accountant", label: "Accountant" },
+      { value: "admin", label: "Admin" },
+      { value: "electrial", label: "Electrical Commissioning" },
+      { value: "hr", label: "Human Resources" },
+      { value: "It", label: "IT" },
+      { value: "ItInfra", label: "IT Infra" },
+      { value: "telecom", label: "Telecom Services" },
+      { value: "scanning", label: "Scanning" },
+    ];
   
     return (
-        <div className="add">
+        <div className="add" >
       <Form onSubmit={handleSubmit}>
-        <Tabs
-          id="controlled-tabs"
-          activeKey={activeTab}
-          onSelect={(k) => setActiveTab(k)}
-          className="mb-3"
-        >
+        <Tabs id="controlled-tabs" activeKey={activeTab} onSelect={(k) => setActiveTab(k)} className="mb-3">
           <Tab eventKey={0} title="Personal Info">
             <Form.Group >
             <Row>
@@ -95,7 +144,12 @@ function Add() {
 
               <div className="col-6">
               <Form.Label htmlFor='gender' className='required'>Gender</Form.Label>
-              <Form.Control type="text" id='gender' placeholder="Enter Gender"  name="gender" value={formData.gender} onChange={handleChange} required/>
+              <Form.Select id='gender' value={formData.gender}>
+                <option >Select Gender</option>
+                <option >Male</option>
+                <option >Female</option>
+                <option >Transgender</option>
+              </Form.Select>
               </div>
 
               <div className="col-6">
@@ -110,7 +164,7 @@ function Add() {
 
               <div className="col-6">
               <Form.Label htmlFor='email' className='required'>Email</Form.Label>
-              <Form.Control type="email" id='email'  placeholder="example@gmail.com"  name="email" value={formData.email} onChange={handleChange}/>
+              <Form.Control type="email" id='email'  placeholder="example@gmail.com"  name="email" value={formData.email} onChange={handleChange} autoComplete='off'/>
               </div>
 
               <div className="col-6">
@@ -120,7 +174,7 @@ function Add() {
               
               <div className="col-6">
                 <Form.Label htmlFor='address' className='required'>Address</Form.Label>
-                <Form.Control as="textarea" rows={3}  id="address"  placeholder="Enter Address " required/>
+                <Form.Control as="textarea" rows={3}  id="address"  placeholder="Enter Address " required onChange={handleChange} autoComplete='off'/>
               </div>
               </Row>
             </Form.Group>
@@ -134,13 +188,13 @@ function Add() {
               </div>
 
               <div className="col-6">
-              <Form.Label htmlFor='emprelation' className='required'>Relationship to employee</Form.Label>
-              <Form.Control type="text" id='emprelation'  placeholder="Relation"  name="emprelation" value={formData.emprelation} onChange={handleChange}/>
+              <Form.Label htmlFor='empRelation' className='required'>Relationship to employee</Form.Label>
+              <Form.Control type="text" id='empRelation'  placeholder="Relation"  name="empRelation" value={formData.empRelation} onChange={handleChange}/>
               </div>
 
               <div className="col-6">
-              <Form.Label htmlFor='emgnumber' className='required'>emergency contact number</Form.Label>
-              <Form.Control type="number" id='emgnumber'  placeholder="Number"  name="emgnumber" value={formData.emgnumber} onChange={handleChange}/>
+              <Form.Label htmlFor='emgNumber' className='required'>emergency contact number</Form.Label>
+              <Form.Control type="number" id='emgNumber'  placeholder="Number"  name="emgNumber" value={formData.emgNumber} onChange={handleChange}/>
               </div>
               </Row>
               </Form.Group>
@@ -148,9 +202,8 @@ function Add() {
             <Button variant="primary" className='next' onClick={handleNext}>Next</Button>
           </Tab>
           <Tab eventKey={1} title="Employee details">
-            <Row>
-
             <Form.Group className="mb-3">
+            <Row>
 
               <div className="col-6">
               <Form.Label htmlFor='empId' className='required'>Employee-Id</Form.Label>
@@ -164,17 +217,17 @@ function Add() {
 
               <div className="col-6">
               <Form.Label htmlFor='deployement' className='required'>Deployeement</Form.Label>
-              <Form.Select name="deployement"  onChange={handleChange} value={formData.deployement}> 
-                <option selected>Select Deployment</option>
-                <option value="Internal">Internal</option>  
-                <option value="External">External</option>
-                <option value="OutSource">Out Source</option>
+              <Form.Select name="deployement"  onChange={handleChange} value={formData.deployement} > 
+                <option >Select Deployment</option>
+                <option value={"Internal"}>Internal</option>  
+                <option value={"External"}>External</option>
+                <option value={"OutSource"}>Out Source</option>
                 </Form.Select>
               </div>
 
               <div>
               {formData.deployement === 'Internal' && (
-             <div className="row">
+             <div >
           <div className="col-6">
           <Form.Label className="required" htmlFor="team">Team</Form.Label>
           <Col mb-3="true">
@@ -205,6 +258,11 @@ function Add() {
           <Col mb-3="true">
           <Form.Select id="designation" name="designation"  required >
              <option value="">Select Designation</option>
+             {teamOptions.map((option) => (
+    <option key={option.value} value={option.value}>
+      {option.label}
+    </option>
+  ))}
           </Form.Select>
           </Col>
           </div>
@@ -214,7 +272,7 @@ function Add() {
           <br />
           <Col mb-3="true">
           <Form.Check
-            inline label="-is Manager" checked={isManager} type={type} id={`inline-${type}-1`} name="isManager" onChange={handleManagerChange} />
+            inline label="-is Manager"  checked={formData.isManager}  type={type} id={`inline-${type}-1`} name="isManager" onChange={handleChange} />
             </Col>
           </div>))}
           
@@ -222,16 +280,13 @@ function Add() {
         </div>
         )}
         </div>
-
-             
-
               <div className="col-6">
               <Form.Label htmlFor='empId' className='required'>Employee-Id</Form.Label>
               <Form.Control type="text" placeholder="Enter Employee-Id" name="empId" value={formData.empId} onChange={handleChange} />
               </div>
 
-            </Form.Group>
             </Row>
+             </Form.Group>
             <Button variant="primary" onClick={handleBack}>Back</Button>
             <Button variant="primary" className='next' onClick={handleNext}>Next</Button>
           </Tab>
@@ -271,6 +326,43 @@ function Add() {
           </Tab>
         </Tabs>
       </Form>
+
+       {/* popup*/}
+
+       <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Select a Row</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Table striped bordered hover>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr onClick={() => handleRowClick({ name: '1', value: "" })}>
+                <td>1</td>
+                <td>Row 1</td>
+                <td>1</td>
+              </tr>
+              <tr onClick={() => handleRowClick({ name: 'Row 2', value: 2 })}>
+                <td>2</td>
+                <td>Row 2</td>
+                <td>2</td>
+              </tr>
+              {/* Add more rows as needed */}
+            </tbody>
+          </Table>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
       </div>
     );
   };
