@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Modal, Table,Tab,Tabs} from 'react-bootstrap';
 import InputGroup from 'react-bootstrap/InputGroup';
+import { RiUserSearchLine } from "react-icons/ri";
 import { getCountries, getStates, getDistricts } from 'country_state_district';
 
 import './add.css'
@@ -30,11 +31,13 @@ function Add() {
       emgContact:'',
       empRelation:'',
       emgNumber:'',
+      empId:'',
       salary: '',
       deployement:'',
       isManager: false,
       designation:'',
       team:'',
+      status,
     });
     
 
@@ -101,8 +104,6 @@ function Add() {
       // Logic to handle form submission
       console.log('Form submitted:', formData);
     };
-
-
 
     const teamOptions = [
       { value: "accountant", label: "Accountant" },
@@ -201,10 +202,12 @@ function Add() {
               <br />
             <Button variant="primary" className='next' onClick={handleNext}>Next</Button>
           </Tab>
+
+                {/* new tab employee details */}
+
           <Tab eventKey={1} title="Employee details">
             <Form.Group className="mb-3">
             <Row>
-
               <div className="col-6">
               <Form.Label htmlFor='empId' className='required'>Employee-Id</Form.Label>
               <Form.Control type="text" placeholder="Enter Employee-Id" name="empId" value={formData.empId} onChange={handleChange} />
@@ -225,9 +228,14 @@ function Add() {
                 </Form.Select>
               </div>
 
+              <div className="col-6">
+              <Form.Label htmlFor='workLocation' className='required'>Work Location</Form.Label>
+              <Form.Control type="text" placeholder="Enter Work Location" name="workLocation" value={formData.workLocation} onChange={handleChange} />
+              </div>
+              
               <div>
               {formData.deployement === 'Internal' && (
-             <div >
+             <div className='row'>
           <div className="col-6">
           <Form.Label className="required" htmlFor="team">Team</Form.Label>
           <Col mb-3="true">
@@ -238,73 +246,165 @@ function Add() {
              <option value="electrial">Electrical Commissioning</option>
              <option value="hr">Human Resources</option>
              <option value="It">IT</option>
-             <option value="ItInfra">IT Infra</option>
+             <option value="ItInfra">IT Infrastructure, Sales & Maintenance </option>
              <option value="telecom">Telecom Services</option>
-             <option value="scanning">Scanning</option>
+             <option value="scanning">Scanning & Digitization</option>
           </Form.Select>
           </Col>
          </div>
+
+         <div className="col-6">
+          <Form.Label htmlFor='status' className='required'>Status</Form.Label>
+          <Form.Select id='status' name='status'value={formData.status} >
+          <option >Select Status</option>
+              <option>Active</option>
+              <option>Inactive</option>
+              <option>Resign</option>
+              <option>Notice</option>
+          </Form.Select>
+         </div>
+
          <div className="col-6">
         <Form.Label htmlFor="managername">Manager Name</Form.Label>
           <InputGroup className="mb-3">
-        <InputGroup.Text id="basic-addon1" onClick={handleShow}><i className="bi bi-search"></i></InputGroup.Text>
+        <InputGroup.Text id="basic-addon1" onClick={handleShow}><RiUserSearchLine /></InputGroup.Text>
         <Col mb-3="true">
         <Form.Control  placeholder="Manager Name"  id="managername" value={selectedRow ? selectedRow.name : ''} name="managerName" onChange={handleInputChange}  aria-label="Manager name" aria-describedby="basic-addon1" />
       </Col>
       </InputGroup>
       </div>
+
       <div className="col-6">
           <Form.Label htmlFor="designation">Designation</Form.Label>
           <Col mb-3="true">
           <Form.Select id="designation" name="designation"  required >
              <option value="">Select Designation</option>
              {teamOptions.map((option) => (
-    <option key={option.value} value={option.value}>
-      {option.label}
-    </option>
-  ))}
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
           </Form.Select>
           </Col>
           </div>
+
           <div className="col-6">
-      {['checkbox'].map((type) => (
-        <div key={`inline-${type}`} className="mb-3">
-          <br />
+           {['checkbox'].map((type) => (
+            <div key={`inline-${type}`} className="mb-3">
           <Col mb-3="true">
           <Form.Check
             inline label="-is Manager"  checked={formData.isManager}  type={type} id={`inline-${type}-1`} name="isManager" onChange={handleChange} />
             </Col>
-          </div>))}
-          
+          </div>))} 
         </div>
         </div>
         )}
         </div>
-              <div className="col-6">
-              <Form.Label htmlFor='empId' className='required'>Employee-Id</Form.Label>
-              <Form.Control type="text" placeholder="Enter Employee-Id" name="empId" value={formData.empId} onChange={handleChange} />
-              </div>
-
             </Row>
              </Form.Group>
             <Button variant="primary" onClick={handleBack}>Back</Button>
             <Button variant="primary" className='next' onClick={handleNext}>Next</Button>
           </Tab>
-          <Tab eventKey={2} title="pay Roll">
-            <Form.Group className="mb-3" controlId="formBasicSalary">
-              <Form.Label>Salary</Form.Label>
-              <Form.Control 
-                type="text" 
-                placeholder="Enter salary" 
-                name="salary"
-                value={formData.salary}
-                onChange={handleChange}
-              />
+
+                    {/** new tab payroll */}
+
+          <Tab eventKey={2} title="Payroll">
+          <Form.Group className="mb-3" controlId="formBasicSalary">
+          <Row>
+
+            <div className="col-4">
+              <Form.Label  htmlFor="lpa" className="required">Salary(LPA)</Form.Label>
+          <Col mb-3="true">
+            <Form.Control type="number" id="lpa" name="lpa" placeholder="000000" required />
+          </Col>
+              </div>
+
+              <div className="col-4">
+              <Form.Label  htmlFor="salary" className="required">Salary per month</Form.Label>
+          <Col mb-3="true">
+            <Form.Control type="number" id="salary" placeholder="000000" name="salary" required/>
+          </Col>
+              </div>
+
+              <div className="col-4">
+              <Form.Label  htmlFor="basic" className="required">Basic Salary</Form.Label>
+          <Col mb-3="true">
+            <Form.Control type="number" id="basic"   placeholder="000000" name="basic" required/>
+          </Col>
+              </div>
+
+              <div className="col-4">
+              <Form.Label  htmlFor="hra" className="required">HRA</Form.Label>
+          <Col mb-3="true">
+            <Form.Control type="number" id="hra" name="hra" placeholder="000000" required/>
+          </Col>
+              </div>
+
+              <div className="col-4">
+              <Form.Label  htmlFor="ca" className="required">Conveyance Allowance</Form.Label>
+          <Col mb-3="true">
+            <Form.Control type="number" id="ca" name="ca"  placeholder="000000" required/>
+          </Col>
+              </div>
+
+              <div className="col-4">
+              <Form.Label  htmlFor="others" className="required">Others</Form.Label>
+          <Col mb-3="true">
+            <Form.Control type="number" id="others" name="others"  placeholder="000000" required/>
+          </Col>
+              </div>
+
+              <div className="col-4">
+              <Form.Label  htmlFor="pf" className="required">PF</Form.Label>
+          <Col mb-3="true">
+            <Form.Control type="number" id="pf" name="pf"  placeholder="00000" required/>
+          </Col>
+              </div>
+
+
+              <div className="col-4">
+              <Form.Label  htmlFor="tax" className="required">Professional Tax</Form.Label>
+          <Col mb-3="true">
+            <Form.Control type="number" id="tax" name="tax"  placeholder="00000" required/>
+          </Col>
+              </div>
+
+              <div className="col-4">
+              <Form.Label  htmlFor="esi" >ESI</Form.Label>
+          <Col mb-3="true">
+            <Form.Control type="number" id="esi" name="esi"  placeholder="00000"/>
+          </Col>
+          </div>
+
+          <div className="col-4">
+              <Form.Label  htmlFor="tds">TDS</Form.Label>
+          <Col mb-3="true">
+            <Form.Control type="number" id="tds" name="tds"  placeholder="00000"/>
+          </Col>
+          </div>
+
+            <div className="col-4">
+              <Form.Label  htmlFor="insurance">Insurance</Form.Label>
+          <Col mb-3="true">
+            <Form.Control type="number" id="insurance" name="insurance"  placeholder="00000"/>
+          </Col>
+            </div>
+
+            <div className="col-4">
+              <Form.Label  htmlFor="loan">loan</Form.Label>
+          <Col mb-3="true">
+            <Form.Control type="number" id="loan" name="loan"  placeholder="00000"/>
+          </Col>
+            </div>
+
+            </Row>
             </Form.Group>
             <Button variant="primary" onClick={handleBack}>Back</Button>
             <Button variant="primary" onClick={handleNext}  className='next'>Next</Button>
           </Tab>
          
+                    {/** new tab Qualification */}
+
           <Tab eventKey={3} title="Qualifications">
             <Form.Group className="mb-3" controlId="formBasicSalary">
               <Form.Label>Salary</Form.Label>
@@ -318,6 +418,8 @@ function Add() {
             </Form.Group>
             <Button variant="primary" onClick={handleBack}>Back</Button>
             <Button variant="primary" className='next' onClick={handleNext}>Next</Button>
+
+            
         <Col sm={{ span: 10,offset: 5}}>
         {activeTab === 3 && (
           <Button variant="primary" type="submit" className='submit' > Submit </Button>
