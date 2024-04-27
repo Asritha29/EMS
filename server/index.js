@@ -98,14 +98,16 @@ app.post('/api/quote', async (req, res) => {
 })
 
 
-app.get('/api/add', async(req,res) => {
-	const countries = await country.find();
+app.get('/api/country', async (req, res) => {
+    // Use the 'country' model to fetch all country data from the database
+    const countries = await country.find();
+    
+    // Send the fetched country data as a JSON response
+    res.json({
+        countries,
+    });
+});
 
-	res.json({
-		countries,
-	});
-
-})
 
 
 const port = process.env.PORT || 5000;

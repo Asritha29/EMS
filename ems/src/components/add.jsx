@@ -9,6 +9,9 @@ import { Modal, Table,Tab,Tabs} from 'react-bootstrap';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { RiUserSearchLine } from "react-icons/ri";
 import { getCountries, getStates, getDistricts } from 'country_state_district';
+import axios from 'axios';
+import countriesData from "./csdmv/countries.json";
+import {stateOptions,districtOption} from "./csdmv/csdmv";
 
 import './add.css'
 function Add() {
@@ -17,6 +20,7 @@ function Add() {
   const [designations, setDesignations] = useState([]);
 
     const [activeTab, setActiveTab] = useState(0);
+ 
     const [formData, setFormData] = useState({
       fullName: '',
       fatherName:'',
@@ -37,8 +41,12 @@ function Add() {
       isManager: false,
       designation:'',
       team:'',
-      status,
+      status: '',
+      country: '',
+      state: '' ,
+      district: '',
     });
+    
     
 
     const [show, setShow] = useState(false);
@@ -57,31 +65,7 @@ function Add() {
       setManagerName(e.target.value);
       console.log(e.target.value);
     };
-    const [selectedCountry, setSelectedCountry] = useState('');
-    const [selectedState, setSelectedState] = useState('');
-    const [selectedDistrict, setSelectedDistrict] = useState('');
-   ;
-
-    const handleCountryChange = (event) => {
-      const country = event.target.value;
-      setSelectedCountry(country);
-      // Reset state and district selections
-      setSelectedState('');
-      setSelectedDistrict('');
-  };
-
-  const handleStateChange = (event) => {
-      const state = event.target.value;
-      setSelectedState(state);
-      // Reset district selection
-      setSelectedDistrict('');
-  };
-
-  const handleDistrictChange = (event) => {
-      const district = event.target.value;
-      setSelectedDistrict(district);
-  };
-
+    const [country, setCountry] = useState([]);
     const handleChange = (e) => {
       const { name, value, type, checked } = e.target;
     const newValue = type === 'checkbox' ? checked : value;
@@ -116,6 +100,20 @@ function Add() {
       { value: "scanning", label: "Scanning" },
     ];
   
+
+    useEffect(() => {
+      // Make GET request to fetch select options from the database
+      axios.get('http://localhost:5000/api/country')
+      .then(response => {
+        // Update state with the fetched options
+        setCountry(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching options:', error);
+      });
+    
+    }, []);
+
     return (
         <div className="add" >
       <Form onSubmit={handleSubmit}>
@@ -219,18 +217,13 @@ function Add() {
               </div>
 
               <div className="col-6">
-              <Form.Label htmlFor='deployement' className='required'>Deployeement</Form.Label>
+              <Form.Label htmlFor='deployement' className='required'>Deployement</Form.Label>
               <Form.Select name="deployement"  onChange={handleChange} value={formData.deployement} > 
                 <option >Select Deployment</option>
                 <option value={"Internal"}>Internal</option>  
                 <option value={"External"}>External</option>
                 <option value={"OutSource"}>Out Source</option>
                 </Form.Select>
-              </div>
-
-              <div className="col-6">
-              <Form.Label htmlFor='workLocation' className='required'>Work Location</Form.Label>
-              <Form.Control type="text" placeholder="Enter Work Location" name="workLocation" value={formData.workLocation} onChange={handleChange} />
               </div>
               
               <div>
@@ -240,7 +233,7 @@ function Add() {
           <Form.Label className="required" htmlFor="team">Team</Form.Label>
           <Col mb-3="true">
           <Form.Select id="team"  value={formData.team} name="team" onChange={handleChange} >
-             <option value="">Select Team Nmae</option>
+             <option>Select Team Nmae</option>
              <option value="accountant">Accountant</option>
              <option value="admin">Admin</option>
              <option value="electrial">Electrical Commissioning</option>
@@ -255,7 +248,7 @@ function Add() {
 
          <div className="col-6">
           <Form.Label htmlFor='status' className='required'>Status</Form.Label>
-          <Form.Select id='status' name='status'value={formData.status} >
+          <Form.Select id='status' name='status'value={formData.status} onChange={handleChange}>
           <option >Select Status</option>
               <option>Active</option>
               <option>Inactive</option>
@@ -265,11 +258,11 @@ function Add() {
          </div>
 
          <div className="col-6">
-        <Form.Label htmlFor="managername">Manager Name</Form.Label>
+        <Form.Label htmlFor="managerName">Manager Name</Form.Label>
           <InputGroup className="mb-3">
         <InputGroup.Text id="basic-addon1" onClick={handleShow}><RiUserSearchLine /></InputGroup.Text>
         <Col mb-3="true">
-        <Form.Control  placeholder="Manager Name"  id="managername" value={selectedRow ? selectedRow.name : ''} name="managerName" onChange={handleInputChange}  aria-label="Manager name" aria-describedby="basic-addon1" />
+        <Form.Control  placeholder="Manager Name"  id="managerName" value={selectedRow ? selectedRow.name : ''} name="managerName" onChange={handleInputChange}  aria-label="Manager name" aria-describedby="basic-addon1" />
       </Col>
       </InputGroup>
       </div>
@@ -277,7 +270,7 @@ function Add() {
       <div className="col-6">
           <Form.Label htmlFor="designation">Designation</Form.Label>
           <Col mb-3="true">
-          <Form.Select id="designation" name="designation"  required >
+          <Form.Select id="designation" name="designation"  required onChange={handleChange} >
              <option value="">Select Designation</option>
              {teamOptions.map((option) => (
               <option key={option.value} value={option.value}>
@@ -299,6 +292,41 @@ function Add() {
         </div>
         </div>
         )}
+
+        <legend>Work location</legend>
+        <div className="row">
+        <div className="col-6">
+                    <Form.Label htmlFor='country' className='required'>Country</Form.Label>
+                    <Form.Select name='country' onChange={handleChange} value={formData.country}>
+                      <option value="">Select country</option>
+                      {countriesData.map(country => (
+                               <option key={country.id} value={country.code}>{country.name}</option>
+                      ))}
+                    </Form.Select>
+               </div>
+                
+               <div className="col-6">
+        <Form.Label htmlFor='state' className='required'>State</Form.Label>
+        <Form.Select name='state' onChange={handleChange} value={formData.state}>
+          <option value="">Select state</option>
+          {formData.country && stateOptions[formData.country].map(state => (
+            <option key={state.code} value={state.name}>{state.name}</option>
+          ))}
+        </Form.Select>
+      </div>
+
+      <div className="col-6">
+        <Form.Label htmlFor='district' className='required'>District</Form.Label>
+        <Form.Select name='district' onChange={handleChange} value={formData.district}>
+  <option value="">Select district</option>
+  {formData.state && districtOption[formData.state].map(districtObj => (
+    <option key={districtObj.District_Key} value={districtObj.District}>{districtObj.District}</option>
+  ))}
+</Form.Select>
+
+      </div>
+
+      </div>
         </div>
             </Row>
              </Form.Group>
@@ -309,34 +337,34 @@ function Add() {
                     {/** new tab payroll */}
 
           <Tab eventKey={2} title="Payroll">
-          <Form.Group className="mb-3" controlId="formBasicSalary">
+          <Form.Group className="mb-3" >
           <Row>
 
             <div className="col-4">
               <Form.Label  htmlFor="lpa" className="required">Salary(LPA)</Form.Label>
           <Col mb-3="true">
-            <Form.Control type="number" id="lpa" name="lpa" placeholder="000000" required />
+            <Form.Control type="number" id="lpa" name="lpa" placeholder="000000" required onChange={handleChange}/>
           </Col>
               </div>
 
               <div className="col-4">
               <Form.Label  htmlFor="salary" className="required">Salary per month</Form.Label>
           <Col mb-3="true">
-            <Form.Control type="number" id="salary" placeholder="000000" name="salary" required/>
+            <Form.Control type="number" id="salary" placeholder="000000" name="salary" required onChange={handleChange}/>
           </Col>
               </div>
 
               <div className="col-4">
               <Form.Label  htmlFor="basic" className="required">Basic Salary</Form.Label>
           <Col mb-3="true">
-            <Form.Control type="number" id="basic"   placeholder="000000" name="basic" required/>
+            <Form.Control type="number" id="basic"   placeholder="000000" name="basic" required onChange={handleChange}/>
           </Col>
               </div>
 
               <div className="col-4">
               <Form.Label  htmlFor="hra" className="required">HRA</Form.Label>
           <Col mb-3="true">
-            <Form.Control type="number" id="hra" name="hra" placeholder="000000" required/>
+            <Form.Control type="number" id="hra" name="hra" placeholder="000000" required />
           </Col>
               </div>
 
@@ -406,20 +434,13 @@ function Add() {
                     {/** new tab Qualification */}
 
           <Tab eventKey={3} title="Qualifications">
-            <Form.Group className="mb-3" controlId="formBasicSalary">
-              <Form.Label>Salary</Form.Label>
-              <Form.Control 
-                type="text" 
-                placeholder="Enter salary" 
-                name="salary"
-                value={formData.salary}
-                onChange={handleChange}
-              />
+            <Form.Group className="mb-3">
+             
             </Form.Group>
             <Button variant="primary" onClick={handleBack}>Back</Button>
             <Button variant="primary" className='next' onClick={handleNext}>Next</Button>
 
-            
+
         <Col sm={{ span: 10,offset: 5}}>
         {activeTab === 3 && (
           <Button variant="primary" type="submit" className='submit' > Submit </Button>
