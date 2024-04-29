@@ -11,13 +11,12 @@ import { RiUserSearchLine } from "react-icons/ri";
 import { getCountries, getStates, getDistricts } from 'country_state_district';
 import axios from 'axios';
 import countriesData from "./csdmv/countries.json";
-import {stateOptions,districtOption} from "./csdmv/csdmv";
+import {stateOptions,districtOption,villageoptions,mandalOption} from "./csdmv/csdmv";
 
 import './add.css'
 function Add() {
 
-  const [selectedTeam, setSelectedTeam] = useState('');
-  const [designations, setDesignations] = useState([]);
+ 
 
     const [activeTab, setActiveTab] = useState(0);
  
@@ -33,9 +32,12 @@ function Add() {
       empImg:'',
       address:'',
       emgContact:'',
-      empRelation:'',
+      emgRelation:'',
       emgNumber:'',
       empId:'',
+      doj:'',
+      managerName:'',
+      mandal:'',
       salary: '',
       deployement:'',
       isManager: false,
@@ -45,6 +47,26 @@ function Add() {
       country: '',
       state: '' ,
       district: '',
+      village:'',
+      vertical:'',
+      outsource:'',
+      department:'',
+      lPA:'',
+      basic:'',
+      hra:'',
+      ca:'',
+      other:'',
+      pf:'',
+      tax:'',
+      esi:'',
+      tds:'',
+      insurance:'',
+      loan:'',
+      bankName:'',
+      accNo:'',
+      uanNumber:'',
+      ifscNumber:'',
+
     });
     
     
@@ -152,8 +174,8 @@ function Add() {
               </div>
 
               <div className="col-6">
-              <Form.Label htmlFor='maritalStatus' className='required'>Marital status</Form.Label>
-              <Form.Control type="text" id='maritalStatus' placeholder="Enter Marital status"  name="maritalStatus" value={formData.maritalStatus} onChange={handleChange} required/>
+              <Form.Label htmlFor='maritalStatus'>Marital status</Form.Label>
+              <Form.Control type="text" id='maritalStatus' placeholder="Enter Marital status"  name="maritalStatus" value={formData.maritalStatus} onChange={handleChange}/>
               </div>
 
               <div className="col-6">
@@ -167,13 +189,13 @@ function Add() {
               </div>
 
               <div className="col-6">
-              <Form.Label htmlFor='empImg' className='required'>Employee Image</Form.Label>
+              <Form.Label htmlFor='empImg'>Employee Image</Form.Label>
               <Form.Control type="file" id='empImg'  placeholder="png"  name="empImg" value={formData.empImg} onChange={handleChange}/>
               </div>
               
               <div className="col-6">
                 <Form.Label htmlFor='address' className='required'>Address</Form.Label>
-                <Form.Control as="textarea" rows={3}  id="address"  placeholder="Enter Address " required onChange={handleChange} autoComplete='off'/>
+                <Form.Control as="textarea" rows={3}  id="address"  placeholder="Enter Address " value={formData.address} required onChange={handleChange} autoComplete='off'/>
               </div>
               </Row>
             </Form.Group>
@@ -187,8 +209,8 @@ function Add() {
               </div>
 
               <div className="col-6">
-              <Form.Label htmlFor='empRelation' className='required'>Relationship to employee</Form.Label>
-              <Form.Control type="text" id='empRelation'  placeholder="Relation"  name="empRelation" value={formData.empRelation} onChange={handleChange}/>
+              <Form.Label htmlFor='emgRelation' className='required'>Relationship to employee</Form.Label>
+              <Form.Control type="text" id='emgRelation'  placeholder="Relation"  name="emgRelation" value={formData.emgRelation} onChange={handleChange}/>
               </div>
 
               <div className="col-6">
@@ -208,17 +230,17 @@ function Add() {
             <Row>
               <div className="col-6">
               <Form.Label htmlFor='empId' className='required'>Employee-Id</Form.Label>
-              <Form.Control type="text" placeholder="Enter Employee-Id" name="empId" value={formData.empId} onChange={handleChange} />
+              <Form.Control type="text" placeholder="Enter Employee-Id" id='empId' name="empId" value={formData.empId} onChange={handleChange} />
               </div>
 
               <div className="col-6">
               <Form.Label htmlFor='doj' className='required'>Date of joining</Form.Label>
-              <Form.Control type="date" placeholder="mm/dd/yyyy" name="doj" value={formData.doj} onChange={handleChange} />
+              <Form.Control type="date" placeholder="mm/dd/yyyy"id="doj" name="doj" value={formData.doj} onChange={handleChange} />
               </div>
 
               <div className="col-6">
               <Form.Label htmlFor='deployement' className='required'>Deployement</Form.Label>
-              <Form.Select name="deployement"  onChange={handleChange} value={formData.deployement} > 
+              <Form.Select name="deployement" id='deployement' onChange={handleChange} value={formData.deployement} required > 
                 <option >Select Deployment</option>
                 <option value={"Internal"}>Internal</option>  
                 <option value={"External"}>External</option>
@@ -262,7 +284,7 @@ function Add() {
           <InputGroup className="mb-3">
         <InputGroup.Text id="basic-addon1" onClick={handleShow}><RiUserSearchLine /></InputGroup.Text>
         <Col mb-3="true">
-        <Form.Control  placeholder="Manager Name"  id="managerName" value={selectedRow ? selectedRow.name : ''} name="managerName" onChange={handleInputChange}  aria-label="Manager name" aria-describedby="basic-addon1" />
+        <Form.Control  placeholder="Manager Name"  id="managerName"  value={selectedRow ? selectedRow.name + (formData.managerName ? ', ' + formData.managerName : '') : ''}  name="managerName"  onChange={handleInputChange} aria-label="Manager name" aria-describedby="basic-addon1"/>
       </Col>
       </InputGroup>
       </div>
@@ -270,7 +292,7 @@ function Add() {
       <div className="col-6">
           <Form.Label htmlFor="designation">Designation</Form.Label>
           <Col mb-3="true">
-          <Form.Select id="designation" name="designation"  required onChange={handleChange} >
+          <Form.Select id="designation" name="designation" value={formData.designation} required onChange={handleChange} >
              <option value="">Select Designation</option>
              {teamOptions.map((option) => (
               <option key={option.value} value={option.value}>
@@ -297,7 +319,7 @@ function Add() {
         <div className="row">
         <div className="col-6">
                     <Form.Label htmlFor='country' className='required'>Country</Form.Label>
-                    <Form.Select name='country' onChange={handleChange} value={formData.country}>
+                    <Form.Select name='country' id='country' onChange={handleChange} autoComplete='off' value={formData.country}>
                       <option value="">Select country</option>
                       {countriesData.map(country => (
                                <option key={country.id} value={country.code}>{country.name}</option>
@@ -307,23 +329,40 @@ function Add() {
                 
                <div className="col-6">
         <Form.Label htmlFor='state' className='required'>State</Form.Label>
-        <Form.Select name='state' onChange={handleChange} value={formData.state}>
+        <Form.Select name='state' id='state' onChange={handleChange} value={formData.state}>
           <option value="">Select state</option>
           {formData.country && stateOptions[formData.country].map(state => (
-            <option key={state.code} value={state.name}>{state.name}</option>
+            <option key={state.id} value={state.name}>{state.name}</option>
           ))}
         </Form.Select>
       </div>
 
       <div className="col-6">
         <Form.Label htmlFor='district' className='required'>District</Form.Label>
-        <Form.Select name='district' onChange={handleChange} value={formData.district}>
-  <option value="">Select district</option>
+        <Form.Select name='district' id='district' onChange={handleChange} value={formData.district}>
+  <option key="default" value="">Select district</option>
   {formData.state && districtOption[formData.state].map(districtObj => (
-    <option key={districtObj.District_Key} value={districtObj.District}>{districtObj.District}</option>
+    <option key={districtObj.id} value={districtObj.District}>{districtObj.District}</option>
   ))}
 </Form.Select>
-
+      </div>
+      <div className="col-6">
+        <Form.Label htmlFor='mandal' className='required'>Mandal</Form.Label>
+        <Form.Select name='mandal' id='mandal' onChange={handleChange} value={formData.mandal}>
+  <option key="default" value="">Select Mandal</option>
+  {formData.district && mandalOption[formData.district].map(mandalObj => (
+    <option key={mandalObj.id} value={mandalObj.mandal}>{mandalObj.mandal}</option>
+  ))}
+</Form.Select>
+      </div>
+      <div className="col-6">
+        <Form.Label htmlFor='village' className='required'>Village</Form.Label>
+        <Form.Select name='village' id='village' onChange={handleChange} value={formData.village}>
+  <option key="default" value="">Select village</option>
+  {formData.mandal && villageoptions[formData.mandal].map(villageObj => (
+    <option key={villageObj.id} value={villageObj.village}>{villageObj.village}</option>
+  ))}
+</Form.Select>
       </div>
 
       </div>
@@ -343,49 +382,49 @@ function Add() {
             <div className="col-4">
               <Form.Label  htmlFor="lpa" className="required">Salary(LPA)</Form.Label>
           <Col mb-3="true">
-            <Form.Control type="number" id="lpa" name="lpa" placeholder="000000" required onChange={handleChange}/>
+            <Form.Control type="number" id="lpa" name="lpa"value={formData.lPA} placeholder="000000" required onChange={handleChange}/>
           </Col>
               </div>
 
               <div className="col-4">
               <Form.Label  htmlFor="salary" className="required">Salary per month</Form.Label>
           <Col mb-3="true">
-            <Form.Control type="number" id="salary" placeholder="000000" name="salary" required onChange={handleChange}/>
+            <Form.Control type="number" id="salary" placeholder="000000" value={formData.salary} name="salary" required onChange={handleChange}/>
           </Col>
               </div>
 
               <div className="col-4">
               <Form.Label  htmlFor="basic" className="required">Basic Salary</Form.Label>
           <Col mb-3="true">
-            <Form.Control type="number" id="basic"   placeholder="000000" name="basic" required onChange={handleChange}/>
+            <Form.Control type="number" id="basic"   placeholder="000000" name="basic"value={formData.basic} required onChange={handleChange}/>
           </Col>
               </div>
 
               <div className="col-4">
               <Form.Label  htmlFor="hra" className="required">HRA</Form.Label>
           <Col mb-3="true">
-            <Form.Control type="number" id="hra" name="hra" placeholder="000000" required />
+            <Form.Control type="number" id="hra" name="hra" placeholder="000000" value={formData.hra} required />
           </Col>
               </div>
 
               <div className="col-4">
               <Form.Label  htmlFor="ca" className="required">Conveyance Allowance</Form.Label>
           <Col mb-3="true">
-            <Form.Control type="number" id="ca" name="ca"  placeholder="000000" required/>
+            <Form.Control type="number" id="ca" name="ca"  placeholder="000000" value={formData.ca} required/>
           </Col>
               </div>
 
               <div className="col-4">
-              <Form.Label  htmlFor="others" className="required">Others</Form.Label>
+              <Form.Label  htmlFor="other" className="required">Others</Form.Label>
           <Col mb-3="true">
-            <Form.Control type="number" id="others" name="others"  placeholder="000000" required/>
+            <Form.Control type="number" id="other" name="other" value={formData.other} placeholder="000000" required/>
           </Col>
               </div>
 
               <div className="col-4">
               <Form.Label  htmlFor="pf" className="required">PF</Form.Label>
           <Col mb-3="true">
-            <Form.Control type="number" id="pf" name="pf"  placeholder="00000" required/>
+            <Form.Control type="number" id="pf" name="pf"  placeholder="00000"  value={formData.pf} required/>
           </Col>
               </div>
 
@@ -393,35 +432,35 @@ function Add() {
               <div className="col-4">
               <Form.Label  htmlFor="tax" className="required">Professional Tax</Form.Label>
           <Col mb-3="true">
-            <Form.Control type="number" id="tax" name="tax"  placeholder="00000" required/>
+            <Form.Control type="number" id="tax" name="tax"  placeholder="00000" value={formData.tax} required/>
           </Col>
               </div>
 
               <div className="col-4">
               <Form.Label  htmlFor="esi" >ESI</Form.Label>
           <Col mb-3="true">
-            <Form.Control type="number" id="esi" name="esi"  placeholder="00000"/>
+            <Form.Control type="number" id="esi" name="esi" value={formData.esi} placeholder="00000"/>
           </Col>
           </div>
 
           <div className="col-4">
               <Form.Label  htmlFor="tds">TDS</Form.Label>
           <Col mb-3="true">
-            <Form.Control type="number" id="tds" name="tds"  placeholder="00000"/>
+            <Form.Control type="number" id="tds" name="tds"  value={formData.tds} placeholder="00000"/>
           </Col>
           </div>
 
             <div className="col-4">
               <Form.Label  htmlFor="insurance">Insurance</Form.Label>
           <Col mb-3="true">
-            <Form.Control type="number" id="insurance" name="insurance"  placeholder="00000"/>
+            <Form.Control type="number" id="insurance" name="insurance" value={formData.insurance} placeholder="00000"/>
           </Col>
             </div>
 
             <div className="col-4">
               <Form.Label  htmlFor="loan">loan</Form.Label>
           <Col mb-3="true">
-            <Form.Control type="number" id="loan" name="loan"  placeholder="00000"/>
+            <Form.Control type="number" id="loan" name="loan" value={formData.loan}  placeholder="00000"/>
           </Col>
             </div>
 
@@ -435,7 +474,8 @@ function Add() {
 
           <Tab eventKey={3} title="Qualifications">
             <Form.Group className="mb-3">
-             
+             <Form.Label htmlFor='schooling'>Schooling</Form.Label>
+             <Form.Control id='schooling' type='text'/>
             </Form.Group>
             <Button variant="primary" onClick={handleBack}>Back</Button>
             <Button variant="primary" className='next' onClick={handleNext}>Next</Button>

@@ -24,7 +24,7 @@ const employeeSchema = new mongoose.Schema({
       },
       maritalStatus:{
         type: String,
-        required: true
+      
       },
       phoneNumber:{
         type: String,
@@ -37,7 +37,7 @@ const employeeSchema = new mongoose.Schema({
       },
      empImg:{
         type: String,
-        required: true
+        
       },
       adress:{
         type: String,
@@ -52,6 +52,58 @@ const employeeSchema = new mongoose.Schema({
         required: true
       },
       emgNumber:{
+        type: String,
+        required: true
+      },
+      empId:{
+        type: String,
+        required: true
+      },
+      doj:{
+        type: Date,
+        required: true
+      },
+      deployement:{
+        type: String,
+        required: true
+      },
+      team:{
+        type: String,
+      
+      },
+      status:{
+        type: String,
+       
+      },
+      managerName:{
+        type: String,
+     
+      },
+      ismanager:{
+       type: Boolean
+      
+      },
+      designation:{
+        type: String,
+        required: true
+      },
+      country:{
+        type: String,
+        required: true
+      },
+      state:{
+        type: String,
+        required: true
+      },
+      district:{
+        type: String,
+        required: true
+      },
+      mandal:{
+        type: String,
+        required: true
+      },
+      village:{
         type: String,
         required: true
       },
