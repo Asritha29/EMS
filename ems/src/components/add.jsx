@@ -39,7 +39,7 @@ function Add() {
       managerName:'',
       mandal:'',
       salary: '',
-      deployement:'',
+      type:'',
       isManager: false,
       designation:'',
       team:'',
@@ -214,7 +214,7 @@ function Add() {
               </div>
 
               <div className="col-6">
-              <Form.Label htmlFor='emgNumber' className='required'>emergency contact number</Form.Label>
+              <Form.Label htmlFor='emgNumber' className='required'>Emergency contact number</Form.Label>
               <Form.Control type="number" id='emgNumber'  placeholder="Number"  name="emgNumber" value={formData.emgNumber} onChange={handleChange}/>
               </div>
               </Row>
@@ -239,17 +239,16 @@ function Add() {
               </div>
 
               <div className="col-6">
-              <Form.Label htmlFor='deployement' className='required'>Deployement</Form.Label>
-              <Form.Select name="deployement" id='deployement' onChange={handleChange} value={formData.deployement} required > 
-                <option >Select Deployment</option>
+              <Form.Label htmlFor='type' className='required'>type</Form.Label>
+              <Form.Select name="type" id='type' onChange={handleChange} value={formData.type} required > 
+                <option >Select Type</option>
                 <option value={"Internal"}>Internal</option>  
                 <option value={"External"}>External</option>
-                <option value={"OutSource"}>Out Source</option>
                 </Form.Select>
               </div>
               
               <div>
-              {formData.deployement === 'Internal' && (
+              {formData.type === 'Internal' && (
              <div className='row'>
           <div className="col-6">
           <Form.Label className="required" htmlFor="team">Team</Form.Label>
@@ -268,16 +267,6 @@ function Add() {
           </Col>
          </div>
 
-         <div className="col-6">
-          <Form.Label htmlFor='status' className='required'>Status</Form.Label>
-          <Form.Select id='status' name='status'value={formData.status} onChange={handleChange}>
-          <option >Select Status</option>
-              <option>Active</option>
-              <option>Inactive</option>
-              <option>Resign</option>
-              <option>Notice</option>
-          </Form.Select>
-         </div>
 
          <div className="col-6">
         <Form.Label htmlFor="managerName">Manager Name</Form.Label>
@@ -481,11 +470,23 @@ function Add() {
             <Button variant="primary" className='next' onClick={handleNext}>Next</Button>
 
 
+        
+          </Tab>
+
+          {/**new tab Experience  */}
+          <Tab eventKey={4} title="Experience">
+            <Form.Group className='mb-3 row'>
+              
+            </Form.Group>
+            <Button variant="primary" onClick={handleBack}>Back</Button>
+            <Button variant="primary" className='next' onClick={handleNext}>Next</Button>
+
+
         <Col sm={{ span: 10,offset: 5}}>
-        {activeTab === 3 && (
+        {activeTab === 4 && (
           <Button variant="primary" type="submit" className='submit' > Submit </Button>
         )}
-           </Col>
+        </Col>
           </Tab>
         </Tabs>
       </Form>

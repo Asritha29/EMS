@@ -73,6 +73,7 @@ const employeeSchema = new mongoose.Schema({
       },
       status:{
         type: String,
+        default:'Active' 
        
       },
       managerName:{
