@@ -18,7 +18,7 @@ function Dashboard() {
           <Row xs={1} md={2} lg={4} className="g-4">
             <Col>
               <Card className='account'>
-                <Card.Body>Accountant<br /> <a className="link" href="/accountant" style={{ color: 'black', fontSize: '25px' }}><MdManageAccounts /></a></Card.Body>
+                <Card.Body>Accountant<br /> <a className="link" href="/account" style={{ color: 'black', fontSize: '25px' }}><MdManageAccounts /></a></Card.Body>
               </Card>
             </Col>
             <Col>
