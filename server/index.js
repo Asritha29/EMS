@@ -8,6 +8,7 @@ const User = require('./models/user.model');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const country = require('./models/country');
+const employee = require('./models/employee');
 
 const app = express();
 app.use(cors());
@@ -108,6 +109,12 @@ app.get('/api/country', async (req, res) => {
     });
 });
 
+
+app.post('/api/add' , async(req,res) => {
+	const emplloyee = await employee.create({
+		
+	})
+})
 
 
 const port = process.env.PORT || 5000;

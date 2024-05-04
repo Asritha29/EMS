@@ -108,6 +108,58 @@ const employeeSchema = new mongoose.Schema({
         type: String,
         required: true
       },
+      lpa:{
+        type: String,
+        required: true
+      },
+      salary:{
+        type: String,
+        required: true
+      },
+      basic:{
+        type: String,
+        required: true
+      },
+      hra:{
+        type: String,
+        required: true
+      },
+      ca:{
+        type: String,
+        required: true
+      },
+      other:{
+        type: String,
+        required: true
+      },
+      pf:{
+        type: String,
+        required: true
+      },
+      tax:{
+        type: String,
+        required: true
+      },
+      esi:{
+        type: String,
+        required: true
+      },
+      tds:{
+        type: String,
+        required: true
+      },
+      insurance:{
+        type: String,
+        required: true
+      },
+      loan:{
+        type: String,
+        required: true
+      },
+      bankName:{
+        type: String,
+        required: true
+      },
       createdAt: {
         type: Date,
         default: Date.now()
