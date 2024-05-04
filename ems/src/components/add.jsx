@@ -329,10 +329,11 @@ function Add() {
         </div>
         </div>
         )}
-
+        <br />
+        
         <legend>Work location</legend>
         <div className="row">
-        <div className="col-6">
+        <div className="col">
                     <Form.Label htmlFor='country' className='required'>Country</Form.Label>
                     <Form.Select name='country' id='country' onChange={handleChange} autoComplete='off' value={formData.country}>
                       <option value="">Select country</option>
@@ -342,7 +343,7 @@ function Add() {
                     </Form.Select>
                </div>
                 
-               <div className="col-6">
+               <div className="col">
         <Form.Label htmlFor='state' className='required'>State</Form.Label>
         <Form.Select name='state' id='state' onChange={handleChange} value={formData.state}>
           <option value="">Select state</option>
@@ -352,7 +353,7 @@ function Add() {
         </Form.Select>
       </div>
 
-      <div className="col-6">
+      <div className="col">
         <Form.Label htmlFor='district' className='required'>District</Form.Label>
         <Form.Select name='district' id='district' onChange={handleChange} value={formData.district}>
   <option key="default" value="">Select district</option>
@@ -361,7 +362,7 @@ function Add() {
   ))}
 </Form.Select>
       </div>
-      <div className="col-6">
+      <div className="col">
         <Form.Label htmlFor='mandal' className='required'>Mandal</Form.Label>
         <Form.Select name='mandal' id='mandal' onChange={handleChange} value={formData.mandal}>
   <option key="default" value="">Select Mandal</option>
@@ -370,7 +371,7 @@ function Add() {
   ))}
 </Form.Select>
       </div>
-      <div className="col-6">
+      <div className="col">
         <Form.Label htmlFor='village' className='required'>Village</Form.Label>
         <Form.Select name='village' id='village' onChange={handleChange} value={formData.village}>
   <option key="default" value="">Select village</option>
@@ -493,7 +494,7 @@ function Add() {
 
               <div className="col-6">
              <Form.Label htmlFor='course'>Course</Form.Label>
-             <Form.Select id='course' name='course' onChange={handleChange} value={formData.course}>
+             <Form.Select id='course' name='course' onChange={(e) => handleChange(e, 'course')} value={formData.course}>
               <option selected  value={''}>Select course</option>
               <option value={''}> secondary education (Class 10)</option>
               <option value={''}>Intermediate(11th and 12th)</option>
@@ -508,12 +509,12 @@ function Add() {
 
              <div className="col-6">
               <Form.Label htmlFor='courseType'>Course Type</Form.Label> 
-              <Form.Control id='courseType' name='courseType' type='text'placeholder='Enter course Type (eg: B.Tech)' value={formData.courseType} onChange={handleChange} />  
+              <Form.Control id='courseType' name='courseType' type='text'placeholder='Enter course Type (eg: B.Tech)' value={formData.courseType} onChange={(e) => handleChange(e, 'courseType')} />  
               </div>
 
               <div className="col-6">
                 <Form.Label htmlFor='institution'>Institution</Form.Label>
-                <Form.Control id='institution' name='institution' type='text' value={formData.institution} placeholder='Name of the Institution' onChange={handleChange} />
+                <Form.Control id='institution' name='institution' type='text' value={formData.institution} placeholder='Name of the Institution' onChange={(e) => handleChange(e, 'institution')} />
               </div>
 
               <div className="col-6">
@@ -524,12 +525,13 @@ function Add() {
 
               <div className="col-6">
                 <Form.Label htmlFor='toDate'>To Date</Form.Label>
-                <DatePicker id='fromDate' name='fromDate' selected={formData.fromDate} onChange={(date) => handleChange({ target: { value: date } }, 'toDate')} showYearPicker dateFormat="yyyy" className='form-control' />
+                <DatePicker id='toDate' name='toDate' selected={formData.fromDate} onChange={(date) => handleChange({ target: { value: date } }, 'toDate')} showYearPicker dateFormat="yyyy" className='form-control' />
               </div>
              </Row>
-             <button type="button" onClick={handleAddDetail} className='primary'> Add </button>
+             <br />
+             <Button type="button" onClick={handleAddDetail} variant="primary"> Add </Button>
 
-             <table>
+  <Table>
   <thead>
     <tr>
       <th>Course</th>
@@ -540,17 +542,18 @@ function Add() {
     </tr>
   </thead>
   <tbody>
-    {details.map((detail, index) => (
-      <tr key={index}>
-        <td>{detail.course}</td>
-        <td>{detail.courseType}</td>
-        <td>{detail.institution}</td>
-        <td>{detail.fromDate}</td>
-        <td>{detail.toDate}</td>
-      </tr>
-    ))}
+  {details.map((detail, index) => (
+  <tr key={index}>
+    <td>{detail.course}</td>
+    <td>{detail.courseType}</td>
+    <td>{detail.institution}</td>
+    <td>{detail.fromDate.toLocaleDateString()}</td>
+    <td>{detail.toDate.toLocaleDateString()}</td>
+  </tr>
+))}
+
   </tbody>
-</table>
+</Table>
 
             </Form.Group>
             <Button variant="primary" onClick={handleBack}>Back</Button>
