@@ -15,7 +15,7 @@ const employeeSchema = new mongoose.Schema({
         required: true
       },
       dob:{
-        type: String,
+        type: Date,
         required: true
       },
       gender:{
@@ -57,7 +57,8 @@ const employeeSchema = new mongoose.Schema({
       },
       empId:{
         type: String,
-        required: true
+        required: true,
+        unique: true,
       },
       doj:{
         type: Date,
@@ -110,7 +111,7 @@ const employeeSchema = new mongoose.Schema({
       },
       lpa:{
         type: String,
-        required: true
+
       },
       salary:{
         type: String,
@@ -166,7 +167,7 @@ const employeeSchema = new mongoose.Schema({
       },
       uanNumber:{
         type: String,
-        required: true
+        
       },
       ifscCode:{
         type: String,

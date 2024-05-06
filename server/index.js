@@ -111,8 +111,9 @@ app.get('/api/country', async (req, res) => {
 
 
 app.post('/api/add' , async(req,res) => {
+	try{
 	const emplloyee = await employee.create({
-		fullname:req.body.fullname,
+		fullName:req.body.fullName,
 		fatherName:req.body.fatherName,
 		motherName:req.body.motherName,
 		dob:req.body.dob,
@@ -155,8 +156,13 @@ app.post('/api/add' , async(req,res) => {
 		uanNumber:req.body.uanNumber,
 		ifscCode:req.body.ifscCode
 	})
-})
+	res.json({status: 'ok'})
+} catch (error) {
+	res.json({status: 'error', error:'Email or Employee-Id already exists. Please use a different email or Employee-Id'})
+	console.log(error);
 
+}
+})
 
 const port = process.env.PORT || 5000;
 

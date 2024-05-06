@@ -389,11 +389,30 @@ function Add() {
           <Tab eventKey={2} title="Payroll">
           <Form.Group className="mb-3" >
           <Row>
+            
+            <div className="col-4">
+              <Form.Label htmlFor='bankName'className='required'>Bank Name</Form.Label>
+              <Form.Control id='bankName' name='bankName' placeholder='Enter bank Name' type='text' value={formData.bankName} onChange={handleChange} />
+            </div>
 
             <div className="col-4">
-              <Form.Label  htmlFor="lpa" className="required">Salary(LPA)</Form.Label>
+              <Form.Label htmlFor='accNo'className='required'>Account Number</Form.Label>
+              <Form.Control id='accNo' name='accNo' placeholder='Enter Account Number' type='text' value={formData.accNo} onChange={handleChange} />
+            </div>
+            <div className="col-4">
+              <Form.Label htmlFor='ifscNumber'className='required'>IFSC Number</Form.Label>
+              <Form.Control id='ifscNumber' name='ifscNumber' placeholder='Enter IFSC Number' type='text' value={formData.ifscNumber} onChange={handleChange} />
+            </div>
+
+            <div className="col-4">
+              <Form.Label htmlFor='uanNumber'>UAN Number</Form.Label>
+              <Form.Control id='uanNumber' name='uanNumber' placeholder='Enter UAN number' type='text' value={formData.uanNumber} onChange={handleChange} />
+            </div>
+
+            <div className="col-4">
+              <Form.Label  htmlFor="lpa">Salary(LPA)</Form.Label>
           <Col mb-3="true">
-            <Form.Control type="number" id="lpa" name="lpa"value={formData.lPA} placeholder="000000" required onChange={handleChange}/>
+            <Form.Control type="number" id="lpa" name="lpa"value={formData.lPA} placeholder="000000"  onChange={handleChange}/>
           </Col>
               </div>
 
@@ -433,9 +452,9 @@ function Add() {
               </div>
 
               <div className="col-4">
-              <Form.Label  htmlFor="pf" className="required">PF</Form.Label>
+              <Form.Label  htmlFor="pf">PF</Form.Label>
           <Col mb-3="true">
-            <Form.Control type="number" id="pf" name="pf"  placeholder="00000"  value={formData.pf} onChange={handleChange} required/>
+            <Form.Control type="number" id="pf" name="pf"  placeholder="00000"  value={formData.pf} onChange={handleChange}/>
           </Col>
               </div>
 
