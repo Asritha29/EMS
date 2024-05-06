@@ -63,7 +63,7 @@ const employeeSchema = new mongoose.Schema({
         type: Date,
         required: true
       },
-      deployement:{
+      type:{
         type: String,
         required: true
       },
@@ -130,11 +130,11 @@ const employeeSchema = new mongoose.Schema({
       },
       other:{
         type: String,
-        required: true
+     
       },
       pf:{
         type: String,
-        required: true
+       
       },
       tax:{
         type: String,
@@ -142,21 +142,33 @@ const employeeSchema = new mongoose.Schema({
       },
       esi:{
         type: String,
-        required: true
+       
       },
       tds:{
         type: String,
-        required: true
+       
       },
       insurance:{
         type: String,
-        required: true
+   
       },
       loan:{
         type: String,
-        required: true
+ 
       },
       bankName:{
+        type: String,
+        required: true
+      },
+      accNo:{
+        type: String,
+        required: true
+      },
+      uanNumber:{
+        type: String,
+        required: true
+      },
+      ifscCode:{
         type: String,
         required: true
       },

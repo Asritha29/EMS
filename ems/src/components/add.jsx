@@ -69,8 +69,8 @@ function Add() {
       uanNumber:'',
       ifscNumber:'',
       course:'',
-      fromDate: null,
-      toDate: null
+      fromDate: '',
+      toDate:'',
     });
     
     
@@ -93,11 +93,13 @@ function Add() {
     };
     const [country, setCountry] = useState([]);
     const handleChange = (e, name) => {
-      const { value, type, checked } = e.target;
+      const { value, type, checked, selected } = e.target;
       const newValue = type === 'checkbox' ? checked : value;
+   
       setFormData(prevState => ({
         ...prevState,
-        [name]: newValue
+        [name]: newValue,
+        
       }));
     };
     
@@ -138,14 +140,7 @@ function Add() {
       // Add the new detail to the details array
       setDetails([...details, newDetail]);
     
-      // Clear the form fields after adding the detail
-      setFormData({
-        course: '',
-        courseType: '',
-        institution: '',
-        fromDate: null,
-        toDate: null
-      });
+  
     };
     
 
@@ -495,16 +490,16 @@ function Add() {
               <div className="col-6">
              <Form.Label htmlFor='course'>Course</Form.Label>
              <Form.Select id='course' name='course' onChange={(e) => handleChange(e, 'course')} value={formData.course}>
-              <option selected  value={''}>Select course</option>
-              <option value={''}> secondary education (Class 10)</option>
-              <option value={''}>Intermediate(11th and 12th)</option>
-              <option value={''}>Diploma</option>
-              <option value={''}>polytechnic</option>
-              <option value={''}>Associate degree (undergraduate)</option>
-              <option value={''}>Bachelor's degree (undergraduate)</option>
-              <option value={''}>Master's degree (graduate)</option>
-              <option value={''}>Doctoral degree (graduate)</option>
-             </Form.Select>
+             <option value={''}>Select course</option>
+              <option value={'secondary education (Class 10)'}>Secondary education (Class 10)</option>
+              <option value={'Intermediate(11th and 12th)'}>Intermediate (11th and 12th)</option>
+              <option value={'Diploma'}>Diploma</option>
+              <option value={'Polytechnic'}>Polytechnic</option>
+              <option value={'Associate degree (undergraduate)'}>Associate degree (undergraduate)</option>
+              <option value={"Bachelor's degree (undergraduate)"}>Bachelor's degree (undergraduate)</option>
+              <option value={"Master's degree (graduate)"}>Master's degree (graduate)</option>
+              <option value={"Doctoral degree (graduate)"}>Doctoral degree (graduate)</option>
+            </Form.Select>
              </div>
 
              <div className="col-6">
@@ -517,45 +512,47 @@ function Add() {
                 <Form.Control id='institution' name='institution' type='text' value={formData.institution} placeholder='Name of the Institution' onChange={(e) => handleChange(e, 'institution')} />
               </div>
 
-              <div className="col-6">
-                <Form.Label htmlFor='fromDate'>From Date</Form.Label>
-                <DatePicker id='fromDate' name='fromDate' selected={formData.fromDate} onChange={(date) => handleChange({ target: { value: date } }, 'fromDate')} showYearPicker dateFormat="yyyy" className='form-control' />
-              </div>
-              
+              <div className="col-3">
+              <Form.Label htmlFor='fromDate'>From Date</Form.Label>
+              <DatePicker id='fromDate' name='fromDate'  selected={formData.fromDate} onChange={(date) => handleChange({ target: { value: date } }, 'fromDate')}  showYearPicker dateFormat="yyyy"  className='form-control'value={formData.fromDate} />
+                </div>
 
-              <div className="col-6">
-                <Form.Label htmlFor='toDate'>To Date</Form.Label>
-                <DatePicker id='toDate' name='toDate' selected={formData.fromDate} onChange={(date) => handleChange({ target: { value: date } }, 'toDate')} showYearPicker dateFormat="yyyy" className='form-control' />
-              </div>
+              <div className="col-3">
+              <Form.Label htmlFor='toDate'>To Date</Form.Label>
+             <DatePicker id='toDate' name='toDate'  selected={formData.toDate} onChange={(toDate) => handleChange({ target: { value: toDate } }, 'toDate')}  showYearPicker  dateFormat="yyyy"  className='form-control' value={formData.toDate} />
+            </div>
+
              </Row>
              <br />
-             <Button type="button" onClick={handleAddDetail} variant="primary"> Add </Button>
+             <Button type="submit" onClick={handleAddDetail} variant="primary"> Add </Button>
 
-  <Table>
-  <thead>
-    <tr>
-      <th>Course</th>
-      <th>Course Type</th>
-      <th>Institution</th>
-      <th>From Date</th>
-      <th>To Date</th>
-    </tr>
-  </thead>
-  <tbody>
-  {details.map((detail, index) => (
-  <tr key={index}>
-    <td>{detail.course}</td>
-    <td>{detail.courseType}</td>
-    <td>{detail.institution}</td>
-    <td>{detail.fromDate.toLocaleDateString()}</td>
-    <td>{detail.toDate.toLocaleDateString()}</td>
-  </tr>
-))}
+              <Table>
+             <thead>
+             <tr>
+               <th>Course</th>
+               <th>Course Type</th>
+               <th>Institution</th>
+               <th>From Date</th>
+               <th>To Date</th>
+              
+             </tr>
+             </thead>
+              <tbody>
+            {details.map((detail, index) => (
+            <tr key={index}>
+             <td>{detail.course}</td>
+             <td>{detail.courseType}</td>
+             <td>{detail.institution}</td>
+             <td>{detail.fromDate}</td>
+             <td>{detail.toDate}</td>
+             
+             </tr>   
+                 ))}
 
-  </tbody>
-</Table>
+                </tbody>
+                </Table>
 
-            </Form.Group>
+             </Form.Group>
             <Button variant="primary" onClick={handleBack}>Back</Button>
             <Button variant="primary" className='next' onClick={handleNext}>Next</Button>
         
