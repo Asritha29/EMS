@@ -4,6 +4,7 @@ import SideNav, { Nav, NavItem, NavIcon, NavText } from "@trendmicro/react-siden
 import { FiBarChart } from "react-icons/fi";
 import { IoPersonAddSharp } from "react-icons/io5";
 import { BsCalendar3 } from "react-icons/bs";
+import { LuCalendarPlus } from "react-icons/lu";
 
 import './header.css'
 
@@ -25,19 +26,25 @@ function Sidebar() {
             <NavIcon style={{ fontSize: '25px', color: 'black' }}>
               <a className="nav-link" href="/" style={{ color: 'black', fontSize: '18px' }}><FiBarChart /></a>
             </NavIcon>
-            <NavText ><a className="nav-link" href="/" style={{ color: 'black', fontSize: '18px' }}>&nbsp; Dashboard</a></NavText>
+            <NavText ><a className="nav-link" href="/" style={{ color: 'black', fontSize: '18px',fontFamily:'sans-serif' }}>&nbsp; Dashboard</a></NavText>
           </NavItem>
             <NavItem eventKey="placed_orders">
             <NavIcon style={{ fontSize: '25px', color: 'black' }}>
               <a className="nav-link" href="/add" style={{ color: 'black', fontSize: '18px' }}><IoPersonAddSharp /></a>
             </NavIcon>
-            <NavText><a className="nav-link" href="/add" style={{ color: 'black', fontSize: '18px' }}>&nbsp; Add Employee</a></NavText>
+            <NavText><a className="nav-link" href="/add" style={{ color: 'black', fontSize: '18px', fontFamily:'sans-serif' }}>&nbsp; Add Employee</a></NavText>
           </NavItem>
             <NavItem eventKey="placed" >
             <NavIcon style={{ fontSize: '25px', color: 'black' }}>
               <a className="nav-link" href="/atendence" style={{ color: 'black', fontSize: '18px' }}><BsCalendar3 /></a>
             </NavIcon>
-            <NavText><a className="nav-link" href="/atendence" style={{ color: 'black', fontSize: '18px' }}>&nbsp; Atendence</a></NavText>
+            <NavText><a className="nav-link" href="/atendence" style={{ color: 'black', fontSize: '18px',fontFamily:'sans-serif' }}>&nbsp; Atendence</a></NavText>
+          </NavItem>
+            <NavItem eventKey="leave" >
+            <NavIcon style={{ fontSize: '25px', color: 'black' }}>
+              <a className="nav-link" href="/leave" style={{ color: 'black', fontSize: '18px' }}><LuCalendarPlus /></a>
+            </NavIcon>
+            <NavText><a className="nav-link" href="/leave" style={{ color: 'black', fontSize: '18px',fontFamily:'sans-serif' }}>&nbsp; Leave Tracking</a></NavText>
           </NavItem>
         </SideNav.Nav>
       </SideNav>

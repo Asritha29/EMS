@@ -93,6 +93,7 @@ function Add() {
     };
     const [country, setCountry] = useState([]);
     const handleChange = (e, name) => {
+    
       const { value, type, checked, selected } = e.target;
       const newValue = type === 'checkbox' ? checked : value;
    
@@ -101,6 +102,13 @@ function Add() {
         [name]: newValue,
         
       }));
+      if (field === 'team') {
+        setSelectedTeam(value);
+        setDesignations(Designationsbyteam[value] || []);
+        setSelectedDesignation('');
+    } else if (field === 'designation') {
+        setSelectedDesignation(value);
+    }
     };
     
      const handleNext = () => {
@@ -117,16 +125,33 @@ function Add() {
     };
 
     const teamOptions = [
-      { value: "accountant", label: "Accountant" },
-      { value: "admin", label: "Admin" },
-      { value: "electrial", label: "Electrical Commissioning" },
-      { value: "hr", label: "Human Resources" },
+      { value: "Accountant", label: "Accountant" },
+      { value: "Admin", label: "Admin" },
+      { value: "Electrial", label: "Electrical Commissioning" },
+      { value: "Hr", label: "Human Resources" },
       { value: "It", label: "IT" },
       { value: "ItInfra", label: "IT Infra" },
-      { value: "telecom", label: "Telecom Services" },
-      { value: "scanning", label: "Scanning" },
+      { value: "Telecom", label: "Telecom Services" },
+      { value: "Scanning", label: "Scanning" },
     ];
-  
+    const Designationsbyteam = {
+      Accountant: ['Junior Accountant'],
+      Admin: ['Receptionist'],
+      Electrical: ['Manager - Operations Head', 'Junior Electrical Engineer', 'Manager'],
+      Hr: ['HR Assistant',],
+      It: ['Trainee', 'Software Developer', 'Senior software developer', 'Interns', 'Team Leader', 'Junior Programmer'],
+      Infra: ['Business Development Manager', 'Project Manager', 'Business Development Executive', 'Senior Marketing Manager', 'Executive - Bidding', 'Network Engineer', 'Junior Network Engineer'],
+      Telecom: ['MIS Executive', 'Administrator', 'Executive', 'Help Desk', 'Field Engineer', 'District Lead', 'Gp Engineer and Tech', 'Zonal Lead'],
+      Scanning: ['']
+  };
+  const [selectedTeam, setSelectedTeam] = useState('');
+    const [selectedDesignation, setSelectedDesignation] = useState('');
+    const [designations, setDesignations] = useState([]);
+
+ 
+  const handleDesignationChange = (event) => {
+      setSelectedDesignation(event.target.value);
+  };
     const handleAddDetail = () => {
       // Create a new detail object from the form data
       const newDetail = {
@@ -157,6 +182,20 @@ function Add() {
     
     }, []);
 
+    async function adduser(event){
+      event.preventDefault();
+      const response = await fetch('http://localhost:5000/api/add',{
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          formData
+        })
+      });
+      const data = await response.json();
+    }
+
     return (
         <div className="add" >
       <Form onSubmit={handleSubmit}>
@@ -166,57 +205,57 @@ function Add() {
             <Row>
             <div className="col-6">
               <Form.Label htmlFor='fullName' className='required'>Name</Form.Label>
-              <Form.Control type="text" id='fullName' placeholder="Enter name"  name="fullName" value={formData.fullName} onChange={handleChange} required/>
+              <Form.Control type="text" id='fullName' placeholder="Enter name"  name="fullName" value={formData.fullName} onChange={(e) => handleChange(e, 'fullName')} required/>
               </div>
 
             <div className="col-6">
               <Form.Label htmlFor='fatherName' className='required'>Father Name</Form.Label>
-              <Form.Control type="text" id='fatherName' placeholder="Enter father name"  name="fatherName" value={formData.fatherName} onChange={handleChange} required/>
+              <Form.Control type="text" id='fatherName' placeholder="Enter father name"  name="fatherName" value={formData.fatherName} onChange={(e) => handleChange(e, 'fatherName')} required/>
               </div>
 
               <div className="col-6">
               <Form.Label htmlFor='motherName' className='required'>Mother Name</Form.Label>
-              <Form.Control type="text" id='motherName' placeholder="Enter mother name"  name="motherName" value={formData.motherName} onChange={handleChange} required/>
+              <Form.Control type="text" id='motherName' placeholder="Enter mother name"  name="motherName" value={formData.motherName} onChange={(e) => handleChange(e, 'motherName')} required/>
               </div>
 
               <div className="col-6">
               <Form.Label htmlFor='dob' className='required'>Date of Birth</Form.Label>
-              <Form.Control type="date" id='dob'  placeholder="mm/dd/yyyy"  name="dob" value={formData.dob} onChange={handleChange}/>
+              <Form.Control type="date" id='dob'  placeholder="mm/dd/yyyy"  name="dob" value={formData.dob} onChange={(e) => handleChange(e, 'dob')}/>
               </div>
 
               <div className="col-6">
               <Form.Label htmlFor='gender' className='required'>Gender</Form.Label>
-              <Form.Select id='gender' value={formData.gender}>
-                <option >Select Gender</option>
-                <option >Male</option>
-                <option >Female</option>
-                <option >Transgender</option>
+              <Form.Select id='gender' value={formData.gender}onChange={(e) => handleChange(e, 'gender')}>
+                <option value={''} >Select Gender</option>
+                <option value={'Male'} >Male</option>
+                <option value={'Female'} >Female</option>
+                <option value={'Transgender'} >Transgender</option>
               </Form.Select>
               </div>
 
               <div className="col-6">
               <Form.Label htmlFor='maritalStatus'>Marital status</Form.Label>
-              <Form.Control type="text" id='maritalStatus' placeholder="Enter Marital status"  name="maritalStatus" value={formData.maritalStatus} onChange={handleChange}/>
+              <Form.Control type="text" id='maritalStatus' placeholder="Enter Marital status"  name="maritalStatus" value={formData.maritalStatus} onChange={(e) => handleChange(e, 'maritalStatus')}/>
               </div>
 
               <div className="col-6">
               <Form.Label htmlFor='phoneNumber' className='required'>Phone Number</Form.Label>
-              <Form.Control type="number" id='phoneNumber'  placeholder="Enter phone Number"  name="phoneNumber" value={formData.phoneNumber} onChange={handleChange}/>
+              <Form.Control type="number" id='phoneNumber'  placeholder="Enter phone Number"  name="phoneNumber" value={formData.phoneNumber} onChange={(e) => handleChange(e, 'phoneNumber')}/>
               </div>
 
               <div className="col-6">
               <Form.Label htmlFor='email' className='required'>Email</Form.Label>
-              <Form.Control type="email" id='email'  placeholder="example@gmail.com"  name="email" value={formData.email} onChange={handleChange} autoComplete='off'/>
+              <Form.Control type="email" id='email'  placeholder="example@gmail.com"  name="email" value={formData.email} onChange={(e) => handleChange(e, 'email')} autoComplete='off'/>
               </div>
 
               <div className="col-6">
               <Form.Label htmlFor='empImg'>Employee Image</Form.Label>
-              <Form.Control type="file" id='empImg'  placeholder="png"  name="empImg" value={formData.empImg} onChange={handleChange}/>
+              <Form.Control type="file" id='empImg'  placeholder="png"  name="empImg" value={formData.empImg} onChange={(e) => handleChange(e, 'emgImg')}/>
               </div>
               
               <div className="col-6">
                 <Form.Label htmlFor='address' className='required'>Address</Form.Label>
-                <Form.Control as="textarea" rows={3}  id="address"  placeholder="Enter Address " value={formData.address} required onChange={handleChange} autoComplete='off'/>
+                <Form.Control as="textarea" rows={3}  id="address"  placeholder="Enter Address " value={formData.address} required onChange={(e) => handleChange(e, 'address')} autoComplete='off'/>
               </div>
               </Row>
             </Form.Group>
@@ -226,17 +265,17 @@ function Add() {
              <legend>Emergency Contacts</legend>
               <div className="col-6">
               <Form.Label htmlFor='emgContact' className='required'>Name of emergency contact</Form.Label>
-              <Form.Control type="text" id='emgContact'  placeholder="Enter contact Name"  name="emgContact" value={formData.emgContact} onChange={handleChange}/>
+              <Form.Control type="text" id='emgContact'  placeholder="Enter contact Name"  name="emgContact" value={formData.emgContact} onChange={(e) => handleChange(e, 'emgContact')}/>
               </div>
 
               <div className="col-6">
               <Form.Label htmlFor='emgRelation' className='required'>Relationship to employee</Form.Label>
-              <Form.Control type="text" id='emgRelation'  placeholder="Relation"  name="emgRelation" value={formData.emgRelation} onChange={handleChange}/>
+              <Form.Control type="text" id='emgRelation'  placeholder="Relation"  name="emgRelation" value={formData.emgRelation} onChange={(e) => handleChange(e, 'emgRelation')}/>
               </div>
 
               <div className="col-6">
               <Form.Label htmlFor='emgNumber' className='required'>Emergency contact number</Form.Label>
-              <Form.Control type="number" id='emgNumber'  placeholder="Number"  name="emgNumber" value={formData.emgNumber} onChange={handleChange}/>
+              <Form.Control type="number" id='emgNumber'  placeholder="Number"  name="emgNumber" value={formData.emgNumber} onChange={(e) => handleChange(e, 'emgNumber')}/>
               </div>
               </Row>
               </Form.Group>
@@ -251,18 +290,18 @@ function Add() {
             <Row>
               <div className="col-6">
               <Form.Label htmlFor='empId' className='required'>Employee-Id</Form.Label>
-              <Form.Control type="text" placeholder="Enter Employee-Id" id='empId' name="empId" value={formData.empId} onChange={handleChange} />
+              <Form.Control type="text" placeholder="Enter Employee-Id" id='empId' name="empId" value={formData.empId} onChange={(e) => handleChange(e, 'empId')} />
               </div>
 
               <div className="col-6">
               <Form.Label htmlFor='doj' className='required'>Date of joining</Form.Label>
-              <Form.Control type="date" placeholder="mm/dd/yyyy"id="doj" name="doj" value={formData.doj} onChange={handleChange} />
+              <Form.Control type="date" placeholder="mm/dd/yyyy"id="doj" name="doj" value={formData.doj} onChange={(e) => handleChange(e, 'doj')} />
               </div>
 
               <div className="col-6">
               <Form.Label htmlFor='type' className='required'>Type</Form.Label>
-              <Form.Select name="type" id='type' onChange={handleChange} value={formData.type} required > 
-                <option >Select Type</option>
+              <Form.Select name="type" id='type' onChange={(e) => handleChange(e, 'type')} value={formData.type} required > 
+                <option value={''}>Select Type</option>
                 <option value={"Internal"}>Internal</option>  
                 <option value={"External"}>External</option>
                 </Form.Select>
@@ -274,16 +313,16 @@ function Add() {
           <div className="col-6">
           <Form.Label className="required" htmlFor="team">Team</Form.Label>
           <Col mb-3="true">
-          <Form.Select id="team"  value={formData.team} name="team" onChange={handleChange} >
+          <Form.Select id="team"  value={selectedTeam} name="team" onChange={(e) => handleChange(e, 'team')} >
              <option>Select Team Nmae</option>
-             <option value="accountant">Accountant</option>
-             <option value="admin">Admin</option>
-             <option value="electrial">Electrical Commissioning</option>
-             <option value="hr">Human Resources</option>
+             <option value="Accountant">Accountant</option>
+             <option value="Admin">Admin</option>
+             <option value="Electrial">Electrical Commissioning</option>
+             <option value="Hr">Human Resources</option>
              <option value="It">IT</option>
              <option value="ItInfra">IT Infrastructure, Sales & Maintenance </option>
-             <option value="telecom">Telecom Services</option>
-             <option value="scanning">Scanning & Digitization</option>
+             <option value="Telecom">Telecom Services</option>
+             <option value="Scanning">Scanning & Digitization</option>
           </Form.Select>
           </Col>
          </div>
@@ -302,13 +341,11 @@ function Add() {
       <div className="col-6">
           <Form.Label htmlFor="designation" className='required'>Designation</Form.Label>
           <Col mb-3="true">
-          <Form.Select id="designation" name="designation" value={formData.designation} required onChange={handleChange}>
-             <option value="">Select Designation</option>
-             {teamOptions.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ))}
+          <Form.Select id="designation" name="designation"  value={selectedDesignation} required onChange={(e) => handleChange(e, 'designation')}>
+          <option>Select Designation</option>
+                    {designations.map(designation => (
+                        <option key={designation} value={designation}>{designation}</option>
+                    ))}
           </Form.Select>
           </Col>
           </div>
@@ -318,7 +355,7 @@ function Add() {
             <div key={`inline-${type}`} className="mb-3">
           <Col mb-3="true">
           <Form.Check
-            inline label="-is Manager"  checked={formData.isManager}  type={type} id={`inline-${type}-1`} name="isManager" onChange={handleChange} />
+            inline label="-is Manager"  checked={formData.isManager}  type={type} id={`inline-${type}-1`} name="isManager" onChange={(e) => handleChange(e, 'isManager')} />
             </Col>
           </div>))} 
         </div>
@@ -330,7 +367,7 @@ function Add() {
         <div className="row">
         <div className="col">
                     <Form.Label htmlFor='country' className='required'>Country</Form.Label>
-                    <Form.Select name='country' id='country' onChange={handleChange} autoComplete='off' value={formData.country}>
+                    <Form.Select name='country' id='country' onChange={(e) => handleChange(e, 'country')} autoComplete='off' value={formData.country}>
                       <option value="">Select country</option>
                       {countriesData.map(country => (
                                <option key={country.id} value={country.code}>{country.name}</option>
@@ -340,7 +377,7 @@ function Add() {
                 
                <div className="col">
         <Form.Label htmlFor='state' className='required'>State</Form.Label>
-        <Form.Select name='state' id='state' onChange={handleChange} value={formData.state}>
+        <Form.Select name='state' id='state' onChange={(e) => handleChange(e, 'state')} value={formData.state}>
           <option value="">Select state</option>
           {formData.country && stateOptions[formData.country].map(state => (
             <option key={state.id} value={state.name}>{state.name}</option>
@@ -350,7 +387,7 @@ function Add() {
 
       <div className="col">
         <Form.Label htmlFor='district' className='required'>District</Form.Label>
-        <Form.Select name='district' id='district' onChange={handleChange} value={formData.district}>
+        <Form.Select name='district' id='district' onChange={(e) => handleChange(e, 'district')} value={formData.district}>
   <option key="default" value="">Select district</option>
   {formData.state && districtOption[formData.state].map(districtObj => (
     <option key={districtObj.id} value={districtObj.District}>{districtObj.District}</option>
@@ -359,7 +396,7 @@ function Add() {
       </div>
       <div className="col">
         <Form.Label htmlFor='mandal' className='required'>Mandal</Form.Label>
-        <Form.Select name='mandal' id='mandal' onChange={handleChange} value={formData.mandal}>
+        <Form.Select name='mandal' id='mandal' onChange={(e) => handleChange(e, 'mandal')} value={formData.mandal}>
   <option key="default" value="">Select Mandal</option>
   {formData.district && mandalOption[formData.district].map(mandalObj => (
     <option key={mandalObj.id} value={mandalObj.mandal}>{mandalObj.mandal}</option>
@@ -368,7 +405,7 @@ function Add() {
       </div>
       <div className="col">
         <Form.Label htmlFor='village' className='required'>Village</Form.Label>
-        <Form.Select name='village' id='village' onChange={handleChange} value={formData.village}>
+        <Form.Select name='village' id='village' onChange={(e) => handleChange(e, 'village')} value={formData.village}>
   <option key="default" value="">Select village</option>
   {formData.mandal && villageoptions[formData.mandal].map(villageObj => (
     <option key={villageObj.id} value={villageObj.village}>{villageObj.village}</option>
@@ -392,69 +429,69 @@ function Add() {
             
             <div className="col-4">
               <Form.Label htmlFor='bankName'className='required'>Bank Name</Form.Label>
-              <Form.Control id='bankName' name='bankName' placeholder='Enter bank Name' type='text' value={formData.bankName} onChange={handleChange} />
+              <Form.Control id='bankName' name='bankName' placeholder='Enter bank Name' type='text' value={formData.bankName} onChange={(e) => handleChange(e, 'bankName')} />
             </div>
 
             <div className="col-4">
               <Form.Label htmlFor='accNo'className='required'>Account Number</Form.Label>
-              <Form.Control id='accNo' name='accNo' placeholder='Enter Account Number' type='text' value={formData.accNo} onChange={handleChange} />
+              <Form.Control id='accNo' name='accNo' placeholder='Enter Account Number' type='text' value={formData.accNo} onChange={(e) => handleChange(e, 'accNo')} />
             </div>
             <div className="col-4">
               <Form.Label htmlFor='ifscNumber'className='required'>IFSC Number</Form.Label>
-              <Form.Control id='ifscNumber' name='ifscNumber' placeholder='Enter IFSC Number' type='text' value={formData.ifscNumber} onChange={handleChange} />
+              <Form.Control id='ifscNumber' name='ifscNumber' placeholder='Enter IFSC Number' type='text' value={formData.ifscNumber} onChange={(e) => handleChange(e, 'ifscNumber')} />
             </div>
 
             <div className="col-4">
               <Form.Label htmlFor='uanNumber'>UAN Number</Form.Label>
-              <Form.Control id='uanNumber' name='uanNumber' placeholder='Enter UAN number' type='text' value={formData.uanNumber} onChange={handleChange} />
+              <Form.Control id='uanNumber' name='uanNumber' placeholder='Enter UAN number' type='text' value={formData.uanNumber} onChange={(e) => handleChange(e, 'uanNumber')} />
             </div>
 
             <div className="col-4">
               <Form.Label  htmlFor="lpa">Salary(LPA)</Form.Label>
           <Col mb-3="true">
-            <Form.Control type="number" id="lpa" name="lpa"value={formData.lPA} placeholder="000000"  onChange={handleChange}/>
+            <Form.Control type="number" id="lpa" name="lpa"value={formData.lPA} placeholder="000000"  onChange={(e) => handleChange(e, 'lpa')}/>
           </Col>
               </div>
 
               <div className="col-4">
               <Form.Label  htmlFor="salary" className="required">Salary per month</Form.Label>
           <Col mb-3="true">
-            <Form.Control type="number" id="salary" placeholder="000000" value={formData.salary} name="salary" required onChange={handleChange}/>
+            <Form.Control type="number" id="salary" placeholder="000000" value={formData.salary} name="salary" required onChange={(e) => handleChange(e, 'salary')}/>
           </Col>
               </div>
 
               <div className="col-4">
               <Form.Label  htmlFor="basic" className="required">Basic Salary</Form.Label>
           <Col mb-3="true">
-            <Form.Control type="number" id="basic"   placeholder="000000" name="basic"value={formData.basic} required onChange={handleChange}/>
+            <Form.Control type="number" id="basic"   placeholder="000000" name="basic"value={formData.basic} required onChange={(e) => handleChange(e, 'basic')}/>
           </Col>
               </div>
 
               <div className="col-4">
               <Form.Label  htmlFor="hra" className="required">HRA</Form.Label>
           <Col mb-3="true">
-            <Form.Control type="number" id="hra" name="hra" placeholder="000000" value={formData.hra} required onChange={handleChange}/>
+            <Form.Control type="number" id="hra" name="hra" placeholder="000000" value={formData.hra} required onChange={(e) => handleChange(e, 'hra')}/>
           </Col>
               </div>
 
               <div className="col-4">
               <Form.Label  htmlFor="ca" className="required">Conveyance Allowance</Form.Label>
           <Col mb-3="true">
-            <Form.Control type="number" id="ca" name="ca"  placeholder="000000" value={formData.ca} onChange={handleChange} required/>
+            <Form.Control type="number" id="ca" name="ca"  placeholder="000000" value={formData.ca} onChange={(e) => handleChange(e, 'ca')} required/>
           </Col>
               </div>
 
               <div className="col-4">
               <Form.Label  htmlFor="other" className="required">Others</Form.Label>
           <Col mb-3="true">
-            <Form.Control type="number" id="other" name="other" value={formData.other} placeholder="000000" onChange={handleChange} required/>
+            <Form.Control type="number" id="other" name="other" value={formData.other} placeholder="000000" onChange={(e) => handleChange(e, 'other')} required/>
           </Col>
               </div>
 
               <div className="col-4">
               <Form.Label  htmlFor="pf">PF</Form.Label>
           <Col mb-3="true">
-            <Form.Control type="number" id="pf" name="pf"  placeholder="00000"  value={formData.pf} onChange={handleChange}/>
+            <Form.Control type="number" id="pf" name="pf"  placeholder="00000"  value={formData.pf} onChange={(e) => handleChange(e, 'pf')}/>
           </Col>
               </div>
 
@@ -462,35 +499,35 @@ function Add() {
               <div className="col-4">
               <Form.Label  htmlFor="tax" className="required">Professional Tax</Form.Label>
           <Col mb-3="true">
-            <Form.Control type="number" id="tax" name="tax"  placeholder="00000" value={formData.tax} onChange={handleChange} required/>
+            <Form.Control type="number" id="tax" name="tax"  placeholder="00000" value={formData.tax} onChange={(e) => handleChange(e, 'tax')} required/>
           </Col>
               </div>
 
               <div className="col-4">
               <Form.Label  htmlFor="esi" >ESI</Form.Label>
           <Col mb-3="true">
-            <Form.Control type="number" id="esi" name="esi" value={formData.esi} placeholder="00000" onChange={handleChange}/>
+            <Form.Control type="number" id="esi" name="esi" value={formData.esi} placeholder="00000" onChange={(e) => handleChange(e, 'esi')}/>
           </Col>
           </div>
 
           <div className="col-4">
               <Form.Label  htmlFor="tds">TDS</Form.Label>
           <Col mb-3="true">
-            <Form.Control type="number" id="tds" name="tds"  value={formData.tds} placeholder="00000" onChange={handleChange}/>
+            <Form.Control type="number" id="tds" name="tds"  value={formData.tds} placeholder="00000" onChange={(e) => handleChange(e, 'tds')}/>
           </Col>
           </div>
 
             <div className="col-4">
               <Form.Label  htmlFor="insurance">Insurance</Form.Label>
           <Col mb-3="true">
-            <Form.Control type="number" id="insurance" name="insurance" value={formData.insurance} placeholder="00000" onChange={handleChange}/>
+            <Form.Control type="number" id="insurance" name="insurance" value={formData.insurance} placeholder="00000" onChange={(e) => handleChange(e, 'insurance')}/>
           </Col>
             </div>
 
             <div className="col-4">
               <Form.Label  htmlFor="loan">loan</Form.Label>
           <Col mb-3="true">
-            <Form.Control type="number" id="loan" name="loan" value={formData.loan}  placeholder="00000" onChange={handleChange}/>
+            <Form.Control type="number" id="loan" name="loan" value={formData.loan}  placeholder="00000" onChange={(e) => handleChange(e, 'loan')}/>
           </Col>
             </div>
 
