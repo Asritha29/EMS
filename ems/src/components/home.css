@@ -14,46 +14,70 @@
 .account{
   background-color: #dee7f8;
   text-align: center;
+  font-family: sans-serif;
+  color: black;
 }
 .admin{
   background-color: #faecdb;
   text-align: center;
+  font-family: sans-serif;
+  color: black;
 }
 .electrical{
   background-color: #fdf0fa;
   text-align: center;
+  font-family: sans-serif;
+  color: black;
 }
 .hr{
   background-color: #ddf2f8;
   text-align: center;
+  font-family: sans-serif;
+  color: black;
 }
 .it{
   background-color: #eae7f8;
   text-align: center;
+  font-family: sans-serif;
+  color: black;
 }
 .infra{
   background-color: #e0f6ee;
   text-align: center;
+  font-family: sans-serif;
+  color: black;
 }
 .telecom{
   background-color: #f9e2e2;
   text-align: center;
+  font-family: sans-serif;
+  color: black;
 }
 .scanning{
   background-color: #e4f0ff;
   text-align: center;
+  font-family: sans-serif;
+  color: black;
 }
 .inhouse{
   background-color: #b4a9e0;
+  font-family: sans-serif;
+  color: black;
 }
 .inbody{
   background-color: #e0dbf8;
   text-align: center;
+  font-family: sans-serif;
+  color: black;
 }
 .outsource{
   background-color: #87c9a1;
+  font-family: sans-serif;
+  color: black;
 }
 .outbody{
   background-color: #def4e4;
+  font-family: sans-serif;
   text-align: center;
+  color: black;
 }

@@ -147,10 +147,12 @@ function Add() {
   const [selectedTeam, setSelectedTeam] = useState('');
     const [selectedDesignation, setSelectedDesignation] = useState('');
     const [designations, setDesignations] = useState([]);
-
+    
+const [selectedvertical, setselectedvertical] = useState('');
  
   const handleDesignationChange = (event) => {
       setSelectedDesignation(event.target.value);
+      setselectedvertical(event.target.value)
   };
     const handleAddDetail = () => {
       // Create a new detail object from the form data
@@ -350,6 +352,8 @@ function Add() {
           </Col>
           </div>
 
+          
+
           <div className="col-6">
            {['checkbox'].map((type) => (
             <div key={`inline-${type}`} className="mb-3">
@@ -361,6 +365,29 @@ function Add() {
         </div>
         </div>
         )}
+
+        <div> 
+        {formData.type === 'External' && (
+              <Row>
+              <div className="col-6">
+              <Form.Label className="required" htmlFor="vertical">Team</Form.Label>
+          <Col mb-3="true">
+          <Form.Select id="vertical"  value={selectedvertical} name="vertical" onChange={(e) => handleChange(e, 'vertical')} >
+             <option>Select Team Nmae</option>
+             <option value="Accountant">Accountant</option>
+             <option value="Admin">Admin</option>
+             <option value="Electrial">Electrical Commissioning</option>
+             <option value="Hr">Human Resources</option>
+             <option value="It">IT</option>
+             <option value="ItInfra">IT Infrastructure, Sales & Maintenance </option>
+             <option value="Telecom">Telecom Services</option>
+             <option value="Scanning">Scanning & Digitization</option>
+          </Form.Select>
+          </Col>
+              </div>
+              </Row>
+            )}
+          </div>
         <br />
         
         <legend>Work location</legend>
@@ -617,14 +644,36 @@ function Add() {
           {/**new tab Experience  */}
 
           <Tab eventKey={4} title="Experience">
-            <Form.Group className='mb-3 row'>
-              
+            <Form.Group className='mb-3'>
+              <Row>
+
+                <div className="col-6">
+                  <Form.Label htmlFor='experience'> Years Of Work Experience</Form.Label>
+                  <Form.Control id='experience' name='experience' placeholder='Enter  number of years' type='number' value={formData.experience}  onChange={(e) => handleChange(e, 'experience')} />
+                </div>
+
+                <div className="col-6">
+                  <Form.Label htmlFor='work'> Previously Worked Company</Form.Label>
+                  <Form.Control id='work' name='work' placeholder='Enter company name' type='text' value={formData.work}  onChange={(e) => handleChange(e, 'work')} />
+                </div>
+                
+                <div className="col-6">
+                  <Form.Label htmlFor='from'> From </Form.Label>
+                  <Form.Control id='from' name='from' placeholder='Enter  number of years' type='date' value={formData.from}  onChange={(e) => handleChange(e, 'from')} />
+                </div>
+
+                <div className="col-6">
+                  <Form.Label htmlFor='to'> To </Form.Label>
+                  <Form.Control id='to' name='to' placeholder='Enter  number of years' type='date' value={formData.to}  onChange={(e) => handleChange(e, 'to')} />
+                </div>
+
+              </Row>
             </Form.Group>
             <Button variant="primary" onClick={handleBack}>Back</Button>
             <Button variant="primary" className='next' onClick={handleNext}>Next</Button>
 
 
-        <Col sm={{ span: 10,offset: 5}}>
+        <Col sm={{ span: 5,offset: 6}}>
         {activeTab === 4 && (
           <Button variant="primary" type="submit" className='submit' > Submit </Button>
         )}
