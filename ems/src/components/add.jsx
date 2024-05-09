@@ -50,9 +50,8 @@ function Add() {
       state: '' ,
       district: '',
       village:'',
-      vertical:'',
-      outsource:'',
       department:'',
+      outsource:'',
       lPA:'',
       basic:'',
       hra:'',
@@ -370,9 +369,9 @@ const [selectedvertical, setselectedvertical] = useState('');
         {formData.type === 'External' && (
               <Row>
               <div className="col-6">
-              <Form.Label className="required" htmlFor="vertical">Team</Form.Label>
+              <Form.Label className="required" htmlFor="department">Department</Form.Label>
           <Col mb-3="true">
-          <Form.Select id="vertical"  value={selectedvertical} name="vertical" onChange={(e) => handleChange(e, 'vertical')} >
+          <Form.Select id="department"  value={selecteddepartment} name="department" onChange={(e) => handleChange(e, 'department')} >
              <option>Select Team Nmae</option>
              <option value="Accountant">Accountant</option>
              <option value="Admin">Admin</option>

@@ -6,11 +6,18 @@ import Signup from "./components/signup";
 import Dashboard from "./components/dashboard";
 import Layout from './components/layout';
 import Add from "./components/add";
-import Account from "./components/dashboard/account";
-import Admin from "./components/dashboard/admin";
-import Electrical from "./components/dashboard/electrical";
-import Hr from "./components/dashboard/hr";
-import Infra from "./components/dashboard/infra"
+import Account from "./components/tables/account";
+import Admin from "./components/tables/admin";
+import Electrical from "./components/tables/electrical";
+import Hr from "./components/tables/hr";
+import Infra from "./components/tables/infra";
+import IT from "./components/tables/it";
+import Scanning from "./components/tables/scanning";
+import Telecom from "./components/tables/telecom";
+import Apply from "./components/leave/apply";
+import Request from "./components/leave/requste";
+import Tracking from "./components/leave/tracking";
+
 function App() {
   const [count, setCount] = useState(0);
 
@@ -28,6 +35,12 @@ function App() {
           <Route path="/electrical" element ={<Electrical />} />
           <Route path="/hr" element={<Hr />} />
           <Route path="/infra" element={<Infra />} />
+          <Route path="/it" element={<IT />} />
+          <Route path="/scanning" element={<Scanning />} />
+          <Route path="/telecom" element={<Telecom />} />
+          <Route path="/apply" element={<Apply />} />
+          <Route path="/request" element={<Request />} />
+          <Route path="/tracking" element={<Tracking />} />
           </Route>
         </Routes>
       </BrowserRouter>

@@ -9,6 +9,9 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const country = require('./models/country');
 const employee = require('./models/employee');
+const manpower = require('./models/manpower');
+const electrical = require('./models/electrical');
+const infra = require('./models/infra');
 
 const app = express();
 app.use(cors());
@@ -102,10 +105,15 @@ app.post('/api/quote', async (req, res) => {
 app.get('/api/country', async (req, res) => {
     // Use the 'country' model to fetch all country data from the database
     const countries = await country.find();
-    
+	const Electrical = await electrical.find();
+    const Manpower = await manpower.find();
+	const Infra = await infra.find();
     // Send the fetched country data as a JSON response
     res.json({
         countries,
+		Electrical,
+		Manpower,
+		Infra
     });
 });
 

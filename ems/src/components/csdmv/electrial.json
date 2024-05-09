@@ -1,0 +1,506 @@
+[
+    {
+      "S.NO": 1,
+      "DEPARTMENT": "TS RTC, Hyderabad"
+    },
+    {
+      "S.NO": 2,
+      "DEPARTMENT": "Potti Sriramulu Telugu University , Hyderabad"
+    },
+    {
+      "S.NO": 3,
+      "DEPARTMENT": "Telangana State Co-operative Apex Bank Ltd (TSCAB), Hyderabad"
+    },
+    {
+      "S.NO": 4,
+      "DEPARTMENT": "Jawaharlal Nehru Arhitecture & Fine Arts"
+    },
+    {
+      "S.NO": 5,
+      "DEPARTMENT": "WALAMTARI, Hayatnagar"
+    },
+    {
+      "S.NO": 6,
+      "DEPARTMENT": "Telangana State Industrial Infrastructure Corporation, 6th Floor, Parisrama Bhavan, Basheerbagh, Hyderabad, Telangana, India"
+    },
+    {
+      "S.NO": 7,
+      "DEPARTMENT": "Advanced Training Institute for Electronics and Process Instrumentation (ATI-EPI), Vidyanagar, Shivam Road, Hyderabad,"
+    },
+    {
+      "S.NO": 8,
+      "DEPARTMENT": "Information & Public Relation Department, 0-2-1, AC Guards, Masab Tank, Hyderabad, Telangana 500004"
+    },
+    {
+      "S.NO": 9,
+      "DEPARTMENT": "Dr. B.R. Ambedkar Open University, G Ram Reddy Marg, Masthan Nagar, CBI Colony, Jubilee Hills, Hyderabad, Telangana 500033"
+    },
+    {
+      "S.NO": 10,
+      "DEPARTMENT": "TELANGANA STATE SEEDS DEVELOPMENT CORPORATION LIMITEDAddress: 5-10-193, II floor, HACA Bhavan,Opp, Public Gardens, Hyderabad - 500004"
+    },
+    {
+      "S.NO": 11,
+      "DEPARTMENT": "Telangana State. Pollution Control Board, A-3, Paryavaran Bhavan, Sanath Nagar Rd, Sanath Nagar Industrial Estate, Sanath Nagar, Hyderabad, Telangana 500018"
+    },
+    {
+      "S.NO": 12,
+      "DEPARTMENT": "Telangana state Forest Department, Aranya Bhavan,, NH 44, Opposite RBI, Saifabad, Khairtabad, Hyderabad"
+    },
+    {
+      "S.NO": 13,
+      "DEPARTMENT": "Director, Juvenile Welfare, Correctional Services & Welfare of Street Children, Govt. of Telangana, Hyderabad"
+    },
+    {
+      "S.NO": 14,
+      "DEPARTMENT": "I & CAD Department, Jalasoudha Buildings,. Errummanzil, Hyderabad. The Chief Engineer, Minor Irrigation (Krishna Basin), I & CAD Department, 2nd floor."
+    },
+    {
+      "S.NO": 15,
+      "DEPARTMENT": "Palamuru Rangareddy Lift Irrigation Scheme (PRLIS), I&CAD, Erramanzil, Somajiguda, Hyderabad."
+    },
+    {
+      "S.NO": 16,
+      "DEPARTMENT": "Telangana State Civil Supplies Corporation Limited,   Civil Supplies Bhavan, 3rd Floor, 6-3-655/1/A, Punjagutta Rd, Hyderabad"
+    },
+    {
+      "S.NO": 17,
+      "DEPARTMENT": "Telangana State Ground Water department, H.No.6-2-916/1, Khairtabad, Hyderabad, Telangana 500004"
+    },
+    {
+      "S.NO": 18,
+      "DEPARTMENT": "Commissioner of industries, 5-9-211/101, Chirag Ali Ln, Chirag Ali Lane, Abids, Hyderabad, Telangana 500001"
+    },
+    {
+      "S.NO": 19,
+      "DEPARTMENT": "Telangana State Disaster Response & Fire Services,"
+    },
+    {
+      "S.NO": 20,
+      "DEPARTMENT": "Department of Animal Husbandry and Dairying (AH&D), 9FX4+W3H, Rd Number 4, Shantinagar Colony, Masab Tank, Hyderabad, Telangana 500028"
+    },
+    {
+      "S.NO": 21,
+      "DEPARTMENT": "PJTSAU"
+    },
+    {
+      "S.NO": 22,
+      "DEPARTMENT": "BC WELFARE"
+    },
+    {
+      "S.NO": 23,
+      "DEPARTMENT": "Revenue Dept"
+    },
+    {
+      "S.NO": 24,
+      "DEPARTMENT": "Collegiate education"
+    },
+    {
+      "S.NO": 25,
+      "DEPARTMENT": "GHMC"
+    },
+    {
+      "S.NO": 26,
+      "DEPARTMENT": "Intermediate Board"
+    },
+    {
+      "S.NO": 27,
+      "DEPARTMENT": "Country town and planning"
+    },
+    {
+      "S.NO": 28,
+      "DEPARTMENT": "PHM"
+    },
+    {
+      "S.NO": 29,
+      "DEPARTMENT": "Municipal Managememt"
+    },
+    {
+      "S.NO": 30,
+      "DEPARTMENT": "GAD"
+    },
+    {
+      "S.NO": 31,
+      "DEPARTMENT": "City libraries"
+    },
+    {
+      "S.NO": 32,
+      "DEPARTMENT": "Regional metrology"
+    },
+    {
+      "S.NO": 33,
+      "DEPARTMENT": "BCWELFARE"
+    },
+    {
+      "S.NO": 34,
+      "DEPARTMENT": "EPFO"
+    },
+    {
+      "S.NO": 35,
+      "DEPARTMENT": "Commissioner of School Edn."
+    },
+    {
+      "S.NO": 36,
+      "DEPARTMENT": "RCUES"
+    },
+    {
+      "S.NO": 37,
+      "DEPARTMENT": "SSD RRDist"
+    },
+    {
+      "S.NO": 38,
+      "DEPARTMENT": "CGST"
+    },
+    {
+      "S.NO": 39,
+      "DEPARTMENT": "TSSPDCL"
+    },
+    {
+      "S.NO": 40,
+      "DEPARTMENT": "TS TRANSCO"
+    },
+    {
+      "S.NO": 41,
+      "DEPARTMENT": "TS GENCO"
+    },
+    {
+      "S.NO": 42,
+      "DEPARTMENT": "TS Tourism Development corporation"
+    },
+    {
+      "S.NO": 43,
+      "DEPARTMENT": "TSTS"
+    },
+    {
+      "S.NO": 44,
+      "DEPARTMENT": "CTO"
+    },
+    {
+      "S.NO": 45,
+      "DEPARTMENT": "IT&C TS"
+    },
+    {
+      "S.NO": 46,
+      "DEPARTMENT": "Extension Education Institute"
+    },
+    {
+      "S.NO": 47,
+      "DEPARTMENT": "ESIC"
+    },
+    {
+      "S.NO": 48,
+      "DEPARTMENT": "SVP NPA"
+    },
+    {
+      "S.NO": 49,
+      "DEPARTMENT": "Waqf board"
+    },
+    {
+      "S.NO": 50,
+      "DEPARTMENT": "NIN"
+    },
+    {
+      "S.NO": 51,
+      "DEPARTMENT": "RLY"
+    },
+    {
+      "S.NO": 52,
+      "DEPARTMENT": "CCE R&D"
+    },
+    {
+      "S.NO": 53,
+      "DEPARTMENT": "GST Bhavan"
+    },
+    {
+      "S.NO": 54,
+      "DEPARTMENT": "postal dept"
+    },
+    {
+      "S.NO": 55,
+      "DEPARTMENT": "Postal hyd division"
+    },
+    {
+      "S.NO": 56,
+      "DEPARTMENT": "Postal RMZ Division"
+    },
+    {
+      "S.NO": 57,
+      "DEPARTMENT": "Postal Circle office"
+    },
+    {
+      "S.NO": 58,
+      "DEPARTMENT": "CDTI"
+    },
+    {
+      "S.NO": 59,
+      "DEPARTMENT": "TSTPC"
+    },
+    {
+      "S.NO": 60,
+      "DEPARTMENT": "JNTUH"
+    },
+    {
+      "S.NO": 61,
+      "DEPARTMENT": "HPCL"
+    },
+    {
+      "S.NO": 62,
+      "DEPARTMENT": "Mahatma Gandhi University Nalgonda"
+    },
+    {
+      "S.NO": 63,
+      "DEPARTMENT": "Fisheries Dept ment"
+    },
+    {
+      "S.NO": 64,
+      "DEPARTMENT": "Country town and planning"
+    },
+    {
+      "S.NO": 65,
+      "DEPARTMENT": "MEPMA"
+    },
+    {
+      "S.NO": 66,
+      "DEPARTMENT": "Jyothi Rao pula Res Edn"
+    },
+    {
+      "S.NO": 67,
+      "DEPARTMENT": "TSWREIES"
+    },
+    {
+      "S.NO": 68,
+      "DEPARTMENT": "TMRIES"
+    },
+    {
+      "S.NO": 69,
+      "DEPARTMENT": "UIAD(Author)"
+    },
+    {
+      "S.NO": 70,
+      "DEPARTMENT": "Women cghild welfare"
+    },
+    {
+      "S.NO": 71,
+      "DEPARTMENT": "F&W Welfare"
+    },
+    {
+      "S.NO": 72,
+      "DEPARTMENT": "SSLR"
+    },
+    {
+      "S.NO": 73,
+      "DEPARTMENT": "Excise Dept"
+    },
+    {
+      "S.NO": 74,
+      "DEPARTMENT": "Secondary School education"
+    },
+    {
+      "S.NO": 75,
+      "DEPARTMENT": "SCERT"
+    },
+    {
+      "S.NO": 76,
+      "DEPARTMENT": "Horticulture"
+    },
+    {
+      "S.NO": 77,
+      "DEPARTMENT": "DGP office"
+    },
+    {
+      "S.NO": 78,
+      "DEPARTMENT": "RVBRPoliceacademy"
+    },
+    {
+      "S.NO": 79,
+      "DEPARTMENT": "Cyberabad police"
+    },
+    {
+      "S.NO": 80,
+      "DEPARTMENT": "Election Commission"
+    },
+    {
+      "S.NO": 81,
+      "DEPARTMENT": "Urban devlopment authority"
+    },
+    {
+      "S.NO": 82,
+      "DEPARTMENT": "RERA"
+    },
+    {
+      "S.NO": 83,
+      "DEPARTMENT": "R&B Bulidings"
+    },
+    {
+      "S.NO": 84,
+      "DEPARTMENT": "Hyderabad collectrate"
+    },
+    {
+      "S.NO": 85,
+      "DEPARTMENT": "GHAGAN VIHAR Builiding"
+    },
+    {
+      "S.NO": 86,
+      "DEPARTMENT": "Housing Corporation"
+    },
+    {
+      "S.NO": 87,
+      "DEPARTMENT": "TS Public service commission"
+    },
+    {
+      "S.NO": 88,
+      "DEPARTMENT": "City Civil Court"
+    },
+    {
+      "S.NO": 89,
+      "DEPARTMENT": "Commissioner ofMarketing"
+    },
+    {
+      "S.NO": 90,
+      "DEPARTMENT": "Commissioner of SugarCane"
+    },
+    {
+      "S.NO": 91,
+      "DEPARTMENT": "Commission of Boilers"
+    },
+    {
+      "S.NO": 92,
+      "DEPARTMENT": "Commissioner of Transllation"
+    },
+    {
+      "S.NO": 93,
+      "DEPARTMENT": "TS Special Protection Forces"
+    },
+    {
+      "S.NO": 94,
+      "DEPARTMENT": "Comissioner OfTenders"
+    },
+    {
+      "S.NO": 95,
+      "DEPARTMENT": "TS Mineral Devlopment corporation"
+    },
+    {
+      "S.NO": 96,
+      "DEPARTMENT": "CGM"
+    },
+    {
+      "S.NO": 97,
+      "DEPARTMENT": "Sainik Welfare"
+    },
+    {
+      "S.NO": 98,
+      "DEPARTMENT": "Civil SuppliesCorporation"
+    },
+    {
+      "S.NO": 99,
+      "DEPARTMENT": "Secretariat"
+    },
+    {
+      "S.NO": 100,
+      "DEPARTMENT": "Womens college Medical"
+    },
+    {
+      "S.NO": 101,
+      "DEPARTMENT": "Osmania Cuniversity"
+    },
+    {
+      "S.NO": 102,
+      "DEPARTMENT": "CIEFL"
+    },
+    {
+      "S.NO": 103,
+      "DEPARTMENT": "TS Stamps &Registration"
+    },
+    {
+      "S.NO": 104,
+      "DEPARTMENT": "CCL"
+    },
+    {
+      "S.NO": 105,
+      "DEPARTMENT": "RR Collectorate"
+    },
+    {
+      "S.NO": 106,
+      "DEPARTMENT": "PRINTING Press"
+    },
+    {
+      "S.NO": 107,
+      "DEPARTMENT": "DG prisions"
+    },
+    {
+      "S.NO": 108,
+      "DEPARTMENT": "CRIDA"
+    },
+    {
+      "S.NO": 109,
+      "DEPARTMENT": "Panchayath raj"
+    },
+    {
+      "S.NO": 110,
+      "DEPARTMENT": "Commissionerof Micro Irrigation"
+    },
+    {
+      "S.NO": 111,
+      "DEPARTMENT": "Commissioner of Offficial languages"
+    },
+    {
+      "S.NO": 112,
+      "DEPARTMENT": "Lokayuktha"
+    },
+    {
+      "S.NO": 113,
+      "DEPARTMENT": "Commissioner of Youth Affairs"
+    },
+    {
+      "S.NO": 114,
+      "DEPARTMENT": "Air port Authority"
+    },
+    {
+      "S.NO": 115,
+      "DEPARTMENT": "Minesand safety"
+    },
+    {
+      "S.NO": 116,
+      "DEPARTMENT": "Sriniddi"
+    },
+    {
+      "S.NO": 117,
+      "DEPARTMENT": "SERP"
+    },
+    {
+      "S.NO": 118,
+      "DEPARTMENT": "CommissionerofAgriculture"
+    },
+    {
+      "S.NO": 119,
+      "DEPARTMENT": "Zillaparishad"
+    },
+    {
+      "S.NO": 120,
+      "DEPARTMENT": "TS Drugs Controlle"
+    },
+    {
+      "S.NO": 121,
+      "DEPARTMENT": "ESI Admin"
+    },
+    {
+      "S.NO": 122,
+      "DEPARTMENT": "DTA"
+    },
+    {
+      "S.NO": 123,
+      "DEPARTMENT": "Director of Penssions"
+    },
+    {
+      "S.NO": 124,
+      "DEPARTMENT": "Director of  Ayush"
+    },
+    {
+      "S.NO": 125,
+      "DEPARTMENT": "Director of  Minorties welfare"
+    },
+    {
+      "S.NO": 126,
+      "DEPARTMENT": "Arogyasri trust"
+    }
+  ]
