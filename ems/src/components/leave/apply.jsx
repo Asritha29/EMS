@@ -20,36 +20,36 @@ function Apply() {
 
     try {
       const apply = await fetch('http://localhost:5000/api/apply', {
-        method: 'POST', // Corrected to uppercase
-        headers: {
-          'Content-Type': 'application/json' // Corrected case
-        },
-        body: JSON.stringify({
-          fullName,
-          empId,
-          lsd,
-          led,
-          reason
-        }) // Corrected typo in JSON.stringify()
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+              fullName,
+              empId,
+              lsd,
+              led,
+              reason
+          })
       });
   
       if (!apply.ok) {
-        throw new Error('Failed to apply leave. Please try again later.');
+          throw new Error('Failed to apply leave. Please try again later.');
       }
   
       const data = await apply.json();
   
       if (data.status === 'ok') {
-        history.push('/tracking');
+       
+          window.location.href = '/tracking'; // Redirect after successful form submission
       }
-    } catch (error) {
+  } catch (error) {
       console.error('Error:', error.message);
-      if (error.message.includes('Employee-Id')) { // Corrected error message
-      alert('Employee-Id does not exist or does not match.');
+      if (error.message.includes('Employee-Id')) {
+          alert('Employee-Id does not exist or does not match.');
       } else {
-      alert('Leave application failed.');
+          setErrorMessage('Leave is not applied');
       }
-    
   }
   }
 
@@ -90,14 +90,13 @@ function Apply() {
           <Form.Control as="textarea" rows={3}  id="reason"  name='reason' placeholder="Reason for leave application" value={reason} onChange={(e) => setReason(e.target.value)} required/>
            </Col>
         </Form.Group>
-      </Form>
-          <Col sm={{ span: 10,  }}>
-      
-          <Col sm={{ span: 11, offset: 5 }}>
+          
+         <Col sm={{ span: 11, offset: 5 }}>
           <br /> 
             <Button variant="primary" type="submit">Apply</Button> 
           </Col> 
-          </Col>
+        
+      </Form>
       
     </Card.Body>
   </Card>
