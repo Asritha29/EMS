@@ -12,6 +12,7 @@ const employee = require('./models/employee');
 const manpower = require('./models/manpower');
 const electrical = require('./models/electrical');
 const infra = require('./models/infra');
+const LeaveRequest = require('./models/leave-requests');
 
 const app = express();
 app.use(cors());
@@ -25,6 +26,14 @@ connectDB();
 app.post('/api/signup', async (req,res) =>{
     console.log(req.body)
     try {
+		
+		const employeeExists = await employee.exists({ empId: req.body.empId });
+        
+        if (!employeeExists) {
+            // If the employee doesn't exist, return an error response
+            return res.status(400).json({ status: 'error', message: 'Employee-Id does not exist' });
+        }
+
         const newPassword = await bcrypt.hash(req.body.password, 10)
         const user = await User.create({
             fullname:req.body.fullname,
@@ -120,7 +129,7 @@ app.get('/api/country', async (req, res) => {
 
 app.post('/api/add' , async(req,res) => {
 	try{
-	const emplloyee = await employee.create({
+	const Employee = await employee.create({
 		fullName:req.body.fullName,
 		fatherName:req.body.fatherName,
 		motherName:req.body.motherName,
@@ -165,12 +174,42 @@ app.post('/api/add' , async(req,res) => {
 		ifscCode:req.body.ifscCode
 	})
 	res.json({status: 'ok'})
+	console.log(Employee);
 } catch (error) {
 	res.json({status: 'error', error:'Email or Employee-Id already exists. Please use a different email or Employee-Id'})
 	console.log(error);
 
 }
-})
+});
+
+// Leave appllication 
+
+
+app.post('/api/apply', async (req, res) => {
+    try {
+		const employeeExists = await employee.exists({ empId: req.body.empId });
+        
+        if (!employeeExists) {
+            // If the employee doesn't exist, return an error response
+            return res.status(400).json({ status: 'error', message: 'Employee-Id does not exist' });
+        }
+
+        // Assuming LeaveRequest is a model representing leave requests in your database
+        const Apply = await LeaveRequest.create({
+            fullName: req.body.fullName,
+            empId: req.body.empId,
+            lsd: req.body.lsd,
+            led: req.body.led,
+            reason: req.body.reason
+        });
+        res.json({ status: 'ok' });
+		console.log(Apply);
+    } catch (error) {
+        // If there's an error during the creation process
+        res.json({ status: 'error' });
+        console.log(error);
+    }
+});
 
 const port = process.env.PORT || 5000;
 

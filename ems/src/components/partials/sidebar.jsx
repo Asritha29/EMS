@@ -42,9 +42,9 @@ function Sidebar() {
           </NavItem>
             <NavItem eventKey="leave" >
             <NavIcon style={{ fontSize: '25px', color: 'black' }}>
-              <a className="nav-link" href="/leave" style={{ color: 'black', fontSize: '18px' }}><LuCalendarPlus /></a>
+              <a className="nav-link" href="/apply" style={{ color: 'black', fontSize: '18px' }}><LuCalendarPlus /></a>
             </NavIcon>
-            <NavText><a className="nav-link" href="/leave" style={{ color: 'black', fontSize: '18px',fontFamily:'sans-serif' }}>&nbsp; Leave Tracking</a></NavText>
+            <NavText><a className="nav-link" href="/apply" style={{ color: 'black', fontSize: '18px',fontFamily:'sans-serif' }}>&nbsp; Leave Tracking</a></NavText>
           </NavItem>
         </SideNav.Nav>
       </SideNav>

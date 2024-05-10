@@ -22,37 +22,41 @@ function Signup() {
 
     async function signupUser(event) {
         event.preventDefault();
-       try{ 
-        const response = await fetch('http://localhost:5000/api/signup', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                email,
-                password,
-                role,
-                empId,
-                fullname
-            })
-        });
-        if (!response.ok) {
-            throw new Error('Failed to sign up. Please try again later.');
+        try {
+          const response = await fetch('http://localhost:5000/api/signup', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                  email,
+                  password,
+                  role,
+                  empId,
+                  fullname
+              })
+          });
+      
+          if (!response.ok) {           
+              throw new Error('Failed to sign up. Please try again later.');
           }
-          const data = await response.json()
-
+      
+          const data = await response.json();
+      
           if (data.status === 'ok') {
-            history.push('/login')
+              alert('User created successfully');
+              window.location.href = '/';
+              history.push('/login');
           }
-    }
-    catch (error) {
-        console.error('Error:', error.message);
-        if (error.message.includes('duplicate key error')) {
-          setErrorMessage('Email or Employee-Id already exists. Please use a different email or Employee-Id.');
-        } else {
-          setErrorMessage('Failed to sign up. Please try again later.');
-        }
+      } catch (error) {
+          console.error('Error:', error.message);
+          if (error.message.includes('duplicate key error')) {
+              alert('Email or Employee-Id already exists. Please use a different email or Employee-Id.');
+          } else {
+              alert('Failed to sign up. Please try again later.');
+          }
       }
+      
 }
     
   return ( 
