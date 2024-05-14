@@ -17,12 +17,13 @@ import Telecom from "./components/tables/telecom";
 import Apply from "./components/leave/apply";
 import Request from "./components/leave/requste";
 import Tracking from "./components/leave/tracking";
+import './App.css'
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
-    <div>
+    <div className="app">
       <BrowserRouter>
         <Routes>
           <Route path="/login" element={<Login />} />

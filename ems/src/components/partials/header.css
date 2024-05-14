@@ -26,6 +26,7 @@
 }
 .header{
 align-items: center;
+width: 100%;
 }
 .sidebar{
   background-color:#cfd7e4 ;
@@ -35,8 +36,9 @@ align-items: center;
   
 }
 .nav-link:hover {
-  color: blue; /* Change color on hover */
-  text-decoration: none; /* Remove underline on hover */
+  color: rgb(1, 1, 19); 
+  text-decoration: none;
+  
 }
 
 /* Define active styles */

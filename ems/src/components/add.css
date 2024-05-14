@@ -1,9 +1,10 @@
 .add{
-    margin-left: 11%;
+    margin-left: 12%;
     margin-top: 1%;
-    width:90%;
+    width:72vw;
+    height: 94vh;
 
 }
 .next{
-    float: right;
+    float: right
 }
