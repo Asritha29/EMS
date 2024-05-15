@@ -23,15 +23,7 @@ app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 app.use(bodyParser.json());
-app.use(Session({
-	secret: 'Frazen123@123456',
-	resave: false,
-	saveUninitialized: false,
-	cookie:{
-		secure: false,
-		maxAge: 1000*60*60*24
-	}
-}))
+
 
 //connect to db
 connectDB();
