@@ -43,6 +43,7 @@ app.post('/api/signup', async (req,res) =>{
             role:req.body.role
         })
         res.json({status: 'ok'})
+		console.log(user);
     } catch (error) {
         res.json({status: 'error', error:'Email or Employee-Id already exists. Please use a different email or Employee-Id'})
         console.log(error);
