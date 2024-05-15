@@ -322,4 +322,4 @@ export const villageoptions = {
     Rudrangi:['Manal','Rudrangi'],
     Chandurthi:['Mallial','Chandurthi','Thimmapuram(PN)','Ananthapalle(PK)','Marrigadda','Jogapuram','Lingampeta','Sangula','Bandapalle','Yangal','Moodepalle'],
     Veernapally:['Adavipadira','Garjanapally','Kancharla','Maddimalla','Vanapally','Veernapally'],
-};
+}

@@ -13,15 +13,37 @@ const manpower = require('./models/manpower');
 const electrical = require('./models/electrical');
 const infra = require('./models/infra');
 const LeaveRequest = require('./models/leave-requests');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const { Session } = require('express-session');
 
 const app = express();
 app.use(cors());
 
 app.use(express.json());
+app.use(cookieParser());
+app.use(bodyParser.json());
+app.use(Session({
+	secret: 'Frazen123@123456',
+	resave: false,
+	saveUninitialized: false,
+	cookie:{
+		secure: false,
+		maxAge: 1000*60*60*24
+	}
+}))
 
 //connect to db
 connectDB();
 
+
+app.get('/api/', async (req, res) => {
+	if(req.session.email) {
+		return res.json({valid: true, email: req.session.email})
+	}else{
+		return res.json({valid: false})
+	}
+})
 
 app.post('/api/signup', async (req,res) =>{
     console.log(req.body)
