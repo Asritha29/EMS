@@ -101,13 +101,6 @@ function Add() {
         [name]: newValue,
         
       }));
-      if (field === 'team') {
-        setSelectedTeam(value);
-        setDesignations(Designationsbyteam[value] || []);
-        setSelectedDesignation('');
-    } else if (field === 'designation') {
-        setSelectedDesignation(value);
-    }
     };
     
      const handleNext = () => {
@@ -123,36 +116,30 @@ function Add() {
       console.log('Form submitted:', formData);
     };
 
-    const teamOptions = [
-      { value: "Accountant", label: "Accountant" },
-      { value: "Admin", label: "Admin" },
-      { value: "Electrial", label: "Electrical Commissioning" },
-      { value: "Hr", label: "Human Resources" },
-      { value: "It", label: "IT" },
-      { value: "ItInfra", label: "IT Infra" },
-      { value: "Telecom", label: "Telecom Services" },
-      { value: "Scanning", label: "Scanning" },
-    ];
-    const Designationsbyteam = {
-      Accountant: ['Junior Accountant'],
-      Admin: ['Receptionist'],
-      Electrical: ['Manager - Operations Head', 'Junior Electrical Engineer', 'Manager'],
-      Hr: ['HR Assistant',],
-      It: ['Trainee', 'Software Developer', 'Senior software developer', 'Interns', 'Team Leader', 'Junior Programmer'],
-      Infra: ['Business Development Manager', 'Project Manager', 'Business Development Executive', 'Senior Marketing Manager', 'Executive - Bidding', 'Network Engineer', 'Junior Network Engineer'],
-      Telecom: ['MIS Executive', 'Administrator', 'Executive', 'Help Desk', 'Field Engineer', 'District Lead', 'Gp Engineer and Tech', 'Zonal Lead'],
-      Scanning: ['']
-  };
-  const [selectedTeam, setSelectedTeam] = useState('');
-    const [selectedDesignation, setSelectedDesignation] = useState('');
-    const [designations, setDesignations] = useState([]);
+  
+   
+      const Designationsbyteam = {
+        Accountant: ['Junior Accountant'],
+        Admin: ['Receptionist'],
+        Electrical: ['Manager - Operations Head', 'Junior Electrical Engineer', 'Manager'],
+        Hr: ['HR Assistant',],
+        It: ['Trainee', 'Software Developer', 'Senior software developer', 'Interns', 'Team Leader', 'Junior Programmer'],
+        Infra: ['Business Development Manager', 'Project Manager', 'Business Development Executive', 'Senior Marketing Manager', 'Executive - Bidding', 'Network Engineer', 'Junior Network Engineer'],
+        Telecom: ['MIS Executive', 'Administrator', 'Executive', 'Help Desk', 'Field Engineer', 'District Lead', 'Gp Engineer and Tech', 'Zonal Lead'],
+        Scanning: ['']
+      };
+  
+      const [selectedTeam, setSelectedTeam] = useState('');
+      const [selectedDesignation, setSelectedDesignation] = useState('');
+      const [designations, setDesignations] = useState([]);
+      const [selectedvertical, setselectedvertical] = useState('');
+      
+      const handleDesignationChange = (event) => {
+        setSelectedDesignation(event.target.value);
+        setselectedvertical(event.target.value);
+      };
     
-const [selectedvertical, setselectedvertical] = useState('');
- 
-  const handleDesignationChange = (event) => {
-      setSelectedDesignation(event.target.value);
-      setselectedvertical(event.target.value)
-  };
+
     const handleAddDetail = () => {
       // Create a new detail object from the form data
       const newDetail = {
@@ -316,9 +303,9 @@ const [selectedvertical, setselectedvertical] = useState('');
           <Col mb-3="true">
           <Form.Select id="team"  value={selectedTeam} name="team" onChange={(e) => handleChange(e, 'team')} >
              <option>Select Team Nmae</option>
-             <option value="Accountant">Accountant</option>
+             <option  value="Accountant">Accountant</option>
              <option value="Admin">Admin</option>
-             <option value="Electrial">Electrical Commissioning</option>
+             <option value="Electrical">Electrical Commissioning</option>
              <option value="Hr">Human Resources</option>
              <option value="It">IT</option>
              <option value="ItInfra">IT Infrastructure, Sales & Maintenance </option>
@@ -342,11 +329,11 @@ const [selectedvertical, setselectedvertical] = useState('');
       <div className="col-6">
           <Form.Label htmlFor="designation" className='required'>Designation</Form.Label>
           <Col mb-3="true">
-          <Form.Select id="designation" name="designation"  value={selectedDesignation} required onChange={(e) => handleChange(e, 'designation')}>
+          <Form.Select id="designation" name="designation"   value={selectedDesignation} required onChange={(e) => handleChange(e, 'designation')}>
           <option>Select Designation</option>
-                    {designations.map(designation => (
-                        <option key={designation} value={designation}>{designation}</option>
-                    ))}
+        {designations.map(designation => (
+          <option key={designation} value={designation}>{designation}</option>
+        ))}
           </Form.Select>
           </Col>
           </div>

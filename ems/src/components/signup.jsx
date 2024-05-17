@@ -45,7 +45,7 @@ function Signup() {
       
           if (data.status === 'ok') {
               alert('User created successfully');
-              window.location.href = '/';
+              window.location.href = '/login';
               history.push('/login');
           }
       } catch (error) {
@@ -97,9 +97,9 @@ function Signup() {
     <br />
     <Form.Select id="role" name="role" value={role} onChange={(e) => setRole(e.target.value)} required>
         <option value="">Select Role</option>
-        <option value="Admin">Admin</option>
-        <option value="HR">HR</option>
-        <option value="User">User</option>
+        <option value="admin">Admin</option>
+        <option value="hR">HR</option>
+        <option value="user">User</option>
     </Form.Select>
 </Col>
 

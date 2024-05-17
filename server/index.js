@@ -23,7 +23,7 @@ app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 app.use(bodyParser.json());
-
+ 
 
 //connect to db
 connectDB();
@@ -70,19 +70,21 @@ app.post('/api/login', async (req,res) =>{
        const user = await User.findOne({
             email: req.body.email, 
        })
-
+	   if (!user) return res.status(400).send('Invalid credentials');
       if(!user) {
-        return {status: 'error', error: 'Invalid login'}
+        return {status: 'error', error: 'Invalid credentials'}
       } 
       const isPasswordValid = await bcrypt.compare(
 		req.body.password,
 		user.password
 	)
-    if (isPasswordValid) {
+    if (!isPasswordValid) {
 		const token = jwt.sign(
 			{
 				name: user.name,
 				email: user.email,
+				id: user._id,
+				role: user.role
 			},
 			'secret123'
 		)
@@ -92,6 +94,32 @@ app.post('/api/login', async (req,res) =>{
 	}
 
 });
+
+const verifyToken = (req, res, next) => {
+	const token = req.header('Authorization').replace('Bearer ', '');
+	if (!token) return res.status(401).send('Access denied');
+	try {
+	  const verified = jwt.verify(token, 'your_jwt_secret');
+	  req.user = verified;
+	  next();
+	} catch (err) {
+	  res.status(400).send('Invalid token');
+	}
+  };
+  
+  const checkRole = (roles) => (req, res, next) => {
+	if (!roles.includes(req.user.role)) return res.status(403).send('Access denied');
+	next();
+  };
+
+  app.get('/admin', verifyToken, checkRole(['admin']), (req, res) => {
+	res.send('Admin content');
+  });
+  
+  app.get('/user', verifyToken, checkRole(['user', 'admin']), (req, res) => {
+	res.send('User content');
+  });
+  
 app.get('/api/quote', async (req, res) => {
 	const token = req.headers['x-access-token']
 
