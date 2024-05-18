@@ -16,25 +16,8 @@ import Telecom from "./components/tables/telecom";
 import Apply from "./components/leave/apply";
 import Request from "./components/leave/requste";
 import Tracking from "./components/leave/tracking";
-import { AuthContext } from './components/middleware/auth';
+
 import './App.css';
-
-const PrivateRoute = ({ element: Element, roles, ...rest }) => {
-  const { user } = useContext(AuthContext);
-  return (
-    <Route
-      {...rest}
-      element={
-        user && roles.includes(user.role) ? (
-          <Element />
-        ) : (
-          <Navigate to="/login" />
-        )
-      }
-    />                                        
-  );
-};
-
 
 const App = () => {
   return (
@@ -43,7 +26,7 @@ const App = () => {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <PrivateRoute path="/" roles={['admin', 'user', 'hr']} element={<Layout />}>
+          <Route path="/"  element={<Layout />}>
             <Route index element={<Dashboard />} />
             <Route path="/add" element={<Add />} />
             <Route path="/account" element={<Account />} />
@@ -57,7 +40,7 @@ const App = () => {
             <Route path="/apply" element={<Apply />} />
             <Route path="/request" element={<Request />} />
             <Route path="/tracking" element={<Tracking />} />
-          </PrivateRoute>
+          </Route>
         </Routes>
       </BrowserRouter>
     </div>
