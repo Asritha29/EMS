@@ -100,6 +100,7 @@ function Signup() {
         <option value="admin">Admin</option>
         <option value="hR">HR</option>
         <option value="user">User</option>
+        <option value="manager">Mnaeger</option>
     </Form.Select>
 </Col>
 

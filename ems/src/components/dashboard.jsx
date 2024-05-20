@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 import { MdManageAccounts } from "react-icons/md";
 import { GiElectricalResistance } from "react-icons/gi";
@@ -18,22 +19,22 @@ function Dashboard() {
           <Row xs={1} md={2} lg={4} className="g-4">
             <Col>
               <Card className='account'>
-                <Card.Body>Accountant<br /> <a className="link" href="/account" style={{ color: 'black', fontSize: '25px' }}><MdManageAccounts /></a></Card.Body>
+                <Card.Body>Accountant<br /> <Link to="/account" style={{ color: 'black', fontSize: '25px' }}><MdManageAccounts /></Link></Card.Body>
               </Card>
             </Col>
             <Col>
               <Card className='admin'>
-                <Card.Body>Administration<br /> <a className="link" href="/admin" style={{ color: 'black', fontSize: '25px' }}><RiAdminFill /></a></Card.Body>
+                <Card.Body>Administration<br /> <Link className="link" to="/admin" style={{ color: 'black', fontSize: '25px' }}><RiAdminFill /></Link></Card.Body>
               </Card>
             </Col>
             <Col>
               <Card className='electrical'>
-                <Card.Body>Electrical Commissioning<br /> <a className="link" href="/electrical" style={{ color: 'black', fontSize: '25px' }}> <GiElectricalResistance /></a></Card.Body>
+                <Card.Body>Electrical Commissioning<br /> <Link  to="/electrical" style={{ color: 'black', fontSize: '25px' }}> <GiElectricalResistance /></Link></Card.Body>
               </Card>
             </Col>
             <Col>
               <Card className='hr'>
-                <Card.Body>Human Resources<br /><a className="link" href="/hr" style={{ color: 'black', fontSize: '25px' }}><GrGroup /></a></Card.Body>
+                <Card.Body>Human Resources<br /><Link href="/hr" style={{ color: 'black', fontSize: '25px' }}><GrGroup /></Link></Card.Body>
               </Card>
             </Col>
           </Row>
@@ -41,23 +42,22 @@ function Dashboard() {
           <Row xs={1} md={2} lg={4} className="g-4">
             <Col>
               <Card className='it'>
-                <Card.Body> IT Solution<br /><a className="link" href="/it" style={{ color: 'black', fontSize: '25px' }}><TbDeviceImacCode /></a> </Card.Body>
+                <Card.Body> IT Solution<br /><Link to="/it" style={{ color: 'black', fontSize: '25px' }}><TbDeviceImacCode /></Link> </Card.Body>
               </Card>
             </Col>
             <Col>
               <Card className='infra'>
-                <Card.Body>IT Infrastructure, Sales & Maintenance &nbsp; <a className="link" href="/infra" style={{ color: 'black', fontSize: '25px' }}><GrHostMaintenance /></a></Card.Body>
+                <Card.Body>IT Infrastructure, Sales & Maintenance &nbsp; <Link to="/infra" style={{ color: 'black', fontSize: '25px' }}><GrHostMaintenance /></Link></Card.Body>
               </Card>
             </Col>
             <Col>
               <Card className='telecom'>
-                <Card.Body>Telecom Services <br /><a className="link" href="/telecom" style={{ color: 'black', fontSize: '25px' }}><MdOutlineCellTower /></a></Card.Body>
+                <Card.Body>Telecom Services <br /><Link to="/telecom" style={{ color: 'black', fontSize: '25px' }}><MdOutlineCellTower /></Link></Card.Body>
               </Card>
             </Col>
             <Col>
               <Card className='scanning'>
-                <Card.Body>Scanning & Digitization<br /><a className="link" href="/scanning" style={{ color: 'black', fontSize: '25px' }}>
-                <MdDocumentScanner /></a></Card.Body>
+                <Card.Body>Scanning & Digitization<br /><Link  to="/scanning" style={{ color: 'black', fontSize: '25px' }}><MdDocumentScanner /></Link></Card.Body>
               </Card>
             </Col>
           </Row>
@@ -66,13 +66,13 @@ function Dashboard() {
           <Row xs={1} md={2} lg={4} className="g-4 justify-content-center">
           <Col>
               <Card>
-                <Card.Header className='text-center inhouse'><a className="link" href="/inhouse" style={{ color: 'black', fontSize: '20px' }}><HiBuildingOffice2 /></a> &nbsp; In House</Card.Header>
+                <Card.Header className='text-center inhouse'><Link className="link" to="/inhouse" style={{ color: 'black', fontSize: '20px' }}><HiBuildingOffice2 /></Link> &nbsp; In House</Card.Header>
                 <Card.Body className='inbody'>1111</Card.Body>
               </Card>
             </Col>
           <Col>
               <Card>
-                <Card.Header className='text-center outsource '> <a className="link" href="/outsource" style={{ color: 'black', fontSize: '20px' }}><MdOutlineContactPhone /></a> &nbsp; Outsource</Card.Header>
+                <Card.Header className='text-center outsource '> <Link to="/outsource" style={{ color: 'black', fontSize: '20px' }}><MdOutlineContactPhone /></Link> &nbsp; Outsource</Card.Header>
                 <Card.Body className='outbody'>1111</Card.Body>
               </Card>
             </Col>

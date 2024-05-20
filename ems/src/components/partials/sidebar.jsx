@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from 'react-router-dom';
 import "@trendmicro/react-sidenav/dist/react-sidenav.css";
 import SideNav, { Nav, NavItem, NavIcon, NavText } from "@trendmicro/react-sidenav";
 import { FiBarChart } from "react-icons/fi";
@@ -24,27 +25,28 @@ function Sidebar() {
         <SideNav.Nav>
           <NavItem eventKey="home" >
             <NavIcon style={{ fontSize: '25px', color: 'black' }}>
-              <a className="nav-link" href="/" style={{ color: 'black', fontSize: '18px' }}><FiBarChart /></a>
+              
+              <Link to="/"  style={{ color: 'black', fontSize: '18px' }}><FiBarChart /></Link>
             </NavIcon>
-            <NavText ><a className="nav-link" href="/" style={{ color: 'black', fontSize: '18px',fontFamily:'sans-serif' }}>&nbsp; Dashboard</a></NavText>
+            <NavText ><Link to="/" style={{ color: 'black', fontSize: '18px',fontFamily:'sans-serif', textDecoration: 'none' }}>&nbsp; Dashboard</Link></NavText>
           </NavItem>
             <NavItem eventKey="placed_orders">
             <NavIcon style={{ fontSize: '25px', color: 'black' }}>
-              <a className="nav-link" href="/add" style={{ color: 'black', fontSize: '18px' }}><IoPersonAddSharp /></a>
+              <Link to="/add" style={{ color: 'black', fontSize: '18px' }}><IoPersonAddSharp /></Link>
             </NavIcon>
-            <NavText><a className="nav-link" href="/add" style={{ color: 'black', fontSize: '18px', fontFamily:'sans-serif' }}>&nbsp; Add Employee</a></NavText>
+            <NavText><Link to="/add" style={{ color: 'black', fontSize: '18px',fontFamily:'sans-serif', textDecoration: 'none' }}>&nbsp; Add Employee</Link></NavText>
           </NavItem>
             <NavItem eventKey="placed" >
             <NavIcon style={{ fontSize: '25px', color: 'black' }}>
-              <a className="nav-link" href="/atendence" style={{ color: 'black', fontSize: '18px' }}><BsCalendar3 /></a>
+              <Link to="/atendence" style={{ color: 'black', fontSize: '18px' }}><BsCalendar3 /></Link>
             </NavIcon>
-            <NavText><a className="nav-link" href="/atendence" style={{ color: 'black', fontSize: '18px',fontFamily:'sans-serif' }}>&nbsp; Atendence</a></NavText>
+            <NavText><Link to="/atendence" style={{ color: 'black', fontSize: '18px',fontFamily:'sans-serif', textDecoration: 'none' }}>&nbsp; Atendence</Link></NavText>
           </NavItem>
             <NavItem eventKey="leave" >
             <NavIcon style={{ fontSize: '25px', color: 'black' }}>
-              <a className="nav-link" href="/apply" style={{ color: 'black', fontSize: '18px' }}><LuCalendarPlus /></a>
+              <Link to="/apply" style={{ color: 'black', fontSize: '18px' }}><LuCalendarPlus /></Link>
             </NavIcon>
-            <NavText><a className="nav-link" href="/apply" style={{ color: 'black', fontSize: '18px',fontFamily:'sans-serif' }}>&nbsp; Leave Tracking</a></NavText>
+            <NavText><Link to="/apply" style={{ color: 'black', fontSize: '18px',fontFamily:'sans-serif', textDecoration: 'none' }}>&nbsp; Leave Tracking</Link></NavText>
           </NavItem>
         </SideNav.Nav>
       </SideNav>
