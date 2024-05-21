@@ -84,7 +84,12 @@ app.post('/api/login', async (req,res) =>{
 				name: user.name,
 				email: user.email,
 				id: user._id,
-				role: user.role
+				role: user.role,
+				status: user.status,
+				approvers: [
+					{ role: 'hr', approved: false },
+					{ role: 'manager', approved: false },
+				],
 			},
 			'secret123'
 		)
@@ -134,6 +139,8 @@ app.get('/api/quote', async (req, res) => {
 		res.json({ status: 'error', error: 'invalid token' })
 	}
 })
+
+
 
 app.post('/api/quote', async (req, res) => {
 	const token = req.headers['x-access-token']
@@ -254,6 +261,35 @@ app.post('/api/apply', async (req, res) => {
     }
 });
 
+app.get('/api/leaveRequests', async (req, res) => {
+    const Requests = await LeaveRequest.find();
+    res.send(Requests);
+});
+
+app.post('/approveLeave', async (req, res) => {
+    const { LeaveRequestId, role } = req.body;
+    try {
+        const leave = await LeaveRequest.findById(LeaveRequestId);
+        const approver = leave.approvers.find(a => a.role === role);
+        if (approver) {
+            approver.approved = true;
+            await leave.save();
+            res.send({ message: `${role} has approved the leave` });
+        } else {
+            res.status(404).send({ message: 'Approver not found' });
+        }
+    } catch (error) {
+        res.status(500).send({ message: 'Error approving leave' });
+    }
+});
+
+app.post('/declineLeave', async (req, res) => {
+    const { LeaveRequestId, role } = req.body;
+    const leave = await LeaveRequest.findById(LeaveRequestId);
+    leave.status = 'Declined';
+    await leave.save();
+    res.send({ message: `${role} has declined the leave` });
+});
 const port = process.env.PORT || 5000;
 
 app.listen(port, () => {

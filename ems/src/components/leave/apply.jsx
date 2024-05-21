@@ -40,7 +40,7 @@ function Apply() {
       const data = await apply.json();
   
       if (data.status === 'ok') {
-       
+        alert('Leave applied successfully');
           window.location.href = '/tracking'; // Redirect after successful form submission
       }
   } catch (error) {
@@ -61,20 +61,11 @@ function Apply() {
     <div className="d-flex justify-content-center align-items-center vh-100 leave-container">
       <div className="col-xl-4 ">
     <Card >
-    <Card.Header className="text-center bg-primary text-white"><h4>Leave Requst</h4></Card.Header>
+    <Card.Header className="text-center bg-primary text-white"><h4>Leave Application</h4></Card.Header>
     <Card.Body >
       <Form onSubmit={applyLeave}>
         <Form.Group as={Row} className="mb-3">
-          <Form.Label column  htmlFor="fullName" className="required">Name</Form.Label>
-          <Col sm="12">
-            <Form.Control type="text" id="fullName" placeholder="Name" name='fullName' value={fullName} onChange={(e) => setFullname(e.target.value)} required />
-          
-          </Col>
-          <Form.Label column  htmlFor="empId" className="required">Employee-Id</Form.Label>
-          <Col sm="12">
-            <Form.Control type="text" id="empId" placeholder="Employee-Id" name='empId'value={empId} onChange={(e) => setEmpId(e.target.value)} required />
          
-          </Col>
           <Form.Label column  htmlFor="lSD" className="required" >Leave Start Date</Form.Label>
           <Col sm="12">
             <Form.Control type="date" id="lSD" name='lsd' placeholder="mm/dd/yyyy" value={lsd} onChange={(e) => setLsd(e.target.value)} required />

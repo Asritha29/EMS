@@ -17,6 +17,7 @@ import Apply from "./components/leave/apply";
 import Request from "./components/leave/requste";
 import Tracking from "./components/leave/tracking";
 
+
 import './App.css';
 
 const App = () => {
@@ -40,6 +41,7 @@ const App = () => {
             <Route path="/apply" element={<Apply />} />
             <Route path="/request" element={<Request />} />
             <Route path="/tracking" element={<Tracking />} />
+           
           </Route>
         </Routes>
       </BrowserRouter>

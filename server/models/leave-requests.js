@@ -20,7 +20,18 @@ const leaveRequestSchema = new mongoose.Schema({
     reason:{
         type: String,
         required: true,
-    }
+    },
+    status:{
+        type: String,
+        required: true,
+        default: 'Pending'
+    },
+    approvers: [
+        { role: String, 
+          approved: { type: Boolean, default: false } 
+        } // roles: 'hr', 'Manager'
+    ]
+
     
 });
 
