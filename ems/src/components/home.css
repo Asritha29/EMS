@@ -9,7 +9,9 @@
 }
 .dashboard{
   margin-left: 18%;
-  margin-top: 1%;
+  margin-top: 6%;
+  position: fixed;
+
 }
 .account{
   background-color: #dee7f8;

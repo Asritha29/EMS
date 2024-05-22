@@ -59,7 +59,7 @@ function Apply() {
             
             
     <div className="d-flex justify-content-center align-items-center vh-100 leave-container">
-      <div className="col-xl-4 ">
+      <div className="col-xl-5 ">
     <Card >
     <Card.Header className="text-center bg-primary text-white"><h4>Leave Application</h4></Card.Header>
     <Card.Body >

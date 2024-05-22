@@ -186,6 +186,7 @@ function Add() {
 
     return (
         <div className="add" >
+          <h2 className='add-empoloyee'>Add Employee</h2>
       <Form onSubmit={handleSubmit}>
         <Tabs id="controlled-tabs" activeKey={activeTab} onSelect={(k) => setActiveTab(k)} className="mb-3">
           <Tab eventKey={0} title="Personal Info">
@@ -202,8 +203,8 @@ function Add() {
               </div>
 
               <div className="col-6">
-              <Form.Label htmlFor='motherName' className='required'>Mother Name</Form.Label>
-              <Form.Control type="text" id='motherName' placeholder="Enter mother name"  name="motherName" value={formData.motherName} onChange={(e) => handleChange(e, 'motherName')} required/>
+              <Form.Label htmlFor='motherName'>Mother Name</Form.Label>
+              <Form.Control type="text" id='motherName' placeholder="Enter mother name"  name="motherName" value={formData.motherName} onChange={(e) => handleChange(e, 'motherName')} />
               </div>
 
               <div className="col-6">
@@ -656,14 +657,9 @@ function Add() {
               </Row>
             </Form.Group>
             <Button variant="primary" onClick={handleBack}>Back</Button>
-            <Button variant="primary" className='next' onClick={handleNext}>Next</Button>
+            <Button variant="primary" type="submit" className='submit' > Submit </Button>
 
-
-        <Col sm={{ span: 5,offset: 6}}>
-        {activeTab === 4 && (
-          <Button variant="primary" type="submit" className='submit' > Submit </Button>
-        )}
-        </Col>
+       
           </Tab>
         </Tabs>
       </Form>

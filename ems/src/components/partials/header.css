@@ -1,5 +1,5 @@
 .topnav {
-  background-color: #e3edfd;
+  background-color: #d9d6e7;
   height: 100;
   padding: 10px;
   margin-top: -10px;
@@ -11,7 +11,7 @@
   font-size: 20px;
   font-family: sans-serif;
   text-align: center;
-  position: sticky;
+  position: fixed;
 }
 .tgswitch {
   color: rgb(230, 223, 223);
@@ -29,16 +29,19 @@ align-items: center;
 width: 100%;
 }
 .sidebar{
-  background-color:#cfd7e4 ;
+  background-color:#ede2ff ;
 }
 .SideNav{
   background-color: aliceblue;
   
 }
 .nav-link:hover {
-  color: rgb(1, 1, 19); 
+  color: rgb(234, 234, 234); 
   text-decoration: none;
   
+}
+link:hover{
+background-color: #1f1d21;
 }
 
 /* Define active styles */
@@ -50,5 +53,8 @@ width: 100%;
   position:absolute;
 }
 .tong{
+  color: black;
+}
+.Toggle{
   color: black;
 }

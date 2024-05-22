@@ -9,7 +9,7 @@ const Header = () => {
 
   return (
        <div className="topnav">
-        <Navbar expand="lg" className="topnav flex flex-column  top-0 start-0 end-0" >
+        <Navbar expand="lg" fixed="top" className="topnav flex flex-column  top-0 start-0 end-0" >
         <Navbar.Collapse className="justify-content-end">
           <Navbar.Text>
           <a className="nav-link" href="#login" style={{ color: 'black' }}> <FaUserCircle /> User info</a>

@@ -12,6 +12,7 @@ import { TbCalendarExclamation } from "react-icons/tb";
 import { LuCalendarClock } from "react-icons/lu";
 import { LiaFileInvoiceDollarSolid } from "react-icons/lia";
 import { HiOutlineLogout } from "react-icons/hi";
+import logo from "../partials/logo/EMS.png"
 
 
 import './header.css'
@@ -29,13 +30,16 @@ function Sidebar() {
   };
 
   return (
-    <div style={{ backgroundColor: "#e3edfd",height:'100%' }} >
-      <SideNav defaultExpanded={isVisible} style={{ backgroundColor: "#e3edfd",height:'100%',position:"fixed" }}>
+    <div style={{ backgroundColor: "#53538c",height:'100%' }} >
+      <SideNav defaultExpanded={isVisible} style={{ backgroundColor: "#53538c",height:'100%',position:"fixed" }}>
       <SideNav.Toggle style={{color: 'black'}} className='tong'
           onClick={handleToggle} 
           // Provide an onToggle handler to handle the toggle action
         />
         <SideNav.Nav>
+        <div style={{ textAlign: 'center', padding: '10px 0' }}>
+          <img src={logo} alt="Logo" style={{ width: '100px' }} />
+        </div>
           <NavItem eventKey="home" >
             <NavIcon style={{ fontSize: '20px', color: 'black' }}>
               

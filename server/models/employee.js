@@ -12,7 +12,7 @@ const employeeSchema = new mongoose.Schema({
       },
       motherName:{
         type: String,
-        required: true
+       
       },
       dob:{
         type: Date,
