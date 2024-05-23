@@ -7,8 +7,8 @@ function Infra() {
         <div className="align-self-auto w-100 bg-white rounded p-3 mx-4">
             <div className="table-responsive">
                 <table className="table table-striped text-center ">
-                    <thead className="thead-dark">
-                    <tr className="table-dark">
+                    <thead className="thead">
+                    <tr className="table">
                             <th className="align-middle">Employee  ID</th>
                             <th className="align-middle">Name</th>
                             <th className="align-middle">Phone Number</th>

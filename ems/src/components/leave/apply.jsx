@@ -4,15 +4,16 @@ import Row from 'react-bootstrap/Row';
 import Form from "react-bootstrap/Form";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import './leave.css'
+import './leave.css';
+import { useNavigate } from 'react-router-dom';
 
 function Apply() {
-  const [fullName,setFullname] = useState('');
-  const [empId, setEmpId ] = useState('');
+
   const[lsd, setLsd] = useState('');
   const[led, setLed] = useState('');
   const[reason, setReason] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const navigate = useNavigate();
 
 
   async function applyLeave(event) {
@@ -25,8 +26,7 @@ function Apply() {
               'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-              fullName,
-              empId,
+      
               lsd,
               led,
               reason
@@ -41,7 +41,7 @@ function Apply() {
   
       if (data.status === 'ok') {
         alert('Leave applied successfully');
-          window.location.href = '/tracking'; // Redirect after successful form submission
+        navigate('/tracking'); // Redirect after successful form submission
       }
   } catch (error) {
       console.error('Error:', error.message);

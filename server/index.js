@@ -237,20 +237,15 @@ app.post('/api/add' , async(req,res) => {
 
 app.post('/api/apply', async (req, res) => {
     try {
-		const employeeExists = await employee.exists({ empId: req.body.empId });
-        
-        if (!employeeExists) {
-            // If the employee doesn't exist, return an error response
-            return res.status(400).json({ status: 'error', message: 'Employee-Id does not exist' });
-        }
-
+		
         // Assuming LeaveRequest is a model representing leave requests in your database
         const Apply = await LeaveRequest.create({
-            fullName: req.body.fullName,
-            empId: req.body.empId,
+          
             lsd: req.body.lsd,
             led: req.body.led,
-            reason: req.body.reason
+            reason: req.body.reason,
+			status: req.body.status,
+			approvers: req.body.approvers
         });
         res.json({ status: 'ok' });
 		console.log(Apply);
@@ -262,34 +257,58 @@ app.post('/api/apply', async (req, res) => {
 });
 
 app.get('/api/leaveRequests', async (req, res) => {
-    const Requests = await LeaveRequest.find();
-    res.send(Requests);
+    try {
+        const requests = await LeaveRequest.find();
+        res.json({ status: 'ok', data: requests });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ status: 'error', message: 'Internal server error' });
+    }
 });
-
 app.post('/approveLeave', async (req, res) => {
     const { LeaveRequestId, role } = req.body;
+
     try {
         const leave = await LeaveRequest.findById(LeaveRequestId);
-        const approver = leave.approvers.find(a => a.role === role);
-        if (approver) {
-            approver.approved = true;
-            await leave.save();
-            res.send({ message: `${role} has approved the leave` });
-        } else {
-            res.status(404).send({ message: 'Approver not found' });
+        if (!leave) {
+            return res.status(404).json({ status: 'error', message: 'Leave request not found' });
         }
+
+        const approver = leave.approvers.find(a => a.role === role);
+        if (!approver) {
+            return res.status(404).json({ status: 'error', message: 'Approver not found' });
+        }
+
+        approver.approved = true;
+        await leave.save();
+        res.json({ status: 'ok', message: `${role} has approved the leave` });
     } catch (error) {
-        res.status(500).send({ message: 'Error approving leave' });
+        console.error(error);
+        res.status(500).json({ status: 'error', message: 'Internal server error' });
     }
 });
 
+// Decline leave
 app.post('/declineLeave', async (req, res) => {
     const { LeaveRequestId, role } = req.body;
-    const leave = await LeaveRequest.findById(LeaveRequestId);
-    leave.status = 'Declined';
-    await leave.save();
-    res.send({ message: `${role} has declined the leave` });
+
+    try {
+        const leave = await LeaveRequest.findById(LeaveRequestId);
+        if (!leave) {
+            return res.status(404).json({ status: 'error', message: 'Leave request not found' });
+        }
+
+        leave.status = 'Declined';
+        await leave.save();
+        res.json({ status: 'ok', message: `${role} has declined the leave` });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ status: 'error', message: 'Internal server error' });
+    }
 });
+
+
+
 const port = process.env.PORT || 5000;
 
 app.listen(port, () => {

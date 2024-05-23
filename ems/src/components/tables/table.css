@@ -1,31 +1,45 @@
 .account-1{
     margin-left: 8%;
+    margin-top:4%;
 }
 
 .admin-1{
 margin-left: 8%;
+margin-top:4%;
 }
 
 .electrical-1{
     margin-left: 8%;
+    margin-top:4%;
 }
 
 .hr-1{
     margin-left: 8%;
+    margin-top:4%;
 }
 
 .infra-1{
     margin-left: 8%;
+    margin-top:4%;
 }
 
 .it-1{
     margin-left: 8%;
+    margin-top:4%;
 }
 
 .scanning-1{
     margin-left: 8%;
+    margin-top: 4%;
+
 }
 
 .telecom-1{
     margin-left: 8%;
+    margin-top:4%;
+}
+
+.table thead th {
+    background-color:#abaed0; /* Change this to your desired color */
+    color: azure; /* Optional: Change the text color */
 }

@@ -8,13 +8,14 @@
  
 }
 .dashboard{
-  margin-left: 18%;
+  margin-left: 15%;
   margin-top: 6%;
   position: fixed;
 
 }
 .account{
   background-color: #dee7f8;
+  text-decoration: 'none';
   text-align: center;
   font-family: sans-serif;
   color: black;
@@ -24,62 +25,73 @@
   text-align: center;
   font-family: sans-serif;
   color: black;
+  text-decoration: 'none';
 }
 .electrical{
   background-color: #fdf0fa;
   text-align: center;
   font-family: sans-serif;
   color: black;
+  text-decoration: 'none';
 }
 .hr{
   background-color: #ddf2f8;
   text-align: center;
   font-family: sans-serif;
   color: black;
+  text-decoration: 'none';
 }
 .it{
   background-color: #eae7f8;
   text-align: center;
   font-family: sans-serif;
   color: black;
+  text-decoration: 'none';
 }
 .infra{
   background-color: #e0f6ee;
   text-align: center;
   font-family: sans-serif;
   color: black;
+  text-decoration: 'none';
 }
 .telecom{
   background-color: #f9e2e2;
   text-align: center;
   font-family: sans-serif;
   color: black;
+  text-decoration: 'none';
 }
 .scanning{
   background-color: #e4f0ff;
   text-align: center;
   font-family: sans-serif;
   color: black;
+  text-decoration: 'none';
 }
 .inhouse{
   background-color: #b4a9e0;
   font-family: sans-serif;
   color: black;
+  text-decoration: 'none';
 }
 .inbody{
   background-color: #e0dbf8;
   text-align: center;
   font-family: sans-serif;
   color: black;
+  text-decoration: 'none';
 }
 .outsource{
   background-color: #87c9a1;
   font-family: sans-serif;
   color: black;
+  text-decoration: 'none';
 }
 .outbody{
   background-color: #def4e4;
   font-family: sans-serif;
   text-align: center;
   color: black;
+  text-decoration: 'none';
 }
