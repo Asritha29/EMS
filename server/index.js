@@ -70,13 +70,13 @@ app.post('/api/login', async (req,res) =>{
        const user = await User.findOne({
             email: req.body.email, 
        })
-	   if (!user) return res.status(400).send('Invalid credentials');
       if(!user) {
         return {status: 'error', error: 'Invalid credentials'}
       } 
       const isPasswordValid = await bcrypt.compare(
 		req.body.password,
 		user.password
+	
 	)
     if (!isPasswordValid) {
 		const token = jwt.sign(
@@ -85,13 +85,10 @@ app.post('/api/login', async (req,res) =>{
 				email: user.email,
 				id: user._id,
 				role: user.role,
-				status: user.status,
-				approvers: [
-					{ role: 'hr', approved: false },
-					{ role: 'manager', approved: false },
-				],
+				
 			},
-			'secret123'
+			'secret123',
+			{ expiresIn: '1h' }
 		)
         return res.json({ status: 'ok', user: token })
 	} else {
@@ -100,31 +97,32 @@ app.post('/api/login', async (req,res) =>{
 
 });
 
-const verifyToken = (req, res, next) => {
-	const token = req.header('Authorization').replace('Bearer ', '');
-	if (!token) return res.status(401).send('Access denied');
-	try {
-	  const verified = jwt.verify(token, 'your_jwt_secret');
-	  req.user = verified;
-	  next();
-	} catch (err) {
-	  res.status(400).send('Invalid token');
+// Middleware to verify JWT token
+function verifyToken(req, res, next) {
+	const token = req.headers['authorization'];
+	if (!token) {
+	  return res.status(401).json({ message: 'Unauthorized' });
 	}
-  };
   
-  const checkRole = (roles) => (req, res, next) => {
-	if (!roles.includes(req.user.role)) return res.status(403).send('Access denied');
-	next();
-  };
+	jwt.verify(token, 'secret_key', (err, decoded) => {
+	  if (err) {
+		return res.status(401).json({ message: 'Unauthorized' });
+	  }
+	  req.user = decoded;
+	  next();
+	});
+  }
+  
 
-  app.get('/admin', verifyToken, checkRole(['admin']), (req, res) => {
-	res.send('Admin content');
+  app.get('/api/admin', verifyToken, (req, res) => {
+	if (req.user.role === 'admin') {
+	  res.json({ message: 'Admin Dashboard' });
+	} else {
+	  res.status(403).json({ message: 'Forbidden' });
+	}
   });
-  
-  app.get('/user', verifyToken, checkRole(['user', 'admin']), (req, res) => {
-	res.send('User content');
-  });
-  
+
+
 app.get('/api/quote', async (req, res) => {
 	const token = req.headers['x-access-token']
 

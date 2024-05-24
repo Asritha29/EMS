@@ -413,7 +413,7 @@ function Add() {
         <Form.Select name='mandal' id='mandal' onChange={(e) => handleChange(e, 'mandal')} value={formData.mandal}>
   <option key="default" value="">Select Mandal</option>
   {formData.district && mandalOption[formData.district].map(mandalObj => (
-    <option key={mandalObj.id} value={mandalObj.mandal}>{mandalObj.mandal}</option>
+    <option key={mandalObj.id} value={mandalObj.Mandal}>{mandalObj.Mandal}</option>
   ))}
 </Form.Select>
       </div>

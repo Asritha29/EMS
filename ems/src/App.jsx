@@ -1,5 +1,7 @@
-import React, { useState, useContext } from "react";
-import { BrowserRouter, Routes, Route,} from "react-router-dom";
+//import React, { useState, useContext } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import User from "./user/user"
+//import UserElement from "./components/middleware/user"
 import Login from "./components/login";
 import Signup from "./components/signup";
 import Dashboard from "./components/dashboard";
@@ -18,6 +20,7 @@ import Request from "./components/leave/requste";
 import Tracking from "./components/leave/tracking";
 
 
+
 import './App.css';
 
 const App = () => {
@@ -25,6 +28,7 @@ const App = () => {
     <div className="app">
       <BrowserRouter>
         <Routes>
+         
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/"  element={<Layout />}>
@@ -41,8 +45,9 @@ const App = () => {
             <Route path="/apply" element={<Apply />} />
             <Route path="/request" element={<Request />} />
             <Route path="/tracking" element={<Tracking />} />
-           
+            <Route path="/user" element={<User />} /> 
           </Route>
+    
         </Routes>
       </BrowserRouter>
     </div>

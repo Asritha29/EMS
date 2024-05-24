@@ -16,7 +16,7 @@ function Dashboard() {
     return (
       <div className='dashboard'>
         <Container>
-          <Row xs={1} md={3} lg={4} className="g-4">
+          <Row xs={1} md={2} lg={4} className="g-4">
             <Col>
               <Card className='account'>
                 <Card.Body><Link to="/account" style={{ color: 'black', fontSize: '18px' ,textDecoration: 'none'}}>Accountant<br /></Link> <Link to="/account" style={{ color: 'black', fontSize: '25px' }}><MdManageAccounts /></Link></Card.Body>

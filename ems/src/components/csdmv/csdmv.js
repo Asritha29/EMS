@@ -45,8 +45,8 @@ export const districtOption = {
       { "id":"3","State_Code": "TG", "District_Key": "TG_Hyderabad", "District": "Hyderabad"      },
       { "id":"4","State_Code": "TG", "District_Key": "TG_Jagtial", "District": "Jagtial"  },
       {"id":"5","State_Code": "TG", "District_Key": "TG_Jangaon", "District": "Jangaon"      },
-      { "id":"6","State_Code": "TG", "District_Key": "TG_Jayashankar Bhupalapally", "District": "Jayashankar Bhupalapally"      },
-      { "id":"7","State_Code": "TG", "District_Key": "TG_Jogulamba Gadwal", "District": "Jogulamba Gadwal"      },
+      { "id":"6","State_Code": "TG", "District_Key": "TG_Jayashankar Bhupalapally", "District": "Jayashankar_Bhupalapally"      },
+      { "id":"7","State_Code": "TG", "District_Key": "TG_Jogulamba Gadwal", "District": "Jogulamba_Gadwal"      },
       { "id":"8","State_Code": "TG", "District_Key": "TG_Kamareddy", "District": "Kamareddy"      },
       {"id":"9", "State_Code": "TG", "District_Key": "TG_Karimnagar", "District": "Karimnagar"      },
       {"id":"10","State_Code": "TG", "District_Key": "TG_Khammam", "District": "Khammam"},
@@ -77,30 +77,93 @@ export const districtOption = {
 
 
 export const mandalOption = {
-    Adilabad: ['Adilabad_Rural','Adilabad_Urban','Bazarhathnoor','Bela','Bheempoor','Boath','Gadiguda','Gudhathnur','Ichoda','Jainad','Mavala','Namoor','Neradigonda','Sirikonda','Talamadugu','Tamsi','Utnur'],
-    Bhadradri_Kothagudem : ['Allapalli','Annapureddypalli','	Aswaraopeta','	Aswapuram','Burgampahad','Cherla','Chunchupalli','Chandrugonda','Karakagudem','Pinapaka','Dummugudem','Manuguru','Gundala','Yellandu','Tekulapalle','Julurpad','Chunchupally','Sujathanagar','Kothagudem','Laxmidevipalli','Mulakalapalle','Dammapeta'],
-    Kumram_Bheem:['Jainoor','Sirpur_U','Lingapur','Tiryani','Rebbana','Asifabad','Kerameri','Wankdi','Kagaznagar','Sirpur_T','Kouthala','Chintalamanepally','Bejjur','Dahegaon'],
-    Mancherial:['Jannaram','Dandepalle','Luxettipet','Hajipur','Kasipet','Tandur','Bheemini','Bellampalle','Mandamarri',' Naspur','Bhimaram','Chennur','Kotapalle',],
-    Nirmal:['Kubeer','Tanur','Basar','Mudhole','Bhainsa','Kuntala','Narsapur_g','Lokeswaram','Dilawarpur','Sarangapur','Nirmal','Nirmal_Rural','Soan','Laxmanchanda','Mamda','Pembi','Khanpur','Kaddampeddur','Dastuarabad'],
-    Nizamabad:['Navipet','Nandipet','Armur','Mupkal','Yergatla','Kammarpalle','Mortad','Vailpur','Makloor','Nizamabad_North','Yeda_Palle','Ranjal','Bodhan','Kotgiri','Rudrur','Varni',' Nizamabad_Rural',' Nizamabad_South','Mugpal','Dichpalle','Indalwai','Dharpalle','Bheemgal','Sirkonda','Palawancha',''],
-    Jagtial:['Mallapur','Raikal','Beerpur','Sarangapur','Dharmapuri','Jagityal_Rural','Jagtial','Metpalle','Kodimial','Malial','Pegadapalle','Gollapalle','Velgatoor'],
-    Peddapalli:['Dharmaram','Palakurthy','Antargoan','Ramagundam','Ramagiri','Kamanpur','Peddapalle','Elgaid','Julapalle','Sultanabad','Srirampur','Mutharam_Manthani','Manthani','Odela',],
-    Jayashanker:['Mahadevpur','Palmela',' Mutharam_Mahadevpur','Kataram','Malharrao','Chityal','Tekumatla','Regonda','Mogullapalle','Ghanapur_Mulug','Bhupalpalle','Mulug','Govindaraopet','Tadvai','Eturunagaram','Kannaigudem','Wazeed','Venkatapuram','Mangapet'],
-    Mahabubabad:['Kothaguda','Ganagavaram','Bayyaram','Garla','Dornakal','Kuravi','Mahabubabad','Gudur','Kesamudram','Nellikudur','Narsimhulapet','Chinnagudur','Maripeda','Danthalapalle','Thorrur','Peddavangara',],
-    Warangal_Rural:['Parkal','Shayampet','Damera','Geesugonda','Atmakur','Nallabelly','Chennaraopeta','Khanapur','Sangem','Parvathagiri','Raiparthy','Wardhannapet','Nekkonda',],
-    Warangal_Urban:['Bheemadevarapalle','Velair','Elkathurthi','Kamalapur','Hasanparthy','Dharmasagar','Khazipet','Hanamkonda','Warangal','Khilla_Warangal','Inole'],
-    Karimnagar: ['Gangadhara','Ramadugu','Choppadandi','Karimnagar_Rural','Kothapalle','Gannervaram','Karimnagar','Manakondur','Thimmapur','Chigurumamidi','Saidapur_V','Shankarapatnam','Veenavanka','Huzurabad','Jammikunta','Ellandakunta',''],
-    Rajanna_Sircilla:['Rudrangi','Chandurthi','']
+    Adilabad: [ {"Mandal": "Adilabad Rural","District": "Adilabad","id": 1 }, {"Mandal": "Adilabad Urban","District": "","id": 2 },{"Mandal": "Bazarhatnoor","District": "","id": 3 }, {"Mandal": "Bela","District": "","id": 4 }, {"Mandal": "Boath","District": "","id": 5 }, {"Mandal": "Bheempoor","District": "","id": 6 }, {"Mandal": "Gudihathnur","District": "","id": 7 }, {"Mandal": "Ichoda","District": "","id": 8 }, {"Mandal": "Jainad","District": "","id": 9 }, {"Mandal": "Mavala","District": "","id": 10 }, {"Mandal": "Neradigonda","District": "","id": 11 }, {"Mandal": "Sirikonda","District": "","id": 12 }, {"Mandal": "Talamadagu","District": "","id": 13 }, {"Mandal": "Tamsi","District": "","id": 14 }, {"Mandal": "Gadiguda","District": "","id": 15 }, {"Mandal": "Inderavelly","District": "","id": 16 }, {"Mandal": "Narnoor","District": "","id": 17 }, {"Mandal": "Utnoor","District": "","id": 18 }],
+ Bhadradri_Kothagudem : [ {"Mandal": "Allapalli","District": "Bhadradri_Kothagudem","id": 19  },  {"Mandal": "Annapureddypally","District": "","id": 20  },  {"Mandal": "Aswaraopeta","District": "","id": 21  },  {"Mandal": "Chandrugonda","District": "","id": 22  },  {"Mandal": "Chunchupally","District": "","id": 23  },  {"Mandal": "Dammapeta","District": "","id": 24  },  {"Mandal": "Gundala","District": "","id": 25  },  {"Mandal": "Julurpad","District": "","id": 26  },{"Mandal": "Kothagudem","District": "","id": 27  },  {"Mandal": "Laxmidevipalli","District": "","id": 28  },{"Mandal": "Mulakalapalle","District": "","id": 29  },  {"Mandal": "Palvancha","District": "","id": 30  },  {"Mandal": "Sujathanagar","District": "","id": 31  },  {"Mandal": "Tekulapalle","District": "","id": 32  },  {"Mandal": "Yellandu","District": "","id": 33  },  {"Mandal": "Aswapuram","District": "","id": 34  },  {"Mandal": "Bhadrachalam","District": "","id": 35  },  {"Mandal": "Cherla","District": "","id": 36  },  {"Mandal": "Burgampahad","District": "","id": 37  },  {"Mandal": "Dummugudem","District": "","id": 38  },  {"Mandal": "Karakagudem","District": "","id": 39  },  {"Mandal": "Manuguru","District": "","id": 40  }, {"Mandal": "Pinapaka","District": "","id": 41  }],
+ Kumram_Bheem:['Jainoor','Sirpur_U','Lingapur','Tiryani','Rebbana','Asifabad','Kerameri','Wankdi','Kagaznagar','Sirpur_T','Kouthala','Chintalamanepally','Bejjur','Dahegaon'],
+ Mancherial:['Jannaram','Dandepalle','Luxettipet','Hajipur','Kasipet','Tandur','Bheemini','Bellampalle','Mandamarri',' Naspur','Bhimaram','Chennur','Kotapalle',],
+ Nirmal:['Kubeer','Tanur','Basar','Mudhole','Bhainsa','Kuntala','Narsapur_g','Lokeswaram','Dilawarpur','Sarangapur','Nirmal','Nirmal_Rural','Soan','Laxmanchanda','Mamda','Pembi','Khanpur','Kaddampeddur','Dastuarabad'],
+ Nizamabad:['Navipet','Nandipet','Armur','Mupkal','Yergatla','Kammarpalle','Mortad','Vailpur','Makloor','Nizamabad_North','Yeda_Palle','Ranjal','Bodhan','Kotgiri','Rudrur','Varni',' Nizamabad_Rural',' Nizamabad_South','Mugpal','Dichpalle','Indalwai','Dharpalle','Bheemgal','Sirkonda','Palawancha',''],
+ Jagtial:[ {    "Mandal": "Beerpur",    "District": "Jagtial", "id": 74  }, {  "Mandal": "Buggaram",    "District": "Jagtial",  "id": 75},  {   "Mandal": "Dharmapuri",    "District": "Jagtial",    "id": 76  },  {    "Mandal": "Gollapalle",    "District": "Jagtial",    "id": 77  },  {    "Mandal": "Jagtial",    "District": "Jagtial",    "id": 78  }, {    "Mandal": "Jagtial Rural",    "District": "Jagtial",    "id": 79  },  {    "Mandal": "Kodimial",    "District": "Jagtial",    "id": 80  },  {    "Mandal": "Mallial",    "District": "Jagtial",    "id": 81  },  {    "Mandal": "Pegadapalle",    "District": "Jagtial",    "id": 82  },  {    "Mandal": "Raikal",    "District": "Jagtial",    "id": 83  },  {    "Mandal": "Sarangapur",    "District": "Jagtial",    "id": 84  },  {    "Mandal": "Velgatoor",    "District": "Jagtial",    "id": 85  },  {    "Mandal": "Ibrahimpatnam",    "District": "Jagtial",    "id": 86  },  {    "Mandal": "Mallapur",   "District": "Jagtial",    "id": 87  },  {    "Mandal": "Metpalli",    "District": "Jagtial",    "id": 88  },  {    "Mandal": "Kathlapur",    "District": "Jagtial",    "id": 89  },  {    "Mandal": "Korutla",    "District": "Jagtial",    "id": 90  },],
+Peddapalli:['Dharmaram','Palakurthy','Antargoan','Ramagundam','Ramagiri','Kamanpur','Peddapalle','Elgaid','Julapalle','Sultanabad','Srirampur','Mutharam_Manthani','Manthani','Odela',],
+Jayashanker:['Mahadevpur','Palmela',' Mutharam_Mahadevpur','Kataram','Malharrao','Chityal','Tekumatla','Regonda','Mogullapalle','Ghanapur_Mulug','Bhupalpalle','Mulug','Govindaraopet','Tadvai','Eturunagaram','Kannaigudem','Wazeed','Venkatapuram','Mangapet'],
+Mahabubabad:['Kothaguda','Ganagavaram','Bayyaram','Garla','Dornakal','Kuravi','Mahabubabad','Gudur','Kesamudram','Nellikudur','Narsimhulapet','Chinnagudur','Maripeda','Danthalapalle','Thorrur','Peddavangara',],
+Warangal_Rural:['Parkal','Shayampet','Damera','Geesugonda','Atmakur','Nallabelly','Chennaraopeta','Khanapur','Sangem','Parvathagiri','Raiparthy','Wardhannapet','Nekkonda',],
+Warangal_Urban:[{ "Mandal": "Bheemadevarapalle", "District": "Warangal Urban", "id": 42  },  { "Mandal": "Dharmasagar", "District": "Warangal Urban", "id": 43  },  { "Mandal": "Elkathurthy", "District": "Warangal Urban", "id": 44  },  { "Mandal": "Hanamkonda", "District": "Warangal Urban", "id": 45  },  { "Mandal": "Hasanparthy", "District": "Warangal Urban", "id": 46  },  { "Mandal": "Inavole", "District": "Warangal Urban", "id": 47  },  { "Mandal": "Kamalapur", "District": "Warangal Urban", "id": 48  },  { "Mandal": "Kazipet", "District": "Warangal Urban", "id": 49  },  { "Mandal": "Velair", "District": "Warangal Urban", "id": 50  },  { "Mandal": "Atmakur", "District": "Warangal Urban", "id": 51  },  { "Mandal": "Damera", "District": "Warangal Urban", "id": 52  },  { "Mandal": "Nadikuda", "District": "Warangal Urban", "id": 53  },  { "Mandal": "Parkal", "District": "Warangal Urban", "id": 54  },  { "Mandal": "Shayampet", "District": "Warangal Urban", "id": 55  },  { "Mandal": "Warangal", "District": "Warangal Urban", "id": 56  },  { "Mandal": "Khilla Warangal", "District": "Warangal Urban", "id": 57  },],
+Karimnagar: ['Gangadhara','Ramadugu','Choppadandi','Karimnagar_Rural','Kothapalle','Gannervaram','Karimnagar','Manakondur','Thimmapur','Chigurumamidi','Saidapur_V','Shankarapatnam','Veenavanka','Huzurabad','Jammikunta','Ellandakunta',''],
+Rajanna_Sircilla:['Rudrangi','Chandurthi',''],
+Hyderabad:[ { "Mandal": "Amberpet",    "District": "Hyderabad",    "id": 58  },  {    "Mandal": "Asif Nagar",    "District": "Hyderabad",    "id": 59  },  {    "Mandal": "Bahadurpura",    "District": "Hyderabad",    "id": 60  },  {    "Mandal": "Bandlaguda",    "District": "Hyderabad",    "id": 61  },  {    "Mandal": "Charminar",    "District": "Hyderabad",    "id": 62  },  {    "Mandal": "Golkonda",    "District": "Hyderabad",   "id": 63  },  {    "Mandal": "Himayathnagar",    "District": "Hyderabad",    "id": 64  }, {    "Mandal": "Nampally",    "District": "Hyderabad",   "id": 65  },  {    "Mandal": "Saidabad",    "District": "Hyderabad",    "id": 66  },  {    "Mandal": "Ameerpet",   "District": "Hyderabad",    "id": 67  },  {    "Mandal": "Khairtabad",    "District": "Hyderabad",    "id": 68  },  {    "Mandal": "Maredpally",    "District": "Hyderabad",    "id": 69  },  {    "Mandal": "Musheerabad",    "District": "Hyderabad",    "id": 70  },  {    "Mandal": "Secunderabad",    "District": "Hyderabad",    "id": 71  },  {"Mandal": "Shaikpet", "District": "Hyderabad","id": 72 },  { "Mandal": "Tirumalgiri", "District": "Hyderabad","id": 73 },],
+Jangaon :[  {    "Mandal": "Bachannapeta",    "District": "Jangaon",    "id": 92 },  {    "Mandal": "Devaruppala",    "District": "Jangaon",    "id": 93  },  {   "Mandal": "Jangaon",    "District": "Jangaon",    "id": 94  },  {    "Mandal": "Lingalaghanpur",    "District": "Jangaon",    "id": 95  },  {    "Mandal": "Narmetta",    "District": "Jangaon",    "id": 96  },  {    "Mandal": "Raghunathapalle",    "District": "Jangaon",    "id": 97  },  {    "Mandal": "Tharigoppula",    "District": "Jangaon",    "id": 98  },  {    "Mandal": "Chilpur",    "District": "Jangaon",    "id": 99  },  {    "Mandal": "Kodakandla",    "District": "Jangaon",    "id": 100  },  {    "Mandal": "Palakurthi",    "District": "Jangaon",    "id": 101  },  {    "Mandal": "Station Ghanpur",    "District": "Jangaon",    "id": 102  },  {    "Mandal": "Zaffergadh",    "District": "Jangaon",    "id": 103  },],
+Jayashankar_Bhupalapally:[  {   "Mandal": "Bhupalpalle","District": "Jayashankar_Bhupalapally",    "id": 104  },  {   "Mandal": "Chityal",    "District": "Jayashankar_Bhupalapally",    "id": 105  },  {    "Mandal": "Ghanpur",    "District": "Jayashankar_Bhupalapally",    "id": 106 },  {    "Mandal": "Kataram",   "District": "Jayashankar_Bhupalapally",    "id": 107  },  {    "Mandal": "Mahadevpur",    "District": "Jayashankar_Bhupalapally",    "id": 108  },  {    "Mandal": "Maha Mutharam",  "District": "Jayashankar_Bhupalapally",    "id": 109 },  {    "Mandal": "Malharrao",    "District": "Jayashankar_Bhupalapally",    "id": 110  }, {    "Mandal": "Mogullapalle",    "District": "Jayashankar_Bhupalapally",    "id": 111  }, {    "Mandal": "Palimela",    "District": "Jayashankar_Bhupalapally",    "id": 112},  {    "Mandal": "Regonda",    "District": "Jayashankar_Bhupalapally",    "id": 11  } ,{    "Mandal": "Tekumatla",    "District": "Jayashankar_Bhupalapally",    "id": 114  },  {    "Mandal": "Eturunagaram",    "District": "Jayashankar_Bhupalapally",    "id": 115  },  {   "Mandal": "Govindaraopet",    "District": "Jayashankar_Bhupalapally",   "id": 116 },  {    "Mandal": "Kannaigudem",    "District": "Jayashankar_Bhupalapally",    "id": 117  },  {   "Mandal": "Mangapet",    "District": "Jayashankar_Bhupalapally",    "id": 118  },  {    "Mandal": "Mulug",    "District": "Jayashankar_Bhupalapally",    "id": 119  },  {    "Mandal": "Tadvai",    "District": "Jayashankar_Bhupalapally",    "id": 120  },  {    "Mandal": "Vajedu",    "District": "Jayashankar_Bhupalapally",    "id": 121  },  {    "Mandal": "Venkatapur",    "District": "Jayashankar_Bhupalapally",    "id": 122  },],
+Jogulamba_Gadwal:[ {
+    "Mandal": "Kaloor_Timmanadoddi",
+    "District": "Jogulamba_Gadwal",
+    "id": 123
+  },
+  {
+    "Mandal": "Dharur",
+    "District": "Jogulamba_Gadwal",
+    "id": 124
+  },
+  {
+    "Mandal": "Gadwal",
+    "District": "Jogulamba_Gadwal",
+    "id": 125
+  },
+  {
+    "Mandal": "Itikyal",
+    "District": "Jogulamba_Gadwal",
+    "id": 126
+  },
+  {
+    "Mandal": "Maldakal",
+    "District": "Jogulamba_Gadwal",
+    "id": 127
+  },
+  {
+    "Mandal": "Ghattu",
+    "District": "Jogulamba_Gadwal",
+    "id": 128
+  },
+  {
+    "Mandal": "Aiza",
+    "District": "Jogulamba_Gadwal",
+    "id": 129
+  },
+  {
+    "Mandal": "Rajoli",
+    "District": "Jogulamba_Gadwal",
+    "id": 130
+  },
+  {
+    "Mandal": "Waddepalle",
+    "District": "Jogulamba_Gadwal",
+    "id": 131
+  },
+  {
+    "Mandal": "Manopad",
+    "District": "Jogulamba_Gadwal",
+    "id": 132
+  },
+  {
+    "Mandal": "Undavelli",
+    "District": "Jogulamba_Gadwal",
+    "id": 133
+  },
+  {
+    "Mandal": "Alampur",
+    "District": "Jogulamba_Gadwal",
+    "id": 134
+  },],
 };
 export const villageoptions = {
-    Adilabad_Rural: ['Arli(Buzung)','AsodaBhurki','Ankoli','Anukunta','Ankapoor','Belluri','Bhuktapur','Bheemseri','Borenur','Chanda','Chinchughat','Chichadhari','Dimma','Ganehshpur','Hathigutta','Jamdapur','Jamuldhari','Kachakanti','kottur','khandala(u)','Khanapoor','Kumbhajheri','Landasangvi','Lohara','Mallapur(D)','Maleborgaon','Maregaon','Nishaghat','Pochara','Pippaldhari','Rampoor(royati)','Ramai','Tarada','Tontotoi','Tippa','Yapalguda',],
-    Adilabad_Urban: ['Adilabad(u)','Adilabad-2','Adilabad-3','Bhuktapur','Khanapur'],
-    Bazarhathnoor: ['Ananthapur','Bazarhathnoor','Bandrew','Bhutai Bueurg','Bhosra','Balanpur','Chintal sangvi','Dhabadi','Dingnoor','Dharampuri','Dehgaon','Dharampuri','dhegaon','Gangapur','Gokonda','Girjal','Gimur','Harkai','Jatarla','Kinnerpalle','Kolhari','Kandli','Kanladurga','Mohada','Mankapur(p)','Morjhandi','Pipri','Rampur','Tembi','Umerda Buzurg','Wathamanoor','Yesapur',],
-    Bela: ['Awalpur','Bhedoda','Bhodod(Kopsi)','Bela','Bhadi','Boregaon','Chandpalle','Chaparala','Datalpur','Dehegaon','Doptala','Donuna','Ekori','Guda','Kamgarpur','Khagdur','Koparuzana','Kobhai','Karoni(k)','Karoni(b)','Khadki','Manyapur','Mangrool','Mohabatpur','Masala(Buzurg)','Masala(Khurd)','Narayanpur','Patan','Ponnala','Pohar','Pitgaon','ramkam','Sonkhos','Sangvi','Sahej','Syedpur','Singapur','Sirsanna','Shamshabad','Sangdi','Takli','Toyaguda(Kora)','Warur'],
-    Bheempoor: ['Karanji(T)','Guledi','Gomutri','Antargaon','Arli(T)','Wadoor','Dhanora','Kamathwada','Gona','Gunjala','Gollaghat','Tamsi(K)','Nipani','Dabbakuchi','Bheempoor','BelsariRampur','Andarbandh','Wadgaon','Pippalkhoti'],
-    Boath : ['Wajar','Chintalabori','Ghanpur','Sonala','Kowtha Khurd','Dera (D)','Sangvi','Kowtha Buzurg','Sakhera','Tewti','Medi','Pardi Buzurg','Pardi Khurd','Gollapur','Babera','Kantegaon','Nigini','Marlapalle','Nakkalawada','Karathwada','Boath Buzurg','Kistapur','Kangutta','Demmi','Pochera','Venkatapur','Kuchalapur','Dhannur Buzurg','Pippaldhari','Boath(K)','Keslapur','Patnapur','Suradapur','Narayanpur','Anduru','Birlagondi','Dhannur Khurd','Bahrapur','Nagapur'],
-    Gadiguda : ['Kadodi','Kouthala','Kothapalle(G)','Rupapur','Warkwai','Ademeyon','Sawari','Pipri','Arjuni','Paraswada (K)','Lokari (K)','Jhari','Dhaba (K)','Dhaba(Buzurg)','Punaguda','Maregaon','Gadiguda','Kunikasa','Kolama','Paraswada (B)','Gouri','Pownur','Lokari (B)','Khadki','Sangvi'],
-    Gudhathnur: ['Vaijapur','Kamalapur','Seetagondi','Malkapur','Tosham','Lingapur','Gudihathinur','Machapur','Dhampur','Muthnur','Neradigonda','Mannur','Dongargaon','Kolhari','Umri(B)','Guruj','Gondharkapur','Rendls Bori','Shantapur','Belluri','Tejapur'],
+Adilabad_Rural: ['Arli(Buzung)','AsodaBhurki','Ankoli','Anukunta','Ankapoor','Belluri','Bhuktapur','Bheemseri','Borenur','Chanda','Chinchughat','Chichadhari','Dimma','Ganehshpur','Hathigutta','Jamdapur','Jamuldhari','Kachakanti','kottur','khandala(u)','Khanapoor','Kumbhajheri','Landasangvi','Lohara','Mallapur(D)','Maleborgaon','Maregaon','Nishaghat','Pochara','Pippaldhari','Rampoor(royati)','Ramai','Tarada','Tontotoi','Tippa','Yapalguda',],
+Adilabad_Urban: ['Adilabad(u)','Adilabad-2','Adilabad-3','Bhuktapur','Khanapur'],
+Bazarhathnoor: ['Ananthapur','Bazarhathnoor','Bandrew','Bhutai Bueurg','Bhosra','Balanpur','Chintal sangvi','Dhabadi','Dingnoor','Dharampuri','Dehgaon','Dharampuri','dhegaon','Gangapur','Gokonda','Girjal','Gimur','Harkai','Jatarla','Kinnerpalle','Kolhari','Kandli','Kanladurga','Mohada','Mankapur(p)','Morjhandi','Pipri','Rampur','Tembi','Umerda Buzurg','Wathamanoor','Yesapur',],
+Bela: ['Awalpur','Bhedoda','Bhodod(Kopsi)','Bela','Bhadi','Boregaon','Chandpalle','Chaparala','Datalpur','Dehegaon','Doptala','Donuna','Ekori','Guda','Kamgarpur','Khagdur','Koparuzana','Kobhai','Karoni(k)','Karoni(b)','Khadki','Manyapur','Mangrool','Mohabatpur','Masala(Buzurg)','Masala(Khurd)','Narayanpur','Patan','Ponnala','Pohar','Pitgaon','ramkam','Sonkhos','Sangvi','Sahej','Syedpur','Singapur','Sirsanna','Shamshabad','Sangdi','Takli','Toyaguda(Kora)','Warur'],
+Bheempoor: ['Karanji(T)','Guledi','Gomutri','Antargaon','Arli(T)','Wadoor','Dhanora','Kamathwada','Gona','Gunjala','Gollaghat','Tamsi(K)','Nipani','Dabbakuchi','Bheempoor','BelsariRampur','Andarbandh','Wadgaon','Pippalkhoti'],
+Boath : ['Wajar','Chintalabori','Ghanpur','Sonala','Kowtha Khurd','Dera (D)','Sangvi','Kowtha Buzurg','Sakhera','Tewti','Medi','Pardi Buzurg','Pardi Khurd','Gollapur','Babera','Kantegaon','Nigini','Marlapalle','Nakkalawada','Karathwada','Boath Buzurg','Kistapur','Kangutta','Demmi','Pochera','Venkatapur','Kuchalapur','Dhannur Buzurg','Pippaldhari','Boath(K)','Keslapur','Patnapur','Suradapur','Narayanpur','Anduru','Birlagondi','Dhannur Khurd','Bahrapur','Nagapur'],
+Gadiguda : ['Kadodi','Kouthala','Kothapalle(G)','Rupapur','Warkwai','Ademeyon','Sawari','Pipri','Arjuni','Paraswada (K)','Lokari (K)','Jhari','Dhaba (K)','Dhaba(Buzurg)','Punaguda','Maregaon','Gadiguda','Kunikasa','Kolama','Paraswada (B)','Gouri','Pownur','Lokari (B)','Khadki','Sangvi'],
+ Gudhathnur: ['Vaijapur','Kamalapur','Seetagondi','Malkapur','Tosham','Lingapur','Gudihathinur','Machapur','Dhampur','Muthnur','Neradigonda','Mannur','Dongargaon','Kolhari','Umri(B)','Guruj','Gondharkapur','Rendls Bori','Shantapur','Belluri','Tejapur'],
     Ichoda: ['AdegaonKhurd','Gubba','Junni','Babuldhole','Boregaon','Kamgir','Heerapur','DhobaBuzurg','Talamadri','Madapur','Jamidi','AdegaonBuzurg','Girjam','Chincholi','Navagaon','Dhaba Khurd','Salyada','Malyal','Mankapur','Dharmapuri','Jalda','Kokasmannar','MokhraBuzurg','Mokhra Khurd','Gundi','KeshaPatnam','Narsapur','Gundala','Lingapur','Gaidpalle','Gandiwagu','Babjepet','Jogipet','Sirichalma','Ichoda'],
     Jainad :['Hathighat','Guda','Rampur Taraf','Gimma Buzurg','Korta','Kedarpur','Akoli','Gimma Khurd','Sirsonna','Mirzapur','Bhoraj','Fouzpur','Poosai','Pipparwada','Sekapoor','Mandagada','Kamai','Dollara','Pendalwada','Karanwadi','Lekarwadi','Dadapoor','Savapur','Hashampur','Tarada Buzurg','Awalpur','Nizampur','Nirala','Balapur','Akurla','Sangvi (K)','Deepaiguda','Kowtha','Hariyali','Bahadurpur','Kuthompur','Kura','Kodekotha','Karanji','Khapri','Umri','Belgaon','Ballori','Makoda','Jainad','Muktapur','Ada','Kamtha','Pardi Buzurg','Pardi Khurd','Pippalgaon','Laxmipur (Uligan)','Jamini'],
     Mavala: ['Battisawargaon','Mavala','Waghapur'],
