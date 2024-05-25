@@ -18,8 +18,7 @@ import Telecom from "./components/tables/telecom";
 import Apply from "./components/leave/apply";
 import Request from "./components/leave/requste";
 import Tracking from "./components/leave/tracking";
-
-
+import Payslip from "./components/payslip";
 
 import './App.css';
 
@@ -46,6 +45,7 @@ const App = () => {
             <Route path="/request" element={<Request />} />
             <Route path="/tracking" element={<Tracking />} />
             <Route path="/user" element={<User />} /> 
+            <Route path="/payslip" element={<Payslip />} />
           </Route>
     
         </Routes>
