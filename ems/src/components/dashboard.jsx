@@ -35,7 +35,7 @@ function Dashboard() {
             </Col>
             <Col>
               <Card className='hr'>
-                <Card.Body><Link  to="/hr" style={{ color: 'black', fontSize: '18px', textDecoration: 'none' }}>Human Resources<br /></Link><Link href="/hr" style={{ color: 'black', fontSize: '25px' }}><GrGroup /></Link></Card.Body>
+                <Card.Body><Link  to="/hr" style={{ color: 'black', fontSize: '18px', textDecoration: 'none' }}>Human Resources<br /></Link><Link to="/hr" style={{ color: 'black', fontSize: '25px' }}><GrGroup /></Link></Card.Body>
               </Card>
             </Col>
           </Row>
