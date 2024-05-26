@@ -1,8 +1,11 @@
 .salary-slip {
     width: 100%;
-    margin: 0 auto;
+   
     padding: 20px;
     border: 1px solid #ccc;
+    margin-left: 9%;
+    overflow-x: hidden;
+    margin-top: 6%;
   }
   
   .empDetail {
@@ -19,22 +22,32 @@
   .myBackground {
     background-color: #f2f2f2;
   }
-  
-  .myAlign {
-    text-align: right;
-  }
-  
-  .table-border-right {
-    border-right: 1px solid #ccc;
-  }
-  
+
   .table-border-bottom {
     border-bottom: 1px solid #ccc;
   }
   
   .companyName {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bold;
     text-align: center;
+    font-family:Calibri(bold);
   }
+
+  .globus{
+   text-align: center;
+    justify-items: center;
+    margin-left: 35%;
+  }
+
+  .company{
+    font-size: 18px;
+    text-align: center;
+    font-family: Cambria;
+  }
+
+  .employeename{
+    font-family: Cambria;
+  }
+
   

@@ -1,449 +1,301 @@
 import React from 'react'
 import "./payslips.css"
+import Globus from './partials/logo/globus.png'
 function payslip() {
   return (
     <div className="salary-slip" >
     <table className="empDetail">
-      <tr height="100px" style={{backgroundColor: '#c2d69b'}}>
-        <td colspan='4'>
-          <img height="90px" src='https://organisationmedia.toggleflow.com/demo/logo.png' /></td>
-        <td colspan='4' className="companyName"> Co-Operative Bank Ltd.</td>
+      <tr height="100px" >
+        <td colspan='8' className='globus1'>
+          <img height="90px" className='globus' src={Globus} /><h1 className="companyName">GLOBUS INFORMATICS INDIA PRIVATE LIMITED</h1><h3 className='company'>#6-3-1109/9&10, G.S.Mall, Somajiguda, Hyderabad - 82 <br/>Contact no: 040-48526959 Email:- info@globusitindia.com</h3></td>
+       
       </tr>
+      <td colSpan={8}><h2 style={{textAlign:'center', fontFamily:'Cambria'}}>Pay Slip</h2></td>
+
       <tr>
-        <th>
-          Name
+        <th className='employeename'>
+          Employee Name
 </th>
-        <td>
+        <td colspan="2" style={{textAlign:'center'}}>
           Example
 </td>
-        <td></td>
-        <th>
-          Bank Code
+        <th colspan="2" className='employeename'>
+          Month
 </th>
-        <td>
+        <td colspan="2" style={{textAlign:'center'}}>
           ABC123
-</td>
-        <td></td>
-        <th>
-          Branch Name
-</th>
-        <td>
-          ABC123
-</td>
+</td>    
       </tr>
+
+
       <tr>
-        <th>
+        <th className='employeename'>
           Employee Code
 </th>
-        <td>
+        <td colspan="2" style={{textAlign:'center'}}>
           XXXXXXXXXXX
 </td>
-        <td></td>
-        <th>
+        <th colspan="2">
+        
+</th>
+        <td colspan="2">
+          
+</td>
+      </tr>
+
+
+      <tr>
+        <th className='employeename'>
+         Designation
+        </th>
+        <td colspan="2" style={{textAlign:'center'}}>
+         Hr
+        </td>
+        <th className='employeename' colspan="2" >
+         Total Working Days
+        </th>
+        <td colspan="2" style={{textAlign:'center'}}>
+          31
+       </td> 
+      </tr>
+
+      <tr>
+        <th className='employeename' >
           Bank Name
 </th>
-        <td>
-          XXXXXXXXXXX
+        <td colspan="2" style={{textAlign:'center'}}> 
+          SBI
 </td>
-        <td></td>
-        <th>
-          Payslip no.
+        <th className='employeename' colspan="2" >
+          Number of Attended
 </th>
-        <td>
-          XXXXXXXXXX
+        <td colspan="2" style={{textAlign:'center'}}>
+          30
 </td>
       </tr>
+
+
       <tr>
-        <th>
-          Cost Centre
-</th>
-        <td>
-          XXXXXXXXXXX
-</td><td></td>
-        <th>
-          Bank Branch
-</th>
-        <td>
-          XXXXXXXXXX
-</td><td></td>
-        <th>
-          Pay Period
-</th>
-        <td>
-          XXXXXXXXXXX
-</td>
+         <th className='employeename'>
+            Bank Account Number
+         </th>
+         <td colspan="2" style={{textAlign:'center'}}>
+            236565
+         </td>
+         <th className='employeename' colspan="2">
+            Leaves Taken
+         </th>
+         <td colspan="2" style={{textAlign:'center'}}>
+            0
+         </td>
       </tr>
+
       <tr>
-        <th>
-          CC Description:
-</th>
-        <td>
-          XXXXXXXXXXX
-</td><td></td>
-        <th>
-          Bank A/C no.
-</th>
-        <td>
-          XXXXXXXXXX
-</td><td></td>
-        <th>
-          Personel Area
-</th>
-        <td>
-          XXXXXXXXXX
-</td>
+        <th className='employeename'> 
+            UAN Number
+        </th>
+        <td colspan="2" style={{textAlign:'center'}}>
+            564465456
+        </td>
+        <th colspan="2" className='employeename'>
+            Balance leaves
+        </th>
+        <td colspan="2" style={{textAlign:'center'}}>
+            0
+        </td>
       </tr>
+
       <tr>
-        <th>
-          Grade:
-</th>
-        <td>
-          18
-</td><td></td>
-        <th>
-          Employee Group
-</th>
-        <td>
-          Sales Manager
-</td><td></td>
-        <th>
-          PAN No:
-</th>
-        <td>
-          MOP72182E
-</td>
+        <th  className='employeename'> 
+            IFSC Code
+        </th>
+        <td colspan="2" style={{textAlign:'center'}}>
+            564465456
+        </td>
+        <th colspan="2" className='employeename'>
+           Loss Of Pays
+        </th>
+        <td colspan="2" style={{textAlign:'center'}}>
+            0
+        </td>
       </tr>
+
+
       <tr className="myBackground">
-        <th colspan="2">
-          Payments
+        <th colspan="3" style={{textAlign:'center'}}>
+          Income
 </th>
-        <th >
-          Particular
-</th>
-        <th className="table-border-right">
-          Amount (Rs.)
-</th>
-        <th colspan="2">
+        <th colspan="4" style={{textAlign:'center'}}>
           Deductions
 </th>
-        <th >
-          Particular
+</tr>
+      <tr >
+        <th  className='employeename'>
+          Particulars
 </th>
-        <th >
-          Amount (Rs.)
+        <th colspan="2" style={{textAlign:'center'}} className='employeename'>
+          Amount
+</th>
+        <th colspan="2" className='employeename' >
+          Particulars
+</th>
+        <th colspan="2" style={{textAlign:'center'}}>
+          Amount
 </th>
       </tr>
+
       <tr>
-        <th colspan="2">
+        <th  className='employeename'>
           Basic Salary
 </th>
-        <td></td>
-        <td className="myAlign">
+        <td style={{textAlign:'center'}} colspan="2">
           4935.00
 </td>
-        <th colspan="2" >
-          Provident Fund
+        <th colspan="2" className='employeename' >
+          Provident Fund(PF)
 </th >
-        <td></td>
 
-        <td className="myAlign">
+        <td style={{textAlign:'center'}} colspan="2">
           00.00
 </td>
       </tr >
-      <tr>
-        <th colspan="2">
-          Fixed Dearness Allowance
-</th>
-        <td></td>
 
-        <td className="myAlign">
-          00.00
-</td>
-        <th colspan="2" >
-          LIC
-</th >
-        <td></td>
 
-        <td className="myAlign">
-          00.00
-</td>
-      </tr >
       <tr>
-        <th colspan="2">
-          Variable Dearness Allowance
+        <th className='employeename'>
+        House Rent Allowance(HRA)
 </th>
-        <td></td>
-
-        <td className="myAlign">
-          00.00
-</td>
-        <th colspan="2" >
-          Loan
-</th >
-        <td></td>
-
-        <td className="myAlign">
-          00.00
-</td>
-      </tr >
-      <tr>
-        <th colspan="2">
-          House Rent Allowance
-</th>
-        <td></td>
-        <td className="myAlign">
-          00.00
-</td>
-        <th colspan="2" >
-          Professional Tax
-</th >
-        <td></td>
-        <td className="myAlign">
-          00.00
-</td>
-      </tr >
-      <tr>
-        <th colspan="2">
-          Graduation Allowance
-</th>
-        <td></td>
-
-        <td className="myAlign">
-          00.00
-</td>
-        <th colspan="2" >
-          Security Deposite(SD)
-</th >
-        <td></td>
-
-        <td className="myAlign">
-          00.00
-</td>
-      </tr >
-      <tr>
-        <th colspan="2">
-          Conveyance Allowance
-</th> <td></td>
-        <td className="myAlign">
-          00.00
-</td>
-        <th colspan="2" >
-          Staff Benefit(SB)
-</th >
-        <td></td>
-        <td className="myAlign">
-          00.00
-</td>
-      </tr >
-      <tr>
-        <th colspan="2">
-          Post Allowance
-</th>
-        <td></td>
-        <td className="myAlign">
-          00.00
-</td>
-        <th colspan="2" >
-          Labour Welfare Fund
-</th >
-        <td></td>
-        <td className="myAlign">
-          00.00
-</td>
-      </tr >
-      <tr>
-        <th colspan="2">
-          Special Allowance
-</th>
-        <td></td>
-        <td className="myAlign">
-          00.00
-</td>
-        <th colspan="2" >
-          NSC
-</th >
-        <td></td>
-        <td className="myAlign">
-          00.00
-</td>
-      </tr >
-      <tr>
-        <td colspan="4" className="table-border-right"></td>
-        <th colspan="2" >
-          Union Thanco Officer(UTO)
-</th >
-        <td></td>
-        <td className="myAlign">
-          00.00
-</td>
-      </tr >
-      <tr>
-        <td colspan="4" className="table-border-right"></td>
-        <th colspan="2" >
-          Advance
-</th >
-        <td></td>
-        <td className="myAlign">
-          00.00
-</td>
-      </tr >
-      <tr>
-        <td colspan="4" className="table-border-right"></td>
-        <th colspan="2" >
-          Income Tax
-</th > <td></td>
-        <td className="myAlign">
-          00.00
-</td>
-      </tr >
-      <tr className="myBackground">
-        <th colspan="3">
-          Total Payments
-</th>
-        <td className="myAlign">
+        <td style={{textAlign:'center'}} colspan="2">
           10000
 </td>
-        <th colspan="3" >
-          Total Deductions
+        <th colspan="2" className='employeename' >
+          Professional Tax
 </th >
-        <td className="myAlign">
-          1000
+        <td style={{textAlign:'center'}} colspan="2">
+          00.00
 </td>
       </tr >
-      <tr height="40px">
-        <th colspan="2">
-          Projection for Financial Year:
-        </th>
-        <th>
-        </th>
-        <td className="table-border-right">
-        </td>
-        <th colspan="2" className="table-border-bottom" >
-          Net Salary
-        </th >
-        <td >
-        </td>
-        <td >
-          XXXXXXXXXX
-        </td>
-      </tr >
+
+
       <tr>
-        <td colspan="2">
-          Gross Salary
-        </td> <td></td>
-        <td className="myAlign">
+        <th  className='employeename'>
+         Conveyance Allowance
+</th>
+        <td style={{textAlign:'center'}} colspan="2"> 
           00.00
-</td><td colspan="4"></td>
+</td>
+        <th colspan="2" className='employeename' >
+          ESI
+</th >
+        <td style={{textAlign:'center'}} colspan="2" >
+          00.00
+</td>
       </tr >
+
+
       <tr>
-        <td colspan="2">
-          Aggr. Dedu - P.Tax & Std Ded
-</td> <td></td>
-        <td className="myAlign">
+        <th className='employeename'>
+        Medical Allowance  
+</th>      
+        <td style={{textAlign:'center'}} colspan="2">
           00.00
+</td>
+        <th colspan="2" className='employeename' >
+          Absent
+</th >
+        <td style={{textAlign:'center'}} colspan="2">
+          00.00
+</td>
+      </tr >
+
+      <tr>
+        <th  className='employeename'>
+          Others
+</th>
+        <td style={{textAlign:'center'}} colspan="2">
+          00.00
+</td>
+        <th colspan="2" className='employeename'>
+          TDS
+</th > 
+        <td style={{textAlign:'center'}} colspan="2">
+          00.00
+</td>
+      </tr >
+
+
+      <tr>
+        <th  className='employeename'>
+         Total
+</th> 
+        <td style={{textAlign:'center'}} colspan="2">
+          00.00
+</td>
+        <th colspan="2"className='employeename' >
+          Total
+</th >        
+        <td style={{textAlign:'center'}} colspan="2">
+          00.00
+</td>
+      </tr >
+
+      <tr>
+        <th >
+         <br />
+</th>
+        
+        <td colspan="2" >
+       
 </td>
         <th colspan="2" >
-          Cumulative
+        
 </th >
-        <td colspan="2"></td>
-      </tr >
-      <tr>
+        
         <td colspan="2">
-          Gross Total Income
-</td> <td></td>
-        <td className="myAlign">
-          00.00
-</td>
-        <td colspan="2" >
-          Empl PF Contribution
-</td > <td></td>
-        <td className="myAlign">
-          00.00
+       
 </td>
       </tr >
+
       <tr>
-        <td colspan="2">
-          Aggr of Chapter "PF"
-</td> <td></td>
-        <td className="myAlign">
-          00.00
-</td><td colspan="4"></td>
+        <th colspan="5">
+          <br/>
+</th>
+       
+        <th colspan="2" >
+         
+</th >
       </tr >
+
+
       <tr>
-        <td colspan="2">
-          Total Income
-</td> <td></td>
-        <td className="myAlign">
+        <th colspan="5" className='employeename' style={{textAlign:'center'}}>
+            Net Salary
+        </th>
+            <td style={{textAlign:'center'}} colspan="2">
           00.00
 </td>
-        <td colspan="4"></td>
       </tr >
-      <tbody className="border-center">
-        <tr>
-          <th>
-            Attend/ Absence
-</th>
-          <th>
-            Days in Month
-</th>
-          <th>
-            Days Paid
-</th>
-          <th>
-            Days Not Paid
-</th>
-          <th>
-            Leave Position
-</th>
-          <th>
-            Privilege Leave
-</th>
-          <th>
-            Sick Leave
-</th>
-          <th>
-            Casual Leave
-</th>
-        </tr>
-        <tr>
-          <td ></td>
-          <td ></td>
-          <td ></td>
-          <td ></td>
-          <td>Yrly Open Balance</td>
-          <td>0.0</td> <td>0.0</td>
-          <td>0.0</td>
-        </tr >
-        <tr>
-          <th >Current Month</th>
-          <td >31.0</td>
-          <td >31.0</td>
-          <td >31.0</td>
-          <td>Availed</td>
-          <td>0.0</td> <td>0.0</td>
-          <td>0.0</td>
-        </tr >
-        <tr>
-          <td colspan="4"></td>
-          <td>Closing Balance</td>
-          <td>0.0</td> <td>0.0</td>
-          <td>0.0</td>
-        </tr >
-        <tr>
-          <td colspan="4"> &nbsp; </td>
-          <td > </td>
-          <td > </td>
-          <td > </td>
-          <td > </td>
-        </tr >
-        <tr>
-          <td colspan="4"></td>
-          <td>Company Pool Leave Balance</td>
-          <td>1500</td>
-          <td ></td>
-          <td ></td>
-        </tr >
-      </tbody>
+
+      <tr>
+       
+        <th colspan="2" >
+         <br />
+         <br/>
+     </th >
+        <th colspan="4" >
+         <br />
+      </th >      
+      </tr >
+
+      <tr>
+       
+        <th colspan="2" style={{textAlign:'center'}}>
+          Employee Signature
+          </th > 
+        <th colspan="4" style={{textAlign:'center'}} >
+          Employer Signature
+          </th >        
+      </tr >
     </table >
 
   </div >
