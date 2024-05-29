@@ -187,7 +187,7 @@ app.post('/api/add' , async(req,res) => {
 		phoneNumber:req.body.phoneNumber,
         email:req.body.email,
 		empImg:req.body.empImg,
-		adress:req.body.adress,
+		address:req.body.address,
 		emgContact:req.body.emgContact,
 		emgRelation:req.body.emgRelation,
 		emgNumber:req.body.emgNumber,
@@ -219,7 +219,7 @@ app.post('/api/add' , async(req,res) => {
 		bankName:req.body.bankName,
 		accNo:req.body.accNo,
 		uanNumber:req.body.uanNumber,
-		ifscCode:req.body.ifscCode
+		ifscNumber:req.body.ifscNumber
 	})
 	res.json({status: 'ok'})
 	console.log(Employee);

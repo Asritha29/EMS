@@ -39,7 +39,7 @@ const employeeSchema = new mongoose.Schema({
         type: String,
         
       },
-      adress:{
+      address:{
         type: String,
         required: true
       },
@@ -87,7 +87,7 @@ const employeeSchema = new mongoose.Schema({
       },
       designation:{
         type: String,
-        required: true
+       
       },
       country:{
         type: String,
@@ -169,7 +169,7 @@ const employeeSchema = new mongoose.Schema({
         type: String,
         
       },
-      ifscCode:{
+      ifscNumber:{
         type: String,
         required: true
       },
