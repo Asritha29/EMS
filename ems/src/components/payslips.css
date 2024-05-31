@@ -3,7 +3,7 @@
    
     padding: 20px;
     border: 1px solid #ccc;
-    margin-left: 9%;
+
     overflow-x: hidden;
     margin-top: 6%;
   }
@@ -37,7 +37,11 @@
   .globus{
    text-align: center;
     justify-items: center;
-    margin-left: 35%;
+    justify-content: center;
+    text-align: center;
+    justify-self: center;
+    margin-left: 15%;
+
   }
 
   .company{
@@ -49,5 +53,55 @@
   .employeename{
     font-family: Cambria;
   }
-
+  .App {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-top: 5%;
+    overflow: hidden;
   
+    margin-left: 11%;
+  }
+  
+  select, button {
+    margin: 10px;
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  .popup {
+
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(255, 251, 251);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  
+  .popup-inner {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  .popup-inner h2 {
+    margin: 0;
+  }
+  
+  .popup-inner button {
+    margin-top: 20px;
+    padding: 10px 20px;
+  }
+  .pay1{
+    margin-left: 13%;
+    margin-top: 6%;
+  }
+  .pay2{
+    margin-top: 10%;
+    height: 70%;
+    width: 900px;
+  }

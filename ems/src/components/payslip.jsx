@@ -1,9 +1,44 @@
 import React from 'react'
+import { useState } from "react";
+import { Modal, Button, Form } from 'react-bootstrap';
+import Globus from './partials/logo/globus.png';
 import "./payslips.css"
-import Globus from './partials/logo/globus.png'
 function payslip() {
+  const [show, setShow] = useState(false);
+  const [selectedMonth, setSelectedMonth] = useState('');
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const handleSelectChange = (e) => {
+    setSelectedMonth(e.target.value);
+  };
+
   return (
-    <div className="salary-slip" >
+    <div className='pay1'>
+    <Form>
+    <Form.Group controlId="monthSelect">
+      <Form.Label>Select Month</Form.Label>
+      <Form.Control as="select" onChange={handleSelectChange} value={selectedMonth}>
+        <option value="">Select a month</option>
+        {Array.from({ length: 12 }, (v, k) => k).map((month) => (
+          <option key={month} value={month + 1}>
+            {new Date(0, month).toLocaleString('default', { month: 'long' })}
+          </option>
+        ))}
+      </Form.Control>
+    </Form.Group>
+    <Button variant="primary" onClick={handleShow}>
+      Show Popup
+    </Button>
+  </Form>
+  
+  <Modal show={show} onHide={handleClose} className='pay2'>
+        <Modal.Header closeButton>
+          <Modal.Title>Selected Month</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>You have selected: {new Date(0, selectedMonth - 1).toLocaleString('default', { month: 'long' })}
+        <div className="salary-slip" >
     <table className="empDetail">
       <tr height="100px" >
         <td colspan='8' className='globus1'>
@@ -300,7 +335,15 @@ function payslip() {
 
   </div >
 
-  )
-}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+  </div>
+);
+};
 
 export default payslip
