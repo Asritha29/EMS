@@ -40,6 +40,8 @@ margin-top:4%;
 }
 
 .table thead th {
-    background-color:#abaed0; /* Change this to your desired color */
+    /* background-color:#5c52b6; */
+    background-color: #5f54b3b4;
+    /* background-color: #8676b3; */
     color: azure; /* Optional: Change the text color */
 }

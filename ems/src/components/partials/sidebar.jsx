@@ -30,8 +30,8 @@ function Sidebar() {
   };
 
   return (
-    <div style={{ backgroundColor: "#4a4b89",height:'100%' }} >
-      <SideNav defaultExpanded={isVisible} style={{ backgroundColor: "#4a4b89",height:'100%',position:"fixed" }}>
+    <div style={{ backgroundColor: "#252160",height:'100%' }} >
+      <SideNav defaultExpanded={isVisible} style={{ backgroundColor: "#252160",height:'100%',position:"fixed" }}>
       <SideNav.Toggle style={{color: 'azure'}} className='tong'
           onClick={handleToggle} 
           // Provide an onToggle handler to handle the toggle action
