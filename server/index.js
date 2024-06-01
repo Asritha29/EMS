@@ -16,7 +16,7 @@ const LeaveRequest = require('./models/leave-requests');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const { Session } = require('express-session');
-
+const { calculateBalanceLeaves, calculateLOP } = require('./services/leaveService');
 const app = express();
 app.use(cors());
 
@@ -304,6 +304,24 @@ app.post('/declineLeave', async (req, res) => {
         res.status(500).json({ status: 'error', message: 'Internal server error' });
     }
 });
+app.get('/balance/:employeeId', async (req, res) => {
+	try {
+	  const balanceLeaves = await calculateBalanceLeaves(req.params.employeeId);
+	  res.json({ balanceLeaves });
+	} catch (error) {
+	  res.status(400).json({ error: error.message });
+	}
+  });
+  
+  // Route to get LOP
+  app.get('/lop/:employeeId', async (req, res) => {
+	try {
+	  const lop = await calculateLOP(req.params.employeeId);
+	  res.json({ lop });
+	} catch (error) {
+	  res.status(400).json({ error: error.message });
+	}
+  });
 
 
 
