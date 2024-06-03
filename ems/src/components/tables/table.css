@@ -41,7 +41,9 @@ margin-top:4%;
 
 .table thead th {
     /* background-color:#5c52b6; */
-    background-color: #5f54b3b4;
+    /* background-color: #957df6; */
+    background-color: #7063bd;
+    /* background-color: #615f8e; */
     /* background-color: #8676b3; */
     color: azure; /* Optional: Change the text color */
 }
