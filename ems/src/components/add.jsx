@@ -445,7 +445,7 @@ function Add() {
             </div>
 
             <div className="col-4">
-              <Form.Label  htmlFor="lpa">Salary(LPA)</Form.Label>
+              <Form.Label  htmlFor="lpa">CTC</Form.Label>
           <Col mb-3="true">
             <Form.Control type="number" id="lpa" name="lpa"value={formData.lpa} placeholder="000000"  onChange={(e) => handleInputChange(e, 'lpa')}/>
           </Col>
