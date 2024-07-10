@@ -2,8 +2,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import User from "./user/user"
 //import UserElement from "./components/middleware/user"
-import Login from "./components/login";
-import Signup from "./components/signup";
+import Login from "./components/auth/login";
+import Signup from "./components/auth/signup";
 import Dashboard from "./components/dashboard";
 import Layout from './components/layout';
 import Add from "./components/add";
@@ -19,6 +19,8 @@ import Apply from "./components/leave/apply";
 import Request from "./components/leave/requste";
 import Tracking from "./components/leave/tracking";
 import Payslip from "./components/payslip";
+import Attendance from "./components/leave/attendance";
+import Empoloyee from "./components/employee";
 
 import './App.css';
 
@@ -33,6 +35,7 @@ const App = () => {
           <Route path="/"  element={<Layout />}>
             <Route index element={<Dashboard />} />
             <Route path="/add" element={<Add />} />
+            <Route path="/employee" element={<Empoloyee />} />
             <Route path="/account" element={<Account />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="/electrical" element={<Electrical />} />
@@ -46,6 +49,7 @@ const App = () => {
             <Route path="/tracking" element={<Tracking />} />
             <Route path="/user" element={<User />} /> 
             <Route path="/payslip" element={<Payslip />} />
+            <Route path="/attendance" element={<Attendance />} />
           </Route>
     
         </Routes>

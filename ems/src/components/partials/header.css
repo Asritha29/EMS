@@ -1,7 +1,8 @@
 .topnav {
   /* background-color: #4a4b89; */
   /* background-color: #252160; */
-  background-color: #272264;
+  /* background-color: #272264; */
+  background-color: #2C2C54;
   height: 100;
   padding: 10px;
   margin-top: -10px;
@@ -59,4 +60,8 @@ background-color: #1f1d21;
 }
 .Toggle{
   color: black;
+}
+
+.icon1{
+  font-weight: 900;
 }

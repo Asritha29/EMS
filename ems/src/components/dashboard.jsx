@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Row, Col, Card } from 'react-bootstrap';
+import { Container, Row, Col, Card, CardGroup } from 'react-bootstrap';
 import { MdManageAccounts } from "react-icons/md";
 import { GiElectricalResistance } from "react-icons/gi";
 import { RiAdminFill } from "react-icons/ri";
@@ -16,31 +16,40 @@ function Dashboard() {
     return (
       <div className='dashboard'>
         <Container>
-          <Row xs={1} md={2} lg={4} className="g-4">
-            <Col>
-              <Card className='account'>
-                <Card.Body><Link to="/account" style={{ color: 'black', fontSize: '18px' ,textDecoration: 'none'}}>Accountant<br /></Link> <Link to="/account" style={{ color: 'black', fontSize: '25px' }}><MdManageAccounts /></Link></Card.Body>
-              </Card>
-            </Col>
-            <Col>
+          <Row xs={1} md={2} lg={2} className="g-4 justify-content-center">
+          <Col>
+           <CardGroup>
+              <Card>
+            
+                <Card.Header className='text-center inhouse'><Link className="link" to="/inhouse" style={{ color: 'black', fontSize: '20px' }}><HiBuildingOffice2 /></Link> &nbsp;<Link to="/inhouse" style={{ color: 'black', fontSize: '18px',textDecoration: 'none' }}> In House</Link></Card.Header>
+                <Card.Body className='inbody'>
+                <Row xs={1} md={2} lg={2} className="g-4">
+
+                  <Col>
+                     <Card className='account'>
+                        <Card.Body><Link to="/account" style={{ color: 'black', fontSize: '18px' ,textDecoration: 'none'}}>Accountant<br /></Link> <Link to="/account" style={{ color: 'black', fontSize: '25px' }}><MdManageAccounts /></Link></Card.Body>
+                     </Card>
+              </Col>
+
+              <Col>
               <Card className='admin'>
                 <Card.Body><Link to="/admin" style={{ color: 'black', fontSize: '18px',textDecoration: 'none' }}>Administration<br /></Link> <Link className="link" to="/admin" style={{ color: 'black', fontSize: '25px' }}><RiAdminFill /></Link></Card.Body>
               </Card>
-            </Col>
-            <Col>
+              </Col>              
+
+              <Col>
               <Card className='electrical'>
-                <Card.Body><Link  to="/electrical" style={{ color: 'black', fontSize: '18px', textDecoration: 'none' }}>Electrical Commissioning &nbsp; </Link>
+                <Card.Body><Link  to="/electrical" style={{ color: 'black', fontSize: '18px', textDecoration: 'none' }}>Electrical Commissioning<br /> </Link>
                 <Link  to="/electrical" style={{ color: 'black', fontSize: '25px', textDecoration: 'none' }}><GiElectricalResistance /></Link></Card.Body>
               </Card>
-            </Col>
-            <Col>
+              </Col>
+
+              <Col>
               <Card className='hr'>
                 <Card.Body><Link  to="/hr" style={{ color: 'black', fontSize: '18px', textDecoration: 'none' }}>Human Resources<br /></Link><Link to="/hr" style={{ color: 'black', fontSize: '25px' }}><GrGroup /></Link></Card.Body>
               </Card>
-            </Col>
-          </Row>
-          <br />
-          <Row xs={1} md={2} lg={4} className="g-4">
+              </Col> 
+             
             <Col>
               <Card className='it'>
                 <Card.Body> <Link to="/it" style={{ color: 'black', fontSize: '18px',textDecoration: 'none' }}>IT Solution<br /></Link><Link to="/it" style={{ color:'black', fontSize: '25px' }}><TbDeviceImacCode /></Link> </Card.Body>
@@ -62,14 +71,10 @@ function Dashboard() {
               </Card>
             </Col>
           </Row>
-          <br />
-          <br />
-          <Row xs={1} md={2} lg={4} className="g-4 justify-content-center">
-          <Col>
-              <Card>
-                <Card.Header className='text-center inhouse'><Link className="link" to="/inhouse" style={{ color: 'black', fontSize: '20px' }}><HiBuildingOffice2 /></Link> &nbsp;<Link to="/inhouse" style={{ color: 'black', fontSize: '18px',textDecoration: 'none' }}> In House</Link></Card.Header>
-                <Card.Body className='inbody'>1111</Card.Body>
+
+                </Card.Body>
               </Card>
+                </CardGroup>
             </Col>
           <Col>
               <Card>

@@ -3,7 +3,7 @@
     margin-top: 6%;
     width:72vw;
     height: 94vh;
-
+overflow: hidden;
 }
 .next{
     float: right
@@ -13,6 +13,8 @@
 }
 .add-empoloyee{
     text-align: center;
-    background-color: #0d6efd;
-    color: azure;
+    background-color: #474787;
+    color:#ECECEC ;
+    height: 45px;
+    border-radius: 15px;
 }

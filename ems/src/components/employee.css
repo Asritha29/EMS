@@ -1,0 +1,28 @@
+.employee1{
+    margin-left: 10%;
+    margin-top: 5%;
+    width: 100%;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+.addemployee{
+    background-color:  #AAABB8;
+    text-decoration: none;
+    /* color: black; */
+    font-weight: 900;
+    border: 4px;
+    border-color: dodgerblue;
+    justify-content: end;
+    margin-left: 82%;
+}
+.addemployee:hover{
+    background-color:#ECECEC;
+    color: azure;
+    font-weight: 900;
+}
+.tableadd{
+    width: 95%;
+}
+.addemployee1{
+   color: #474787 ;
+}

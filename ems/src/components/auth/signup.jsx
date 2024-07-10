@@ -6,7 +6,8 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { json } from "react-router-dom";
 import {useNavigate} from 'react-router-dom';
-import './home.css'
+import { Link } from "react-router-dom";
+import '../home.css'
 
 function Signup() {
     const [fullname, setFullname] = useState('');
@@ -113,7 +114,7 @@ function Signup() {
           </Col>
         </Form.Group>
       </form>
-      <p style={{ textAlign: 'center', color: 'black' }}>{'Already have an account?'}<a href="./login">Signin</a></p>
+      <p style={{ textAlign: 'center', color: 'black' }}>{'Already have an account?'}<Link to="/login">Signin</Link></p>
     </Card.Body>
   </Card>
     </div>

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import "@trendmicro/react-sidenav/dist/react-sidenav.css";
 import SideNav, { Nav, NavItem, NavIcon, NavText } from "@trendmicro/react-sidenav";
 import { FiBarChart } from "react-icons/fi";
-import { IoPersonAddSharp } from "react-icons/io5";
+import { MdOutlinePerson } from "react-icons/md";
 import { RxCalendar } from "react-icons/rx";
 import { LuCalendarPlus } from "react-icons/lu";
 import { IoMdArrowDropdown, IoMdArrowDropup } from 'react-icons/io';
@@ -30,8 +30,8 @@ function Sidebar() {
   };
 
   return (
-    <div style={{ backgroundColor: "#252160",height:'100%' }} >
-      <SideNav defaultExpanded={isVisible} style={{ backgroundColor: "#252160",height:'100%',position:"fixed" }}>
+    <div style={{ backgroundColor: "#2C2C54",height:'100%' }} >
+      <SideNav defaultExpanded={isVisible} style={{ backgroundColor: "#2C2C54",height:'100%',position:"fixed" }}>
       <SideNav.Toggle style={{color: 'azure'}} className='tong'
           onClick={handleToggle} 
           // Provide an onToggle handler to handle the toggle action
@@ -43,19 +43,19 @@ function Sidebar() {
           <NavItem eventKey="home" >
             <NavIcon style={{ fontSize: '20px', color: 'azure' }}>
               
-              <Link to="/"  style={{ color: 'azure', fontSize: '18px' }}><FiBarChart /></Link>
+              <Link to="/"  style={{ color: 'azure', fontSize: '18px' }}><FiBarChart  className="icon1"/></Link>
             </NavIcon>
-            <NavText ><Link to="/" style={{ color: 'azure', fontSize: '18px',fontFamily:'sans-serif', textDecoration: 'none' }}> Dashboard</Link></NavText>
+            <NavText ><Link to="/" style={{ color: 'azure', fontSize: '18px',fontFamily:'sans-serif', textDecoration: 'none'  }}> Dashboard</Link></NavText>
           </NavItem>
             <NavItem eventKey="placed_orders">
             <NavIcon style={{ fontSize: '20px', color: 'azure' }}>
-              <Link to="/add" style={{ color: 'azure', fontSize: '18px' }}><IoPersonAddSharp /></Link>
+              <Link to="/employee" style={{ color: 'azure', fontSize: '18px' }}><MdOutlinePerson className="icon1" /></Link>
             </NavIcon>
-            <NavText><Link to="/add" style={{ color: 'azure', fontSize: '18px',fontFamily:'sans-serif', textDecoration: 'none' }}> Add Employee</Link></NavText>
+            <NavText><Link to="/employee" style={{ color: 'azure', fontSize: '18px',fontFamily:'sans-serif', textDecoration: 'none' }}> Employee</Link></NavText>
           </NavItem>
             <NavItem eventKey="placed" >
             <NavIcon style={{ fontSize: '20px', color: 'azure' }}>
-              <Link to="/attendance" style={{ color: 'azure', fontSize: '18px' }}><RxCalendar /></Link>
+              <Link to="/attendance" style={{ color: 'azure', fontSize: '18px' }}><RxCalendar className="icon1" /></Link>
             </NavIcon>
             <NavText><Link to="/attendance" style={{ color: 'azure', fontSize: '18px',fontFamily:'sans-serif', textDecoration: 'none' }}> Attendance</Link></NavText>
           </NavItem>
@@ -64,13 +64,13 @@ function Sidebar() {
               <LuCalendarPlus style={{ color: 'azure' }}/>
             </NavIcon>
             <NavText style={{ color: 'azure', fontSize: '18px', fontFamily: 'sans-serif', cursor: 'pointer' }}>
-               Leave Tracking {isDropdownOpen ? <IoMdArrowDropup style={{ color: 'azure' }} /> : <IoMdArrowDropdown style={{ color: 'azure' }}/>}
+               Leave Tracking {isDropdownOpen ? <IoMdArrowDropup style={{ color: 'azure' }} /> : <IoMdArrowDropdown style={{ color: 'azure' }} className="icon1"/>}
             </NavText>
             {isDropdownOpen && (
               <>
                 <NavItem eventKey="apply">
                 <NavIcon style={{ fontSize: '20px', color: 'azure' }}>
-              <Link to="/apply" style={{ color: 'azure', fontSize: '18px' }}><TbCalendarExclamation /></Link>
+              <Link to="/apply" style={{ color: 'azure', fontSize: '18px' }}><TbCalendarExclamation className="icon1" /></Link>
             </NavIcon>
                   <NavText>
                     <Link to="/apply" style={{ color: 'azure', fontSize: '18px', fontFamily: 'sans-serif', textDecoration: 'none' }}>
@@ -80,7 +80,7 @@ function Sidebar() {
                 </NavItem>
                 <NavItem eventKey="requests">
                 <NavIcon style={{ fontSize: '20px', color: 'azure' }}>
-              <Link to="/requests" style={{ color: 'azure', fontSize: '18px' }}><LuCalendarClock /></Link>
+              <Link to="/requests" style={{ color: 'azure', fontSize: '18px' }}><LuCalendarClock className="icon1" /></Link>
             </NavIcon>
                   <NavText>
                     <Link to="/requests" style={{ color: 'azure', fontSize: '18px', fontFamily: 'sans-serif', textDecoration: 'none' }}>
@@ -90,7 +90,7 @@ function Sidebar() {
                 </NavItem>
                 <NavItem eventKey="tracking">
                  <NavIcon >
-                   <Link  to="/tracking" style={{ fontSize: '20px', color: 'azure' }}><TbCalendarUser /></Link>
+                   <Link  to="/tracking" style={{ fontSize: '20px', color: 'azure' }}><TbCalendarUser className="icon1" /></Link>
                  </NavIcon>
                  <NavText>
                     <Link to="/tracking" style={{ color: 'azure', fontSize: '18px', fontFamily: 'sans-serif', textDecoration: 'none' }}>Leaves Track  </Link>
@@ -101,13 +101,13 @@ function Sidebar() {
                   </NavItem>
                   <NavItem eventKey="payslip" >
             <NavIcon>
-              <Link to="/payslip" style={{ fontSize: '20px', color: 'azure' }}><LiaFileInvoiceDollarSolid /></Link>
+              <Link to="/payslip" style={{ fontSize: '20px', color: 'azure' }}><LiaFileInvoiceDollarSolid className="icon1" /></Link>
             </NavIcon>
             <NavText><Link to="/payslip" style={{ color: 'azure', fontSize: '18px',fontFamily:'sans-serif', textDecoration: 'none' }}> Pay Slip</Link></NavText>
           </NavItem>
           <NavItem eventKey="logout">
              <NavIcon>
-              <Link to="/payslip" style={{ fontSize: '20px', color: 'azure' }} ><HiOutlineLogout /></Link>
+              <Link to="/payslip" style={{ fontSize: '20px', color: 'azure' }} ><HiOutlineLogout className="icon1" /></Link>
             </NavIcon>
             <NavText ><Link to="/logout"  style={{ color: 'azure', fontSize: '18px',fontFamily:'sans-serif', textDecoration: 'none' }}>Logout</Link></NavText>
           </NavItem>

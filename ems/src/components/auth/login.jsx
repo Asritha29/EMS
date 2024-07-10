@@ -5,6 +5,7 @@ import Form from "react-bootstrap/Form";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { useState } from "react";
+import { Link } from "react-router-dom";
 //import { useHistory } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 
@@ -12,7 +13,7 @@ import { useNavigate } from 'react-router-dom';
 function Login() {
     const [email, setEmail] = useState('')
     const [password , setPassword] = useState('')
-    const history = useHistory();
+    // const history = useHistory();
     
 
     async function loginUser(event) {
@@ -69,7 +70,7 @@ function Login() {
               </Col>
             </Form.Group>
           </Form>
-          <p style={{ textAlign: 'center', color: 'black' }}>Don't have an account? <a href="./signup">Signup</a></p>
+          <p style={{ textAlign: 'center', color: 'black' }}>Don't have an account? <Link to="/signup">Signup</Link></p>
         </Card.Body>
       </Card>
     </div>

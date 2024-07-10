@@ -18,6 +18,8 @@ const bodyParser = require('body-parser');
 const { Session } = require('express-session');
 const { calculateBalanceLeaves, calculateLOP } = require('./services/leaveService');
 const app = express();
+const multer = require('multer');
+const XLSX = require('xlsx');
 app.use(cors());
 
 app.use(express.json());
@@ -26,8 +28,10 @@ app.use(bodyParser.json());
  
 
 //connect to db
-connectDB();
+connectDB();  
 
+// upload attandance
+const upload = multer({ dest: 'uploads/' });
 
 app.get('/api/', async (req, res) => {
 	if(req.session.email) {
@@ -323,7 +327,18 @@ app.get('/balance/:employeeId', async (req, res) => {
 	}
   });
 
+//attendance upload 
 
+  app.post('/api/upload', upload.single('file'), (req, res) => {
+    const workbook = XLSX.readFile(req.file.path);
+    const sheetName = workbook.SheetNames[0];
+    const worksheet = workbook.Sheets[sheetName];
+    const json = XLSX.utils.sheet_to_json(worksheet);
+
+    Attendance.insertMany(json)
+        .then(() => res.status(200).send('Data saved successfully'))
+        .catch((error) => res.status(500).send('Error saving data:', error));
+});
 
 const port = process.env.PORT || 5000;
 
