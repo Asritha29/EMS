@@ -1,6 +1,5 @@
 .employee1{
-    margin-left: 10%;
-    margin-top: 5%;
+ 
     width: 100%;
     overflow-y: hidden;
     overflow-x: hidden;
@@ -16,6 +15,12 @@
     margin-left: 82%;
 }
 .addemployee:hover{
+    background-color:#ECECEC;
+    color: azure;
+    font-weight: 900;
+}
+
+.addemployee:active{
     background-color:#ECECEC;
     color: azure;
     font-weight: 900;

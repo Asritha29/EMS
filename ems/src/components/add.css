@@ -1,9 +1,7 @@
 .add{
-    margin-left: 16%;
-    margin-top: 6%;
-    width:72vw;
+    width:80vw;
     height: 94vh;
-overflow: hidden;
+/* overflow: hidden; */  
 }
 .next{
     float: right
@@ -17,4 +15,9 @@ overflow: hidden;
     color:#ECECEC ;
     height: 45px;
     border-radius: 15px;
+}
+.ismanager{
+    margin-top: 8%;
+    font-weight: 400;
+   margin-right: 4%;
 }
