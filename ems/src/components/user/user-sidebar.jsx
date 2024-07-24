@@ -1,18 +1,26 @@
-import React from 'react';
-import { Navbar, Nav } from "react-bootstrap";
+import React, { useEffect, useRef, useState } from 'react';
+import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
 import Logo from "../partials/logo/globus.png"
 import './userheader.css'
 
 function Usersidebar() {
   return (
     <div>
-        <Navbar className="flex flex-column  top-0 start-0 end-0" >
-            <div className="globuslogo" >
-                <img src={Logo} alt='globus Logo' width={300} />
-            </div>
+    <Navbar className="usertopbar">
+        <Container className='stroke'>
+          <Navbar.Collapse id="basic-navbar-nav">
+          <div style={{ textAlign: 'left', float: 'left' }}>
+            <Nav.Link href='https://globusitindia.com/'><img src={Logo} alt="Logo" style={{ width: '300px', height:'90px'}} /></Nav.Link>
+          </div>
+            <Nav className="globuslogo">
+              <Nav.Link href="/user/payslip" >PaySlip</Nav.Link>
+              {/* <Nav.Link href="/about">About Us</Nav.Link> */}
+             
 
-            
-        </Navbar>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
     </div>
   )
 }
