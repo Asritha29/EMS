@@ -18,18 +18,18 @@ function payslip() {
     <div className='pay1'>
     <Form>
     <Form.Group controlId="monthSelect">
-      <Form.Label>Select Month</Form.Label>
-      <Form.Control as="select" onChange={handleSelectChange} value={selectedMonth}>
+      <Form.Label htmlFor='pay'>Select Month</Form.Label>
+      <Form.Select id='pay' name='pay' onChange={handleSelectChange} value={selectedMonth}>
         <option value="">Select a month</option>
         {Array.from({ length: 12 }, (v, k) => k).map((month) => (
           <option key={month} value={month + 1}>
             {new Date(0, month).toLocaleString('default', { month: 'long' })}
           </option>
         ))}
-      </Form.Control>
+      </Form.Select>
     </Form.Group>
     <Button variant="primary" onClick={handleShow}>
-      Show Popup
+      Preview
     </Button>
   </Form>
   

@@ -24,7 +24,7 @@ const employeeSchema = new mongoose.Schema({
       },
       maritalStatus:{
         type: String,
-      
+        
       },
       phoneNumber:{
         type: String,
@@ -36,10 +36,22 @@ const employeeSchema = new mongoose.Schema({
         required: true
       },
      empImg:{
-        type: String,
+        type: File,
         
       },
+      aadhaar:{
+        type: String,
+       
+      },
+      pan:{
+        type: String,
+       
+      },
       address:{
+        type: String,
+        required: true
+      },
+      permenentadrs:{
         type: String,
         required: true
       },
@@ -74,8 +86,11 @@ const employeeSchema = new mongoose.Schema({
       },
       status:{
         type: String,
-        default:'Active' 
-       
+        required: true
+      },
+      exitformalities:{
+        type: String,
+        // default:'Active' 
       },
       managerName:{
         type: String,
@@ -113,7 +128,15 @@ const employeeSchema = new mongoose.Schema({
         type: String,
 
       },
+      nameapb:{
+        type: String,
+
+      },
       salary:{
+        type: String,
+        required: true
+      },
+      netsalary:{
         type: String,
         required: true
       },
@@ -133,15 +156,27 @@ const employeeSchema = new mongoose.Schema({
         type: String,
      
       },
+      petrolAllow:{
+        type: String,
+     
+      },
       pf:{
         type: String,
        
       },
-      tax:{
+      allowance:{
         type: String,
-        required: true
+       
+      },
+      pt:{
+        type: String,
+        
       },
       esi:{
+        type: String,
+       
+      },
+      genratedeis:{
         type: String,
        
       },

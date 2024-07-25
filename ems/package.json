@@ -32,7 +32,8 @@
     "react-router-dom": "^6.23.1",
     "react-scripts": "^5.0.1",
     "recharts": "^2.12.6",
-    "web-vitals": "^3.5.2"
+    "web-vitals": "^3.5.2",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",

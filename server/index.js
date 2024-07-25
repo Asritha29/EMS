@@ -18,6 +18,9 @@ const bodyParser = require('body-parser');
 const { Session } = require('express-session');
 const { calculateBalanceLeaves, calculateLOP } = require('./services/leaveService');
 const app = express();
+const multer = require('multer');
+const XLSX = require('xlsx');
+// const Auth = require('./auth');
 app.use(cors());
 
 app.use(express.json());
@@ -26,8 +29,10 @@ app.use(bodyParser.json());
  
 
 //connect to db
-connectDB();
+connectDB();  
 
+// upload attandance
+const upload = multer({ dest: 'uploads/' });
 
 app.get('/api/', async (req, res) => {
 	if(req.session.email) {
@@ -69,6 +74,7 @@ app.post('/api/login', async (req,res) =>{
 
        const user = await User.findOne({
             email: req.body.email, 
+			phoneNumber: req.body.phoneNumber
        })
       if(!user) {
         return {status: 'error', error: 'Invalid credentials'}
@@ -76,7 +82,6 @@ app.post('/api/login', async (req,res) =>{
       const isPasswordValid = await bcrypt.compare(
 		req.body.password,
 		user.password
-	
 	)
     if (!isPasswordValid) {
 		const token = jwt.sign(
@@ -84,8 +89,7 @@ app.post('/api/login', async (req,res) =>{
 				name: user.name,
 				email: user.email,
 				id: user._id,
-				role: user.role,
-				
+				role: user.role,	
 			},
 			'secret123',
 			{ expiresIn: '1h' }
@@ -94,8 +98,33 @@ app.post('/api/login', async (req,res) =>{
 	} else {
 		return res.json({ status: 'error', user: false })
 	}
-
+	const token = jwt.sign({ id: user._id, role: user.role }, JWT_SECRET);
+	res.json({ token });
 });
+// role based auth 
+const authenticateJWT = (req, res, next) => {
+    const token = req.header('Authorization');
+    if (!token) {
+      return res.status(401).send('Access denied');
+    }
+    try {
+      const decoded = jwt.verify(token, JWT_SECRET);
+      req.user = decoded;
+      next();
+    } catch (err) {
+      res.status(400).send('Invalid token');
+    }
+  };
+
+  const authorizeRoles = (...roles) => {
+    return (req, res, next) => {
+      if (!roles.includes(req.user.role)) {
+        return res.status(403).send('Forbidden');
+      }
+      next();
+    };
+  };
+
 
 // Middleware to verify JWT token
 function verifyToken(req, res, next) {
@@ -187,7 +216,10 @@ app.post('/api/add' , async(req,res) => {
 		phoneNumber:req.body.phoneNumber,
         email:req.body.email,
 		empImg:req.body.empImg,
+		aadhaar:req.body.aadhaar,
+		pan:req.body.pan,
 		address:req.body.address,
+		permenentadrs:req.body.permenentadrs,
 		emgContact:req.body.emgContact,
 		emgRelation:req.body.emgRelation,
 		emgNumber:req.body.emgNumber,
@@ -196,6 +228,7 @@ app.post('/api/add' , async(req,res) => {
 		type:req.body.type,
 		team:req.body.team,
 		status:req.body.status,
+		exitformalities:req.body.exitformalities,
 		managerName:req.body.managerName,
 		designation:req.body.designation,
 		ismanager:req.body.ismanager,
@@ -204,15 +237,20 @@ app.post('/api/add' , async(req,res) => {
 		district:req.body.district,
 		mandal:req.body.mandal,
 		village:req.body.village,
+		nameapb:req.body.nameapb,
 		lpa:req.body.lpa,
 		salary:req.body.salary,
+		netsalary:req.body.netsalary,
+		petrolAllow:req.body.petrolAllow,
 		basic:req.body.basic,
 		hra:req.body.hra,
 		ca:req.body.ca,
 		other:req.body.other,
+		allowance:req.body.allowance,
 		pf:req.body.pf,
-		tax:req.body.tax,
+		pt:req.body.pt,
 		esi:req.body.esi,
+		genratedeis:req.body.genratedeis,
 		tds:req.body.tds,
 		insurance:req.body.insurance,
 		loan:req.body.loan,
@@ -255,7 +293,7 @@ app.post('/api/apply', async (req, res) => {
 });
 
 app.get('/api/leaveRequests', async (req, res) => {
-    try {
+    try {""
         const requests = await LeaveRequest.find();
         res.json({ status: 'ok', data: requests });
     } catch (err) {
@@ -265,7 +303,6 @@ app.get('/api/leaveRequests', async (req, res) => {
 });
 app.post('/approveLeave', async (req, res) => {
     const { LeaveRequestId, role } = req.body;
-
     try {
         const leave = await LeaveRequest.findById(LeaveRequestId);
         if (!leave) {
@@ -323,7 +360,18 @@ app.get('/balance/:employeeId', async (req, res) => {
 	}
   });
 
+//attendance upload 
 
+  app.post('/api/upload', upload.single('file'), (req, res) => {
+    const workbook = XLSX.readFile(req.file.path);
+    const sheetName = workbook.SheetNames[0];
+    const worksheet = workbook.Sheets[sheetName];
+    const json = XLSX.utils.sheet_to_json(worksheet);
+
+    Attendance.insertMany(json)
+        .then(() => res.status(200).send('Data saved successfully'))
+        .catch((error) => res.status(500).send('Error saving data:', error));
+});
 
 const port = process.env.PORT || 5000;
 
