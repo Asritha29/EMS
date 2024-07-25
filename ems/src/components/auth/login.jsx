@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 //import { useHistory } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 // import {Auth} from './auth';
-
+import './login.css'
 
 function Login() {
     const [email, setEmail] = useState('')
@@ -47,7 +47,7 @@ function Login() {
   return (
     <div className="d-flex justify-content-center align-items-center vh-100">
       <Card className="col-lg-5 mx-3 mt-1">
-        <Card.Header className="text-center bg-primary text-white"><h4>Login</h4></Card.Header>
+        <Card.Header className="text-cente login text-white"><h4>Login</h4></Card.Header>
         <Card.Body>
           <Form onSubmit={loginUser}>
             <Form.Group as={Row} className="mb-3">
