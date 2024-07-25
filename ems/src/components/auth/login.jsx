@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 // import {Auth} from './auth';
 import './login.css'
+import Logo from '../partials/logo/globus.png'
 
 function Login() {
     const [email, setEmail] = useState('')
@@ -45,9 +46,9 @@ function Login() {
     }
 
   return (
-    <div className="d-flex justify-content-center align-items-center vh-100">
+    <div className="d-flex justify-content-center align-items-center vh-100 ">
       <Card className="col-lg-5 mx-3 mt-1">
-        <Card.Header className="text-cente login text-white"><h4>Login</h4></Card.Header>
+        <Card.Header className="text-center login text-white"><img src={Logo} alt="glogisit" className="globuslogin" /><h4>Login</h4></Card.Header>
         <Card.Body>
           <Form onSubmit={loginUser}>
             <Form.Group as={Row} className="mb-3">

@@ -1,3 +1,7 @@
 .login{
-    background-color: #2C2C54 ;
+    background-color:  #ECECEC ;
+    text-align: center;
+}
+.globuslogin{
+    width: 60%;
 }
