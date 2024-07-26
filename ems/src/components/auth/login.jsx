@@ -36,7 +36,8 @@ function Login() {
           throw new Error('Login failed. Please check your credentials.');
         }
     
-        const data = await response.json();
+        // const data = await response.json();
+        const token= re
         localStorage.setItem('token', data.token);
         alert('Login successful');
        

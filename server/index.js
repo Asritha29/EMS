@@ -367,6 +367,15 @@ app.get('/balance/:employeeId', async (req, res) => {
 	}
   });
 
+  app.get('/api/employee', async (req,res) => {
+	try {
+		const employees = await employee.find(); 
+		res.status(200).json(employees);
+	  } catch (err) {
+		res.status(500).json({ message: err.message });
+	  }
+  })
+
 //attendance upload 
 
   app.post('/api/upload', upload.single('file'), (req, res) => {
@@ -380,8 +389,7 @@ app.get('/balance/:employeeId', async (req, res) => {
         .catch((error) => res.status(500).send('Error saving data:', error));
 });
 
-const port = process.env.PORT || 5000;
-
+const port = 5005;
 app.listen(port, () => {
-    console.log(`App listening on port ${port}`);
+  console.log(`Server is running on port ${port}`);
 });
