@@ -257,7 +257,14 @@ app.post('/api/add' , async(req,res) => {
 		bankName:req.body.bankName,
 		accNo:req.body.accNo,
 		uanNumber:req.body.uanNumber,
-		ifscNumber:req.body.ifscNumber
+		ifscNumber:req.body.ifscNumber,
+		course:req.body.course,
+		courseType:req.body.courseType,
+		fromDate:req.body.fromDate,
+		toDate:req.body.toDate,
+		experience:req.body.experience,
+		from:req.body.from,
+		to:req.body.to,
 	})
 	res.json({status: 'ok'})
 	console.log(Employee);
@@ -360,6 +367,15 @@ app.get('/balance/:employeeId', async (req, res) => {
 	}
   });
 
+  app.get('/api/employee', async (req,res) => {
+	try {
+		const employees = await employee.find(); 
+		res.status(200).json(employees);
+	  } catch (err) {
+		res.status(500).json({ message: err.message });
+	  }
+  })
+
 //attendance upload 
 
   app.post('/api/upload', upload.single('file'), (req, res) => {
@@ -373,8 +389,7 @@ app.get('/balance/:employeeId', async (req, res) => {
         .catch((error) => res.status(500).send('Error saving data:', error));
 });
 
-const port = process.env.PORT || 5000;
-
+const port = 5005;
 app.listen(port, () => {
-    console.log(`App listening on port ${port}`);
+  console.log(`Server is running on port ${port}`);
 });

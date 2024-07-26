@@ -36,7 +36,8 @@ function Login() {
           throw new Error('Login failed. Please check your credentials.');
         }
     
-        const data = await response.json();
+        // const data = await response.json();
+        const token= re
         localStorage.setItem('token', data.token);
         alert('Login successful');
        
@@ -68,11 +69,11 @@ function Login() {
             </Form.Group>
             <Form.Group as={Row} className="mb-3">
               <Col sm={{ span: 10, offset: 5 }}>
-                <Button variant="primary" type="submit">Login</Button>
+                <Button className="loginbutton" type="submit">Login</Button>
               </Col>
             </Form.Group>
           </Form>
-          <p style={{ textAlign: 'center', color: 'black' }}>Don't have an account? <Link to="/signup">Signup</Link></p>
+          {/* <p style={{ textAlign: 'center', color: 'black' }}>Don't have an account? <Link to="/signup">Signup</Link></p> */}
         </Card.Body>
       </Card>
     </div>

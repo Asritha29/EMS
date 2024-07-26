@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 
 const employeeSchema = new mongoose.Schema({
-    fullName: {
+      fullName: {
         type: String,
         required: true
       },
@@ -15,7 +15,7 @@ const employeeSchema = new mongoose.Schema({
        
       },
       dob:{
-        type: Date,
+        type: String,
         required: true
       },
       gender:{
@@ -35,8 +35,8 @@ const employeeSchema = new mongoose.Schema({
         unique: true,
         required: true
       },
-     empImg:{
-        type: File,
+      empImg:{
+        type: Buffer,
         
       },
       aadhaar:{
@@ -73,7 +73,7 @@ const employeeSchema = new mongoose.Schema({
         unique: true,
       },
       doj:{
-        type: Date,
+        type: String,
         required: true
       },
       type:{
@@ -207,6 +207,42 @@ const employeeSchema = new mongoose.Schema({
       ifscNumber:{
         type: String,
         required: true
+      },
+      ifscNumber:{
+        type: String,
+        required: true
+      },
+      course:{
+        type: String,
+        required: true
+      },
+      courseType:{
+        type: String,
+        required: true
+      },
+      fromDate:{
+        type: String,
+        required: true
+      },
+      toDate:{
+        type: String,
+        required: true
+      },
+      experience:{
+        type: String,
+        
+      },
+      work:{
+        type: String,
+        
+      },
+      from:{
+        type: String,
+        
+      },
+      to:{
+        type: String,
+        
       },
       createdAt: {
         type: Date,

@@ -6,3 +6,25 @@
 .globuslogin{
     width: 60%;
 }
+.loginbutton{
+    background-color:  #AAABB8;
+    text-decoration: none;
+    /* color: black; */
+    font-weight: 900;
+    border: 4px;
+    border-color: dodgerblue;
+    justify-content: end;
+    /* margin-left: 82%; */
+    color: #474787;
+    font-size: large;
+}
+.loginbutton:hover{
+    background-color:#ECECEC;
+    color: #2C2C54 ;
+    font-weight: 900;
+}
+.loginbutton:active{
+    background-color:#ECECEC;
+    color: azure;
+    font-weight: 900;
+}
