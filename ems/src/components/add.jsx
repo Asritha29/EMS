@@ -18,7 +18,7 @@ import './add.css'
 function Add() {
 
  
-    const [details, setDetails] = useState([]);
+  const [details, setDetails] = useState([]);
     const [activeTab, setActiveTab] = useState(0);
   
     const [show, setShow] = useState(false);
@@ -82,6 +82,7 @@ function Add() {
       uanNumber:'',
       ifscNumber:'',
       course:'',
+      courseType:'',
       fromDate: '',
       toDate:'',
     });
@@ -100,7 +101,7 @@ function Add() {
     const newValue = type === 'checkbox' ? checked : value;
     setFormData((prevFormData) => ({
       ...prevFormData,
-      [name]: newValue,
+      [name]: newValue ?? '', // Default to empty string if value is null or undefined
     }));
   };
 
@@ -111,10 +112,9 @@ function Add() {
     }));
   };
 
-
    
   
-      const [selectedTeam, setSelectedTeam] = useState('');
+      // const [selectedTeam, setSelectedTeam] = useState('');
       const [selectedDesignation, setSelectedDesignation] = useState('');
       const [designations, setDesignations] = useState([]);
       const [selectedvertical, setselectedvertical] = useState('');
@@ -125,49 +125,81 @@ function Add() {
       };
     
 
-    const handleAddDetail = () => {
-      // Create a new detail object from the form data
-      const newDetail = {
-        course: formData.course,
-        courseType: formData.courseType,
-        institution: formData.institution,
-        fromDate: formData.fromDate,
-        toDate: formData.toDate
+      const handleAddDetail = () => {
+        const newDetail = {
+          id: Date.now(), // or any unique identifier
+          course: formData.course,
+          courseType: formData.courseType,
+          institution: formData.institution,
+          fromDate: formData.fromDate,
+          toDate: formData.toDate
+        };
+      
+        setDetails([...details, newDetail]);
       };
     
-      // Add the new detail to the details array
-      setDetails([...details, newDetail]);
-    
+
+    // const handleSubmit = async (event) => {
+    //   event.preventDefault();
+    //   try {
+    //     const response = await fetch('http://localhost:5000/api/add', {
+    //       method: 'POST',
+    //       headers: {
+    //         'Content-Type': 'application/json',
+    //       },
+    //       body: JSON.stringify(formData),
+    //     });
   
-    };
-    
+    //     if (!response.ok) {
+    //       throw new Error(`HTTP error! status: ${response.status}`);
+    //     }
+        
+    //     alert('Added employee successful');
+    //     const data = await response.json();
+  
+    //     console.log('Server response:', data);
+    //   } catch (error) {
+    //     console.error('Error adding user:', error);
+    //   }
+  
+    //   // Logic to handle form submission
+    //   console.log('Form submitted:', formData);
+    // };
 
     const handleSubmit = async (event) => {
       event.preventDefault();
+    
+      // Convert formData to FormData for file uploads
+      const formDataToSend = new FormData();
+      Object.keys(formData).forEach(key => {
+        if (key === 'empImg' && formData[key]) {
+          formDataToSend.append(key, formData[key]);
+        } else {
+          formDataToSend.append(key, formData[key]);
+        }
+      });
+    
       try {
         const response = await fetch('http://localhost:5000/api/add', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(formData),
+          body: formDataToSend,
         });
-  
+    
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-        
-        alert('Added employee successful');
+    
+        alert('Employee added successfully');
         const data = await response.json();
-  
         console.log('Server response:', data);
+    
+        // Optionally reset formData or navigate to another page
       } catch (error) {
-        console.error('Error adding user:', error);
+        console.error('Error adding employee:', error);
+        alert('Failed to add employee. Please try again.');
       }
-  
-      // Logic to handle form submission
-      console.log('Form submitted:', formData);
     };
+    
     const handleNext = () => {
       setActiveTab(activeTab + 1);
     };
@@ -242,7 +274,7 @@ function Add() {
 
             <div className="col-6">
               <Form.Label htmlFor='empImg'>Employee Image</Form.Label>
-              <Form.Control type="file" id='empImg'  placeholder="png"  name="empImg" value={formData.empImg}  onChange={handleFileChange}/>
+              <Form.Control type="file" id='empImg'  placeholder="png"  name="empImg"  onChange={handleFileChange}/>
             </div>
             
             <div className="col-6">
@@ -332,8 +364,8 @@ function Add() {
           <div className="col-6">
           <Form.Label className="required" htmlFor="team">Team</Form.Label>
           <Col mb-3="true">
-          <Form.Select id="team"  value={selectedTeam} name="team" onChange={(e) => handleInputChange(e, 'team')} >
-             <option>Select Team Nmae</option>
+          <Form.Select id="team"  value={formData.team} name="team" onChange={(e) => handleInputChange(e, 'team')} >
+             <option value="">Select Team Nmae</option>
              <option  value="Accountant">Accountant</option>
              <option value="Admin">Admin</option>
              <option value="Electrical">Electrical Commissioning</option>
@@ -683,19 +715,19 @@ function Add() {
               
              </tr>
              </thead>
-              <tbody>
-            {details.map((detail, index) => (
-            <tr key={index}>
-             <td>{detail.course}</td>
-             <td>{detail.courseType}</td>
-             <td>{detail.institution}</td>
-             <td>{detail.fromDate}</td>
-             <td>{detail.toDate}</td>
-             
-             </tr>   
-                 ))}
+             <tbody>
+              {details.map((detail) => (
+                 <tr key={detail.id}>
+                   <td>{detail.course}</td>
+                   <td>{detail.courseType}</td>
+                   <td>{detail.institution}</td>
+                   <td>{detail.fromDate}</td>
+                   <td>{detail.toDate}</td>
+                 </tr>
+               ))}
+            </tbody>
+         
 
-                </tbody>
                 </Table>
 
              </Form.Group>

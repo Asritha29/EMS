@@ -257,7 +257,8 @@ app.post('/api/add' , async(req,res) => {
 		bankName:req.body.bankName,
 		accNo:req.body.accNo,
 		uanNumber:req.body.uanNumber,
-		ifscNumber:req.body.ifscNumber
+		ifscNumber:req.body.ifscNumber,
+		course:req.body.course,
 	})
 	res.json({status: 'ok'})
 	console.log(Employee);

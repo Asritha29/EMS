@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 
 const employeeSchema = new mongoose.Schema({
-    fullName: {
+      fullName: {
         type: String,
         required: true
       },
@@ -35,8 +35,8 @@ const employeeSchema = new mongoose.Schema({
         unique: true,
         required: true
       },
-     empImg:{
-        type: File,
+      empImg:{
+        type: Buffer,
         
       },
       aadhaar:{
@@ -203,6 +203,14 @@ const employeeSchema = new mongoose.Schema({
       uanNumber:{
         type: String,
         
+      },
+      ifscNumber:{
+        type: String,
+        required: true
+      },
+      course:{
+        type: String,
+        required: true
       },
       ifscNumber:{
         type: String,
