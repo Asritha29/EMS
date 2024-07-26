@@ -85,11 +85,12 @@ function Add() {
       courseType:'',
       fromDate: '',
       toDate:'',
+      experience:'',
+      work:'',
+      from:'',
+      to:'',
     });
     
-    
-
-   
   
    const handleRowClick = (rowData) => {
     setSelectedRow(rowData);
