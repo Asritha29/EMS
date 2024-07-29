@@ -69,38 +69,71 @@ app.post('/api/signup', async (req,res) =>{
 
     }
 })
-app.post('/api/login', async (req,res) =>{
+const JWT_SECRET = 'secret123';
+
+app.post('/api/login', async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      return res.status(401).json({ status: 'error', error: 'Invalid credentials' });
+    }
+
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+
+    if (!isPasswordValid) {
+      return res.status(401).json({ status: 'error', error: 'Invalid credentials' });
+    }
+
+    const token = jwt.sign(
+      {
+        id: user._id,
+        role: user.role,
+      },
+      JWT_SECRET,
+      { expiresIn: '1h' }
+    );
+
+    return res.json({ status: 'ok', token });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ status: 'error', error: 'Internal server error' });
+  }
+});
+// app.post('/api/login', async (req,res) =>{
    
 
-       const user = await User.findOne({
-            email: req.body.email, 
-			phoneNumber: req.body.phoneNumber
-       })
-      if(!user) {
-        return {status: 'error', error: 'Invalid credentials'}
-      } 
-      const isPasswordValid = await bcrypt.compare(
-		req.body.password,
-		user.password
-	)
-    if (!isPasswordValid) {
-		const token = jwt.sign(
-			{
-				name: user.name,
-				email: user.email,
-				id: user._id,
-				role: user.role,	
-			},
-			'secret123',
-			{ expiresIn: '1h' }
-		)
-        return res.json({ status: 'ok', user: token })
-	} else {
-		return res.json({ status: 'error', user: false })
-	}
-	const token = jwt.sign({ id: user._id, role: user.role }, JWT_SECRET);
-	res.json({ token });
-});
+//        const user = await User.findOne({
+//             email: req.body.email, 
+// 			phoneNumber: req.body.phoneNumber
+//        })
+//       if(!user) {
+//         return {status: 'error', error: 'Invalid credentials'}
+//       } 
+//       const isPasswordValid = await bcrypt.compare(
+// 		req.body.password,
+// 		user.password
+// 	)
+//     if (!isPasswordValid) {
+// 		const token = jwt.sign(
+// 			{
+// 				name: user.name,
+// 				email: user.email,
+// 				id: user._id,
+// 				role: user.role,	
+// 			},
+// 			'secret123',
+// 			{ expiresIn: '1h' }
+// 		)
+//         return res.json({ status: 'ok', user: token })
+// 	} else {
+// 		return res.json({ status: 'error', user: false })
+// 	}
+// 	const token = jwt.sign({ id: user._id, role: user.role }, JWT_SECRET);
+// 	res.json({ token });
+// });
 // role based auth 
 const authenticateJWT = (req, res, next) => {
     const token = req.header('Authorization');

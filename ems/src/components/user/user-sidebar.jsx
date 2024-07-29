@@ -10,10 +10,10 @@ function Usersidebar() {
         <Container className='stroke'>
           <Navbar.Collapse id="basic-navbar-nav">
           <div style={{ textAlign: 'left', float: 'left' }}>
-            <Nav.Link href='https://globusitindia.com/'><img src={Logo} alt="Logo" style={{ width: '300px', height:'90px'}} /></Nav.Link>
+            <Nav.Link href='https://globusitindia.com/'><img src={Logo} alt="Logo" style={{ width: '300px', height:'90px',marginLeft:'-30%'}} /></Nav.Link>
           </div>
             <Nav className="globuslogo">
-              <Nav.Link href="/user/payslip" >PaySlip</Nav.Link>
+              <Nav.Link href="/user/payslip"  style={{fontWeight:'500',color:'#2C2C54'}}>PaySlip</Nav.Link>
               {/* <Nav.Link href="/about">About Us</Nav.Link> */}
              
 
