@@ -247,7 +247,7 @@ app.post('/api/add' , async(req,res) => {
 		gender:req.body.gender,
 		maritalStatus:req.body.maritalStatus,
 		phoneNumber:req.body.phoneNumber,
-        email:req.body.email,
+    email:req.body.email,
 		empImg:req.body.empImg,
 		aadhaar:req.body.aadhaar,
 		pan:req.body.pan,

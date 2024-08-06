@@ -12,22 +12,22 @@ import { TbCalendarExclamation } from "react-icons/tb";
 import { LuCalendarClock } from "react-icons/lu";
 import { LiaFileInvoiceDollarSolid } from "react-icons/lia";
 import { HiOutlineLogout } from "react-icons/hi";
-import logo from "../partials/logo/EMS.png"
+import logo from "../partials/logo/globus.png"
 
 
 import './header.css'
 
 function Sidebar() {
   const [isVisible, setIsVisible] = useState(true);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  // const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const handleToggle = () => {
     setIsVisible(!isVisible);
   };
 
-  const handleDropdownToggle = () => {
-    setIsDropdownOpen(!isDropdownOpen);
-  };
+  // const handleDropdownToggle = () => {
+  //   setIsDropdownOpen(!isDropdownOpen);
+  // };
 
   return (
     <div style={{ backgroundColor: "#2C2C54",height:'100%' }} >
@@ -59,7 +59,7 @@ function Sidebar() {
             </NavIcon>
             <NavText><Link to="/attendance" style={{ color: 'azure', fontSize: '18px',fontFamily:'sans-serif', textDecoration: 'none' }}> Attendance</Link></NavText>
           </NavItem>
-          <NavItem eventKey="leave" onClick={handleDropdownToggle}>
+          {/* <NavItem eventKey="leave" onClick={handleDropdownToggle}>
             <NavIcon style={{ fontSize: '20px', color: 'azure' }}>
               <LuCalendarPlus style={{ color: 'azure' }}/>
             </NavIcon>
@@ -98,7 +98,7 @@ function Sidebar() {
                 </NavItem>
                 </>
                   )}
-                  </NavItem>
+                  </NavItem> */}
                   <NavItem eventKey="payslip" >
             <NavIcon>
               <Link to="/payslip" style={{ fontSize: '20px', color: 'azure' }}><LiaFileInvoiceDollarSolid className="icon1" /></Link>

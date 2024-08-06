@@ -22,6 +22,7 @@ import Payslip from "./components/payslip";
 import Attendance from "./components/leave/attendance";
 import Empoloyee from "./components/employee";
 import  UserLayout from "./components/layouts/userlayout";
+import Upload from "./components/upload";
 
 
 // import './App.css';
@@ -48,6 +49,7 @@ const App = () => {
             <Route path="/apply" element={<Apply />} />
             <Route path="/request" element={<Request />} />
             <Route path="/tracking" element={<Tracking />} />
+            <Route path="/upload" element={<Upload />} />
             {/* <Route path="/user" element={<User />} />  */}
             <Route path="/payslip" element={<Payslip />} />
             <Route path="/attendance" element={<Attendance />} />
