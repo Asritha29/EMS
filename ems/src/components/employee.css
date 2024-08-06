@@ -12,17 +12,38 @@
     border: 4px;
     border-color: dodgerblue;
     justify-content: end;
-    margin-left: 82%;
+    margin-left: 63%;
 }
 .addemployee:hover{
     background-color:#ECECEC;
-    color: azure;
+    color:  #2C2C54;
     font-weight: 900;
 }
 
 .addemployee:active{
     background-color:#ECECEC;
-    color: azure;
+    color:  #2C2C54;
+    font-weight: 900;
+}
+.addemployee1{
+    background-color:  #AAABB8;
+    text-decoration: none;
+    /* color: black; */
+    font-weight: 900;
+    border: 4px;
+    border-color: dodgerblue;
+    justify-content: end;
+    /* margin-left: %; */
+}
+.addemployee1:hover{
+    background-color:#ECECEC;
+    color: #2C2C54;
+    font-weight: 900;
+}
+
+.addemployee1:active{
+    background-color:#ECECEC;
+    color:  #2C2C54;
     font-weight: 900;
 }
 .tableadd{
