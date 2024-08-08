@@ -9,7 +9,7 @@ import { Modal, Table,Tab,Tabs} from 'react-bootstrap';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { RiUserSearchLine } from "react-icons/ri";
 import { getCountries, getStates, getDistricts } from 'country_state_district';
-import axios from 'axios';
+// import axios from 'axios';
 import countriesData from "./csdmv/countries.json";
 import {stateOptions,districtOption,villageoptions,mandalOption} from "./csdmv/csdmv";
 import DatePicker from 'react-datepicker';
@@ -116,9 +116,9 @@ function Add() {
    
   
       // const [selectedTeam, setSelectedTeam] = useState('');
-      const [selectedDesignation, setSelectedDesignation] = useState('');
-      const [designations, setDesignations] = useState([]);
-      const [selectedvertical, setselectedvertical] = useState('');
+    const [selectedDesignation, setSelectedDesignation] = useState('');
+    const [designations, setDesignations] = useState([]);
+    const [selectedvertical, setselectedvertical] = useState('');
       
       const handleDesignationChange = (event) => {
         setSelectedDesignation(event.target.value);
@@ -195,7 +195,7 @@ function Add() {
         console.log('Server response:', data);
     
         // Optionally reset formData or navigate to another page
-      } catch (error) {
+       } catch (error) {
         console.error('Error adding employee:', error);
         alert('Failed to add employee. Please try again.');
       }
