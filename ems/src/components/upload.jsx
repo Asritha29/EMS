@@ -5,6 +5,7 @@ function Upload() {
   const [excelFile, setExcelFile] = useState(null);
   const [typeError, setTypeError] = useState(null);
   const [excelData, setExcelData] = useState(null);
+  const [alertClass, setAlertClass] = useState('alert alert-danger');
 
   // Handle file selection
   const handleFile = (e) => {
@@ -60,6 +61,9 @@ function Upload() {
           })
           .then((file) => {
             console.log('Success:', file);
+            setTypeError('uploaded successfully');
+            setTypeError('Uploaded successfully');
+            setAlertClass('alert alert-success');
           })
           .catch((error) => {
             console.error('Error during fetch:', error);
@@ -80,7 +84,7 @@ function Upload() {
         <input type='file' className='form-control' required onChange={handleFile} />
         <button type='submit' className='btn btn-success btn-md'>Upload</button>
         {typeError && (
-          <div className='alert alert-danger' role='alert'>{typeError}</div>
+          <div className={alertClass} role='alert'>{typeError}</div>
         )}
       </form>
       
