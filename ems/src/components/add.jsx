@@ -507,7 +507,7 @@ function Add() {
         </div>
             </Row>
              </Form.Group>
-            <Button variant="primary" onClick={handleBack}>Back</Button>
+            <Button variant="primary" onClick={handleBack} className='back1'>Back</Button>
             <Button variant="primary" className='next' onClick={handleNext}>Next</Button>
           </Tab>
 

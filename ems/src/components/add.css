@@ -4,7 +4,37 @@
 /* overflow: hidden; */  
 }
 .next{
-    float: right
+    float: right;
+    background-color:  #AAABB8;
+    text-decoration: none;
+    /* color: black; */
+    font-weight: 900;
+    border: 4px;
+    color:  #474787;
+    border-color: dodgerblue;
+    justify-content: end;
+    margin-left: 63%;
+}
+.next:hover{
+    background-color:#ECECEC;
+    color:  #2C2C54;
+    font-weight: 900;
+}
+.back1{
+    background-color:  #AAABB8;
+    text-decoration: none;
+    /* color: black; */
+    font-weight: 900;
+    border: 4px;
+    color:  #474787;
+    border-color: dodgerblue;
+    justify-content: end;
+    /* margin-left: 63%; */
+}
+.back1:hover{
+    background-color:#ECECEC;
+    color:  #2C2C54;
+    font-weight: 900;
 }
 .submit{
     float:right
