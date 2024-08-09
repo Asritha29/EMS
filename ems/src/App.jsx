@@ -1,67 +1,40 @@
-//import React, { useState, useContext } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import User from "./user/user"
-//import UserElement from "./components/middleware/user"
-import Login from "./components/auth/login";
-import Signup from "./components/auth/signup";
-import Dashboard from "./components/dashboard";
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+import Login from './components/auth/login';
+import Dashboard from './components/dashboard';
 import Layout from './components/layouts/layout';
-import Add from "./components/add";
-import Account from "./components/tables/account";
-import Admin from "./components/tables/admin";
-import Electrical from "./components/tables/electrical";
-import Hr from "./components/tables/hr";
-import Infra from "./components/tables/infra";
-import IT from "./components/tables/it";
-import Scanning from "./components/tables/scanning";
-import Telecom from "./components/tables/telecom";
-import Apply from "./components/leave/apply";
-import Request from "./components/leave/requste";
-import Tracking from "./components/leave/tracking";
-import Payslip from "./components/payslip";
-import Attendance from "./components/leave/attendance";
-import Empoloyee from "./components/employee";
-import  UserLayout from "./components/layouts/userlayout";
-import Upload from "./components/upload";
-
-
-// import './App.css';
+import Add from './components/add';
+import Attendance from './components/leave/attendance';
+import Employee from './components/employee';
+import UserLayout from './components/layouts/userlayout';
+import Upload from './components/upload';
+import { AuthProvider } from './components/auth/authcontext';
+import PrivateRoute from './components/auth/auth'; // Ensure the path is correct
+import UserPayslip from './components/user/payslip';
 
 const App = () => {
   return (
     <div className="app">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          {/* <Route path="/signup" element={<Signup />} /> */}
-          <Route path="/"  element={<Layout />}>
-            <Route index element={<Dashboard />} />
-            <Route path="/add" element={<Add />} />
-            <Route path="/employee" element={<Empoloyee />} />
-            <Route path="/account" element={<Account />} />
-            <Route path="/admin" element={<Admin />} />
-            <Route path="/electrical" element={<Electrical />} />
-            <Route path="/hr" element={<Hr />} />
-            <Route path="/infra" element={<Infra />} />
-            <Route path="/it" element={<IT />} />
-            <Route path="/scanning" element={<Scanning />} />
-            <Route path="/telecom" element={<Telecom />} />
-            <Route path="/apply" element={<Apply />} />
-            <Route path="/request" element={<Request />} />
-            <Route path="/tracking" element={<Tracking />} />
-            <Route path="/upload" element={<Upload />} />
-            {/* <Route path="/user" element={<User />} />  */}
-            <Route path="/payslip" element={<Payslip />} />
-            <Route path="/attendance" element={<Attendance />} />
-          </Route>
-            <Route path="/user" element={<UserLayout />}>
-
+      <AuthProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="/" element={<Layout />}>
+              <Route index element={<PrivateRoute element={Dashboard} roles={['Admin', 'Hr']} />} />
+              <Route path="add" element={<PrivateRoute element={Add} roles={['Admin', 'Hr']} />} />
+              <Route path="employee" element={<PrivateRoute element={Employee} roles={['Admin', 'Hr']} />} />
+              <Route path="upload" element={<PrivateRoute element={Upload} roles={['Admin', 'Hr']} />} />
+              <Route path="attendance" element={<PrivateRoute element={Attendance} roles={['Admin', 'Hr']} />} />
             </Route>
-    
-        </Routes>
-      </BrowserRouter>
+            <Route path="/user" element={<UserLayout />}>
+              <Route path="payslip" element={<PrivateRoute element={UserPayslip} roles={['User']} />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </AuthProvider>
     </div>
   );
-}
+};
 
 export default App;

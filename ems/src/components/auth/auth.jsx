@@ -1,28 +1,49 @@
-import React, { createContext, useContext, useState } from 'react';
+// import React from 'react';
+// import { Route, Navigate } from 'react-router-dom';
+// import { useAuth } from './authcontext'; 
 
-const AuthContext = createContext();
+// const PrivateRoute = ({ element: Element, roles, ...rest }) => {
+//   const { user } = useAuth();
+  
 
-export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-//   const [admin, setAdmin] = useState(null);
+//   const isAuthenticated = !!user;
+//   const hasRole = roles.includes(user?.role);
 
-  const login = (userData) => {
-    // login logic ( API call)
-    setUser(userData);
-    // setAdmin(adminData);
-  };
+//   return (
+//     <Route
+//       {...rest}
+//       element={isAuthenticated && hasRole ? <Element /> : <Navigate to="/login" />}
+//     />
+//   );
+// };
 
-  const logout = () => {
-    // Implement logout logic here
-    setUser(null);
+// export default PrivateRoute;
 
-  };
+import React from 'react';
+import { Navigate, useLocation } from 'react-router-dom';
+import { useAuth } from './authcontext';
 
-  return (
-    <AuthContext.Provider value={{ user, login, logout }}>
-      {children}
-    </AuthContext.Provider>
-  );
+const PrivateRoute = ({ element: Element, roles }) => {
+  const { user } = useAuth();
+  const location = useLocation();
+
+  // Check if user is authenticated and has the correct role
+  const isAuthenticated = !!user;
+  const hasRole = roles.includes(user?.role);
+
+  if (!isAuthenticated) {
+    // Redirect to login if not authenticated
+    return <Navigate to="/login" state={{ from: location }} />;
+  }
+
+  if (!hasRole) {
+    // Redirect to a forbidden page if not authorized
+    return <Navigate to="/forbidden" />;
+  }
+
+  return <Element />;
 };
 
-export const useAuth = () => useContext(AuthContext);
+export default PrivateRoute;
+
+

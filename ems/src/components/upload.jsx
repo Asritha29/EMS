@@ -49,7 +49,7 @@ function Upload() {
         setExcelData(file.slice(0, 10)); // Displaying only the first 10 rows
   
         // Now send the file to the server
-        fetch('http://localhost:5006/employe/upload', {
+        fetch('http://localhost:5006/admin/upload', {
           method: 'POST',
           body: formData,
         })
